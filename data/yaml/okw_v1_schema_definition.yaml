@@ -1,144 +1,732 @@
-# Title: Data awards form v0 definition for KOBO toolbox
-# Date: 31/MARCH/2023
+# Title: OKW v1 schema definition file
+# Date: 17/MARCH/2023
 # Author: Antonio de Jesus Anaya Hernandez, DevOps Engineer.
 # Organization: The Internet of Production Alliance, 2023
 # URL: https://internetofproduction.org
 # License: CC BY-SA 4.0
-# Notes: This file contains references to the OKW standard. Depending in the context remove fields as needed.
+# Notes: This file is translated from a DBSchema Logical Database schema definition file.
+# Notes: Most IDX fields are null due to the current standard not including Unique, Primary or Foreign key definitions.
 ---
-
 4. Manufacturing Facility Properties:
-    -4.1. name
-    -4.2 location
-      Hint: "6. Location properties"
-    -4.4 contact
-      Hint: "5. Agent Properties"
-    -4.5 affiliation
-      Hint: "Hosting organization or similar"
-    -4.6 facility_status
-      Hint: "Open/inactive"
-    -4.7 opening_hours
-      Hint: "09:00,20:00" "24 hours formated time."
-    -4.8 type
-      Hint: "Fablab, maker space, workshop"
-    -4.10 access_type
-      Hint: "Open access", "university only"
-    -4.11 wheelchair_accessibility
-      Hint: "True, False"
-    -4.15 size_floor_size
-      Hint: "facility size in m2"
-    -4.18 certifications
-      Hint: "if available."
-    -4.19 backup_generator
-      Hint: "TRUE/FALSE"
-    -4.20 uninterrupted_power_supply
-      Hint: "TRUE/FALSE"
-    -4.21 road_access
-      Hint: "TRUE/FALSE"
-    -4.22 loading_dock
-      Hint: "TRUE/FALSE"
-    -4.23 maintenance_schedule
-    -4.25 partner_funder
-      Hint: "if available."
-
-    4.12 equipment
-      Hint: "7. Equipment Properties"
-    -4.17 typical_materials
-      Hint: "8. Materials Properties"
-    -4.24 typical_products
-    -4.14 typical_batch_size
-
-    -fk_4.27. circular economy sub-properties
-    -4.27.1. Circular Economy
-    -4.27.2. Description
-    -4.27.3. By-products
-    -fk_4.28. human capacity sub-properties
-    -4.28.1. Headcount
-    -4.28.2. Maker (WIP)
-    -fk_4.29. innovation space sub-properties
-    -4.29.1. Staff
-    -4.29.2. Learning Resources
-    -4.29.3. Services
-    -4.29.4. Footfall
-    -4.29.5. Residencies
-
-
+    - Idx:
+      Field Name: 4.1. name
+      Data Type: " VARCHAR(30)  "
+    - Idx:
+      Field Name: 4.2 location
+      Data Type: " VARCHAR(30)  "
+    - Idx:
+      Field Name: 4.3 owner
+      Data Type: " VARCHAR(20)  "
+    - Idx:
+      Field Name: 4.4 contact
+      Data Type: " VARCHAR(20)  "
+    - Idx:
+      Field Name: 4.5 affiliation
+      Data Type: " VARCHAR(20)  "
+    - Idx:
+      Field Name: 4.6 facility_status
+      Data Type: " VARCHAR(20)  "
+    - Idx:
+      Field Name: 4.7 opening_hours
+      Data Type: " DATETIME  "
+    - Idx:
+      Field Name: 4.8 description
+      Data Type: " TEXT  "
+    - Idx:
+      Field Name: 4.9 data_founded
+      Data Type: " DATE  "
+    - Idx:
+      Field Name: 4.10 access_type
+      Data Type: " TEXT  "
+    - Idx:
+      Field Name: 4.11 wheelchair_accessibility
+      Data Type: " TEXT  "
+    - Idx:
+      Field Name: 4.12 equipment
+      Data Type: " TEXT  "
+    - Idx:
+      Field Name: 4.13 manufacturing_process
+      Data Type: " TEXT  "
+    - Idx:
+      Field Name: 4.14 typical_batch_size
+      Data Type: " TEXT  "
+    - Idx:
+      Field Name: 4.15 size_floor_size
+      Data Type: " TEXT  "
+    - Idx:
+      Field Name: 4.16 storage_capacity
+      Data Type: " TEXT  "
+    - Idx:
+      Field Name: 4.17 typical_materials
+      Data Type: " TEXT  "
+    - Idx:
+      Field Name: 4.18 certifications
+      Data Type: " TEXT  "
+    - Idx:
+      Field Name: 4.19 backup_generator
+      Data Type: " BOOLEAN  "
+    - Idx:
+      Field Name: 4.20 uninterrupted_power_supply
+      Data Type: " BOOLEAN  "
+    - Idx:
+      Field Name: 4.21 road_access
+      Data Type: " BOOLEAN  "
+    - Idx:
+      Field Name: 4.22 loading_dock
+      Data Type: " BOOLEAN  "
+    - Idx:
+      Field Name: 4.23 maintenance_schedule
+      Data Type: " TEXT  "
+    - Idx:
+      Field Name: 4.24 typical_products
+      Data Type: " TEXT  "
+    - Idx:
+      Field Name: 4.25 partner_funder
+      Data Type: " VARCHAR(20)  "
+    - Idx:
+      Field Name: 4.26 customer_reviews
+      Data Type: " TEXT  "
+    - Idx: Relationships
+      Field Name:
+      Data Type:
+    - Idx:
+      Field Name: fk_facility_location
+      Data Type: " (null) → 6. Location Properties(6.1. Address) "
+    - Idx: Referring Relationships
+      Field Name:
+      Data Type:
+    - Idx:
+      Field Name: fk_4.27. circular economy sub-properties
+      Data Type: " () ← 4.27. Circular Economy sub-properties "
+    - Idx:
+      Field Name: fk_4.28. human capacity sub-properties
+      Data Type: " () ← 4.28. Human Capacity sub-properties "
+    - Idx:
+      Field Name: fk_4.29. innovation space sub-properties
+      Data Type: " () ← 4.29. Innovation Space sub-properties "
+    - Idx:
+      Field Name: 4.27.1. Circular Economy
+      Data Type: " BOOLEAN  "
+    - Idx:
+      Field Name: 4.27.2. Description
+      Data Type: " TEXT  "
+    - Idx:
+      Field Name: 4.27.3. By-products
+      Data Type: " RELATIONSHIP  "
+    - Idx: Relationships
+      Field Name:
+      Data Type:
+    - Idx:
+      Field Name: fk_4.27. circular economy sub-properties
+      Data Type: " () → 4. Manufacturing Facility Properties "
+    - Idx:
+      Field Name: 4.28.1. Headcount
+      Data Type: " INT  "
+    - Idx:
+      Field Name: 4.28.2. Maker (WIP)
+      Data Type: " TEXT  "
+    - Idx: Relationships
+      Field Name:
+      Data Type:
+    - Idx:
+      Field Name: fk_4.28. human capacity sub-properties
+      Data Type: " () → 4. Manufacturing Facility Properties "
+    - Idx:
+      Field Name: 4.29.1. Staff
+      Data Type: " INT  "
+    - Idx:
+      Field Name: 4.29.2. Learning Resources
+      Data Type: " TEXT  "
+    - Idx:
+      Field Name: 4.29.3. Services
+      Data Type: " TEXT  "
+    - Idx:
+      Field Name: 4.29.4. Footfall
+      Data Type: " TEXT  "
+    - Idx:
+      Field Name: 4.29.5. Residencies
+      Data Type: " BOOLEAN  "
+    - Idx: Relationships
+      Field Name:
+      Data Type:
+    - Idx:
+      Field Name: fk_4.29. innovation space sub-properties
+      Data Type: " () → 4. Manufacturing Facility Properties "
 5. Agent Properties:
-    -5.1 name
-    -5.2 location
-    -5.4 bio
-    -5.5 website
-    -5.6 languages
-    -5.8 images_media
-    -5.9 contact_subproperties
-    -5.9.1 landline
-    -5.9.2 mobile
-    -5.9.4 email
-    -5.9.5 whatsapp
-
+    - Idx:
+      Field Name: 5.1 name
+      Data Type: " VARCHAR(30)  "
+    - Idx:
+      Field Name: 5.2 location
+      Data Type: " VARCHAR(30)  "
+    - Idx:
+      Field Name: 5.3 contact_person
+      Data Type: " VARCHAR(30)  "
+    - Idx:
+      Field Name: 5.4 bio
+      Data Type: " TEXT  "
+    - Idx:
+      Field Name: 5.5 website
+      Data Type: " TEXT  "
+    - Idx:
+      Field Name: 5.6 languages
+      Data Type: " TEXT  "
+    - Idx:
+      Field Name: 5.7 mailing_list
+      Data Type: " TEXT  "
+    - Idx:
+      Field Name: 5.8 images_media
+      Data Type: " TEXT  "
+    - Idx:
+      Field Name: 5.9 contact_subproperties
+      Data Type: " SUBTYPE  "
+    - Idx:
+      Field Name: 5.9 contact_subproperties.5.9.1 landline
+      Data Type: " NUMERIC(20)  "
+    - Idx:
+      Field Name: 5.9 contact_subproperties.5.9.2 mobile
+      Data Type: " NUMERIC(20)  "
+    - Idx:
+      Field Name: 5.9 contact_subproperties.5.9.3 fax
+      Data Type: " NUMERIC(20)  "
+    - Idx:
+      Field Name: 5.9 contact_subproperties.5.9.4 email
+      Data Type: " VARCHAR(20)  "
+    - Idx:
+      Field Name: 5.9 contact_subproperties.5.9.5 whatsapp
+      Data Type: " NUMERIC(20)  "
+    - Idx:
+      Field Name: 5.10 social_media_subproperties
+      Data Type: " SUBTYPE  "
+    - Idx:
+      Field Name: 5.10 social_media_subproperties.5.10.1 facebook
+      Data Type: " VARCHAR(20)  "
+    - Idx:
+      Field Name: 5.10 social_media_subproperties.5.10.2 twitter
+      Data Type: " VARCHAR(20)  "
+    - Idx:
+      Field Name: 5.10 social_media_subproperties.5.10.3 instagram
+      Data Type: " VARCHAR(20)  "
+    - Idx:
+      Field Name: 5.10 social_media_subproperties.5.10.4 other_urls
+      Data Type: " VARCHAR(20)  "
+    - Idx: Referring Relationships
+      Field Name:
+      Data Type:
+    - Idx:
+      Field Name: JSon
+      Data Type: " (5.9 contact_subproperties) ← 5.9 contact_subproperties() "
+    - Idx:
+      Field Name: JSon
+      Data Type: " (5.10 social_media_subproperties) ← 5.10 social_media_subproperties() "
 6. Location Properties:
-    -6.1. Address
-    -6.1. Address.number
-    -6.1. Address.street
-    -6.1. Address.district
-    -6.1. Address.city
-    -6.1. Address.region
-    -6.1. Address.country
-    -6.1. Address.postcode
-    -6.3. GPS Coordinates
-    -6.3. GPS Coordinates.latitude
-    -6.3. GPS Coordinates.longitude
-    -6.3. GPS Coordinates.altitude
-    -6.3. GPS Coordinates.precision
-    -6.4. Directions
-    -6.4.1. What 3 Words
-    -6.4.2. Language encoding
-
+    - Idx:
+      Field Name: 6.1. Address
+      Data Type: " SUBTYPE  "
+    - Idx:
+      Field Name: 6.1. Address.number
+      Data Type: " DECIMAL  "
+    - Idx:
+      Field Name: 6.1. Address.street
+      Data Type: " VARCHAR(40)  "
+    - Idx:
+      Field Name: 6.1. Address.district
+      Data Type: " SUBTYPE  "
+    - Idx:
+      Field Name: 6.1. Address.city
+      Data Type: " SUBTYPE  "
+    - Idx:
+      Field Name: 6.1. Address.region
+      Data Type: " SUBTYPE  "
+    - Idx:
+      Field Name: 6.1. Address.country
+      Data Type: " CHAR(2)  "
+    - Idx:
+      Field Name: 6.1. Address.postcode
+      Data Type: " VARCHAR(10)  "
+    - Idx:
+      Field Name: 6.3. GPS Coordinates
+      Data Type: " SUBTYPE  "
+    - Idx:
+      Field Name: 6.3. GPS Coordinates.latitude
+      Data Type: " DECIMAL  "
+    - Idx:
+      Field Name: 6.3. GPS Coordinates.longitude
+      Data Type: " DECIMAL  "
+    - Idx:
+      Field Name: 6.3. GPS Coordinates.altitude
+      Data Type: " DECIMAL  "
+    - Idx:
+      Field Name: 6.3. GPS Coordinates.precision
+      Data Type: " DECIMAL  "
+    - Idx:
+      Field Name: 6.4. Directions
+      Data Type: " SUBTYPE  "
+    - Idx:
+      Field Name: 6.5. What 3 Words sub-properties
+      Data Type: " SUBTYPE  "
+    - Idx:
+      Field Name: 6.5. What 3 Words sub-properties.6.4.1. What 3 Words
+      Data Type: " VARCHAR(20)  "
+    - Idx:
+      Field Name: 6.5. What 3 Words sub-properties.6.4.2. Language
+      Data Type: " VARCHAR(6)  "
+    - Idx: Referring Relationships
+      Field Name:
+      Data Type:
+    - Idx:
+      Field Name: JSon
+      Data Type: " (6.1. Address) ← 6.1. Address() "
+    - Idx:
+      Field Name: JSon
+      Data Type: " (6.3. GPS Coordinates) ← 6.3. GPS Coordinates() "
+    - Idx:
+      Field Name: JSon
+      Data Type: " (6.5. What 3 Words sub-properties) ← 6.5. What 3 Words sub-properties() "
+    - Idx:
+      Field Name: fk_equipment_location
+      Data Type: " (6.1. Address) ← 7. Equipment Properties(null) "
+    - Idx:
+      Field Name: fk_facility_location
+      Data Type: " (6.1. Address) ← 4. Manufacturing Facility Properties(null) "
+    - Idx:
+      Field Name: JSon
+      Data Type: " (6.4. Directions) ← 6.4. Directions() "
+    - Idx:
+      Field Name: JSon
+      Data Type: " (6.5. What 3 Words sub-properties) ← 6.5. What 3 Words sub-properties() "
+    - Idx:
+      Field Name: JSon
+      Data Type: " (6.5. What 3 Words sub-properties) ← 6.5. What 3 Words sub-properties() "
+    - Idx:
+      Field Name: JSon
+      Data Type: " (6.3. GPS Coordinates) ← 6.3. GPS Coordinates() "
+    - Idx:
+      Field Name: JSon
+      Data Type: " (6.1. Address) ← 6.1. Address() "
 7. Equipment Properties:
-    -7.1 equipment_type
-      Hint: "Use Taxonomy of machines"
-    -7.2 manufacturing_process
-      Hint: "Use Taxonomy of manufacturing processes"
-    -7.3 make
-      Hint: "is this DIY? TRUE/FALSE"
-    -7.4 model
-      Hint: "Machine model"
-    -7.5 serial_number
-      Hint: "or barcode scan if available"
-    -7.7 skills_required
-      Hint: "Opcional"
-    -7.8 condition
-      Hint: "Working, on maintenance, unfixable."
-    -7.11 quantity
-      Hint: " INT  "
-    -7.12 throughput
-      Hint: "What comes out of this machine? ie. Plastic bricks, extruded filament, etc."
-    -7.13 power_rating
-      Hint: "How many Watts? if applicable"
-    -7.14 materials_worked
-      Hint: "Raw Material used by this machine. ie Aluminum Sheet, PLA filament, etc."
-    -7.16 usage_levels
-      Hint: "Relative usage compared to other machines, HEAVY,MODERATED, LOW OR similar scale."
-    -7.20.4.Build Volume
-    -7.20.36. X Travel
-    -7.20.37. Y Travel
-    -7.20.38. Z Travel
-
+    - Idx:
+      Field Name: 7.1 equipment_type
+      Data Type: " TEXT  "
+    - Idx:
+      Field Name: 7.2 manufacturing_process
+      Data Type: " TEXT  "
+    - Idx:
+      Field Name: 7.3 make
+      Data Type: " TEXT  "
+    - Idx:
+      Field Name: 7.4 model
+      Data Type: " TEXT  "
+    - Idx:
+      Field Name: 7.5 serial_number
+      Data Type: " TEXT  "
+    - Idx:
+      Field Name: 7.6 location
+      Data Type: " VARCHAR(30)  "
+    - Idx:
+      Field Name: 7.7 skills_required
+      Data Type: " TEXT  "
+    - Idx:
+      Field Name: 7.8 condition
+      Data Type: " TEXT  "
+    - Idx:
+      Field Name: 7.9 notes
+      Data Type: " TEXT  "
+    - Idx:
+      Field Name: 7.10 owner
+      Data Type: " TEXT  "
+    - Idx:
+      Field Name: 7.11 quantity
+      Data Type: " INT  "
+    - Idx:
+      Field Name: 7.12 throughput
+      Data Type: " TEXT  "
+    - Idx:
+      Field Name: 7.13 power_rating
+      Data Type: " INT  "
+    - Idx:
+      Field Name: 7.14 materials_worked
+      Data Type: " SUBTYPE  "
+    - Idx:
+      Field Name: 7.15 maintenance_schedule
+      Data Type: " TEXT  "
+    - Idx:
+      Field Name: 7.16 usage_levels
+      Data Type: " TEXT  "
+    - Idx:
+      Field Name: 7.17 tolerance class
+      Data Type: " SUBTYPE  "
+    - Idx:
+      Field Name: 7.18. Current Firmware
+      Data Type: " TEXT  "
+    - Idx:
+      Field Name: 7.19. Uninterrupted Power Supply
+      Data Type: " BOOLEAN  "
+    - Idx: Relationships
+      Field Name:
+      Data Type:
+    - Idx:
+      Field Name: fk_equipment_location
+      Data Type: " (null) → 6. Location Properties(6.1. Address) "
+    - Idx: Referring Relationships
+      Field Name:
+      Data Type:
+    - Idx:
+      Field Name: fk_8. materials properties
+      Data Type: " () ← 8. Materials Properties "
+    - Idx:
+      Field Name: 'fk_7.20. defined sub-properties '
+      Data Type: " () ← 7.20. Defined sub-properties  "
+    - Idx:
+      Field Name: 7.20.1. Axes
+      Data Type: " INT  "
+    - Idx:
+      Field Name: 7.20.2. Bed Size
+      Data Type: " DECIMAL  "
+    - Idx:
+      Field Name: 7.20.3. Bending Length
+      Data Type: " DECIMAL  "
+    - Idx:
+      Field Name: 7.20.4.Build Volume
+      Data Type: " DECIMAL  "
+    - Idx:
+      Field Name: 7.20.5. Chuck Jaw Diameter
+      Data Type: " DECIMAL  "
+    - Idx:
+      Field Name: 7.20.6. Collet Size
+      Data Type: " DECIMAL  "
+    - Idx:
+      Field Name: 7.20.7. Computer Controlled
+      Data Type: " DECIMAL  "
+    - Idx:
+      Field Name: 7.20.8. Cross Slide Travel
+      Data Type: " DECIMAL  "
+    - Idx:
+      Field Name: 7.20.9. Daylight &#47; Opening
+      Data Type: " TEXT  "
+    - Idx:
+      Field Name: 7.20.10. Distance Between Centres
+      Data Type: " DECIMAL  "
+    - Idx:
+      Field Name: 7.20.11. Ejector Threads
+      Data Type: " DECIMAL  "
+    - Idx:
+      Field Name: 7.20.12. Extraction System
+      Data Type: " BOOLEAN  "
+    - Idx:
+      Field Name: 7.20.13. Gantry Material
+      Data Type: " RELATIONSHIP  "
+    - Idx:
+      Field Name: 7.20.14. Hot Runner Compatible
+      Data Type: " BOOLEAN  "
+    - Idx:
+      Field Name: 7.20.15. Laser Power
+      Data Type: " DECIMAL  "
+    - Idx:
+      Field Name: 7.20.16. Layer Resolution
+      Data Type: " DECIMAL  "
+    - Idx:
+      Field Name: 7.20.17. Locating Ring Diameter
+      Data Type: " DECIMAL  "
+    - Idx:
+      Field Name: 7.20.18. Material Worked &#63;&#63;
+      Data Type: " RELATIONSHIP  "
+    - Idx:
+      Field Name: 7.20.19. Maximum Clamping Force
+      Data Type: " DECIMAL  "
+    - Idx:
+      Field Name: 7.20.20. Maximum Shot Volume
+      Data Type: " DECIMAL  "
+    - Idx:
+      Field Name: 7.20.21. Maximum Spindle Speed
+      Data Type: " DECIMAL  "
+    - Idx:
+      Field Name: 7.20.22. Maximum Tie Bar Distance
+      Data Type: " DECIMAL  "
+    - Idx:
+      Field Name: 7.20.23. Nozzle Size
+      Data Type: " DECIMAL  "
+    - Idx:
+      Field Name: 7.20.24. Nozzle Radius
+      Data Type: " DECIMAL  "
+    - Idx:
+      Field Name: 7.20.25. Optimal Material
+      Data Type: " RELATIONSHIP  "
+    - Idx:
+      Field Name: 7.20.26. Pieceholding Type
+      Data Type: " TEXT  "
+    - Idx:
+      Field Name: 7.20.27. Press Force
+      Data Type: " DECIMAL  "
+    - Idx:
+      Field Name: 7.20.28. Punch Force
+      Data Type: " DECIMAL  "
+    - Idx:
+      Field Name: 7.20.29. Spindle Rotation &#63;&#63;
+      Data Type: " DECIMAL  "
+    - Idx:
+      Field Name: 7.20.30. Stations
+      Data Type: " BOOLEAN  "
+    - Idx:
+      Field Name: 7.20.31. Station size
+      Data Type: " DECIMAL  "
+    - Idx:
+      Field Name: 7.20.32. Tailstock Sleeve Travel
+      Data Type: " DECIMAL  "
+    - Idx:
+      Field Name: 7.20.33. Tooling Type
+      Data Type: " TEXT  "
+    - Idx:
+      Field Name: 7.20.34. Turning Capacity &#47; Swing
+      Data Type: " DECIMAL  "
+    - Idx:
+      Field Name: 7.20.35. Working Surface
+      Data Type: " DECIMAL  "
+    - Idx:
+      Field Name: 7.20.36. X Travel
+      Data Type: " DECIMAL  "
+    - Idx:
+      Field Name: 7.20.37. Y Travel
+      Data Type: " DECIMAL  "
+    - Idx:
+      Field Name: 7.20.38. Z Travel
+      Data Type: " DECIMAL  "
+    - Idx: Relationships
+      Field Name:
+      Data Type:
+    - Idx:
+      Field Name: 'fk_7.20. defined sub-properties '
+      Data Type: " () → 7. Equipment Properties "
 8. Materials Properties:
-    -8.1. Manufacturer
-    -8.2. Brand
-    -8.3. Supplier Location
-      Hint: "Where did I get this from?"
-    -8.4. Material Type
-      Hint: "Check Taxonomy of materials"
-
-
+    - Idx:
+      Field Name: 8.1. Manufacturer
+      Data Type: " TEXT  "
+    - Idx:
+      Field Name: 8.2. Brand
+      Data Type: " TEXT  "
+    - Idx:
+      Field Name: 8.3. Supplier Location
+      Data Type: " RELATIONSHIP  "
+    - Idx:
+      Field Name: 8.4. Material Type
+      Data Type: " TEXT  "
+    - Idx: Relationships
+      Field Name:
+      Data Type:
+    - Idx:
+      Field Name: fk_8. materials properties
+      Data Type: " () → 7. Equipment Properties "
+    - Idx: Referring Relationships
+      Field Name:
+      Data Type:
+    - Idx:
+      Field Name: fk_8.5.1. plastics
+      Data Type: " () ← 8.5.1. Plastics "
+    - Idx:
+      Field Name: fk_8.5.2. metals
+      Data Type: " () ← 8.5.2. Metals "
+    - Idx:
+      Field Name: fk_8.5.5. ceramics
+      Data Type: " () ← 8.5.5. Ceramics "
+    - Idx:
+      Field Name: fk_8.5.4. elastomers
+      Data Type: " () ← 8.5.4. Elastomers "
+    - Idx:
+      Field Name: fk_8.5.3. wood products
+      Data Type: " () ← 8.5.3. Wood Products "
+    - Idx:
+      Field Name: fk_8.5.6. electronics
+      Data Type: " () ← 8.5.6. Electronics "
+    - Idx:
+      Field Name: fk_8.5.7. others
+      Data Type: " () ← 8.5.7. Others "
+    - Idx:
+      Field Name: HDPE
+      Data Type: " BOOLEAN  "
+    - Idx:
+      Field Name: PLA
+      Data Type: " BOOLEAN  "
+    - Idx:
+      Field Name: ABS
+      Data Type: " BOOLEAN  "
+    - Idx:
+      Field Name: PET
+      Data Type: " BOOLEAN  "
+    - Idx:
+      Field Name: Acetate
+      Data Type: " BOOLEAN  "
+    - Idx:
+      Field Name: PVC
+      Data Type: " BOOLEAN  "
+    - Idx:
+      Field Name: Nylon
+      Data Type: " BOOLEAN  "
+    - Idx:
+      Field Name: Polycarbonate
+      Data Type: " BOOLEAN  "
+    - Idx:
+      Field Name: Polypropylene
+      Data Type: " BOOLEAN  "
+    - Idx:
+      Field Name: Acrylic
+      Data Type: " BOOLEAN  "
+    - Idx: Relationships
+      Field Name:
+      Data Type:
+    - Idx:
+      Field Name: fk_8.5.1. plastics
+      Data Type: " () → 8. Materials Properties "
+    - Idx:
+      Field Name: Iron
+      Data Type: " BOOLEAN  "
+    - Idx:
+      Field Name: Steel
+      Data Type: " BOOLEAN  "
+    - Idx:
+      Field Name: Stainless Steel
+      Data Type: " BOOLEAN  "
+    - Idx:
+      Field Name: Mild Steel
+      Data Type: " BOOLEAN  "
+    - Idx:
+      Field Name: Galvanised Steel
+      Data Type: " BOOLEAN  "
+    - Idx:
+      Field Name: Aluminium
+      Data Type: " BOOLEAN  "
+    - Idx:
+      Field Name: Copper
+      Data Type: " BOOLEAN  "
+    - Idx:
+      Field Name: Zinc
+      Data Type: " BOOLEAN  "
+    - Idx: Relationships
+      Field Name:
+      Data Type:
+    - Idx:
+      Field Name: fk_8.5.2. metals
+      Data Type: " () → 8. Materials Properties "
+    - Idx:
+      Field Name: Softwood
+      Data Type: " BOOLEAN  "
+    - Idx:
+      Field Name: Hardwood
+      Data Type: " BOOLEAN  "
+    - Idx:
+      Field Name: MDF
+      Data Type: " BOOLEAN  "
+    - Idx: Relationships
+      Field Name:
+      Data Type:
+    - Idx:
+      Field Name: fk_8.5.3. wood products
+      Data Type: " () → 8. Materials Properties "
+    - Idx:
+      Field Name: Natural Rubber
+      Data Type: " BOOLEAN  "
+    - Idx:
+      Field Name: TPU
+      Data Type: " BOOLEAN  "
+    - Idx:
+      Field Name: Silicone
+      Data Type: " BOOLEAN  "
+    - Idx: Relationships
+      Field Name:
+      Data Type:
+    - Idx:
+      Field Name: fk_8.5.4. elastomers
+      Data Type: " () → 8. Materials Properties "
+    - Idx:
+      Field Name: Geopolymers
+      Data Type: " BOOLEAN  "
+    - Idx:
+      Field Name: Ceramics
+      Data Type: " BOOLEAN  "
+    - Idx:
+      Field Name: Clay
+      Data Type: " BOOLEAN  "
+    - Idx: Relationships
+      Field Name:
+      Data Type:
+    - Idx:
+      Field Name: fk_8.5.5. ceramics
+      Data Type: " () → 8. Materials Properties "
+    - Idx:
+      Field Name: PCBs
+      Data Type: " BOOLEAN  "
+    - Idx:
+      Field Name: Electronic Components
+      Data Type: " BOOLEAN  "
+    - Idx: Relationships
+      Field Name:
+      Data Type:
+    - Idx:
+      Field Name: fk_8.5.6. electronics
+      Data Type: " () → 8. Materials Properties "
+    - Idx:
+      Field Name: Textiles
+      Data Type: " BOOLEAN  "
+    - Idx:
+      Field Name: Leather
+      Data Type: " BOOLEAN  "
+    - Idx:
+      Field Name: Concrete
+      Data Type: " BOOLEAN  "
+    - Idx:
+      Field Name: Rock
+      Data Type: " BOOLEAN  "
+    - Idx:
+      Field Name: Soil
+      Data Type: " BOOLEAN  "
+    - Idx:
+      Field Name: Composite Materials
+      Data Type: " BOOLEAN  "
+    - Idx:
+      Field Name: Food
+      Data Type: " BOOLEAN  "
+    - Idx:
+      Field Name: Compost
+      Data Type: " BOOLEAN  "
+    - Idx:
+      Field Name: Resin
+      Data Type: " BOOLEAN  "
+    - Idx:
+      Field Name: Glass
+      Data Type: " BOOLEAN  "
+    - Idx:
+      Field Name: Carbon Fiber
+      Data Type: " BOOLEAN  "
+    - Idx:
+      Field Name: Cardboard
+      Data Type: " BOOLEAN  "
+    - Idx:
+      Field Name: Paper
+      Data Type: " BOOLEAN  "
+    - Idx: Relationships
+      Field Name:
+      Data Type:
+    - Idx:
+      Field Name: fk_8.5.7. others
+      Data Type: " () → 8. Materials Properties "
 9. Record Data Properties:
-    -9.1. Date Created
-      Hint: "This metadata is needed for every row or entry"
-    -9.2. Created By
-    -9.3. Last Updated
-    -9.4. Updated By
-    -9.5. Date Verified
-    -9.6. Verified By
-    -9.7. Data Collection Method
+    - Idx:
+      Field Name: 9.1. Date Created
+      Data Type: " DATE  "
+    - Idx:
+      Field Name: 9.2. Created By
+      Data Type: " RELATIONSHIP  "
+    - Idx:
+      Field Name: 9.3. Last Updated
+      Data Type: " DATE  "
+    - Idx:
+      Field Name: 9.4. Updated By
+      Data Type: " RELATIONSHIP  "
+    - Idx:
+      Field Name: 9.5. Date Verified
+      Data Type: " DATE  "
+    - Idx:
+      Field Name: 9.6. Verified By
+      Data Type: " RELATIONSHIP  "
+    - Idx:
+      Field Name: 9.7. Data Collection Method
+      Data Type: " TEXT  "
