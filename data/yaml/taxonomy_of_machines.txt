@@ -1,0 +1,89 @@
+# Title: Taxonomy of machines classification: 
+# Date: 17/MARCH/2023
+# Author: Antonio de Jesus Anaya Hernandez, DevOps Engineer.
+# Organization: The Internet of Production Alliance, 2023
+# URL: https://internetofproduction.org
+# License: CC BY-SA 4.0
+# Notes: 
+
+
+1. Name:
+The specific commercial name or model of the machine.
+
+2. Brand:
+The manufacturer of the machine.
+
+3. Source:
+Whether the printer was made for commercial or personal use, and in this case it is for commercial use.
+
+4. Type:
+The general category of the machine.
+
+5. Application:
+The primary use of the printer, which in this case is for manufacturing.
+
+6. Category:
+The general classification of the device as a machine.
+
+7. Sub-category:
+A more specific sub-classification, in example, numerical controlled.
+
+8. Operation input:
+How the machine is operated.
+
+9. Process category:
+The general process by which the machine works.
+
+10. Sub-process:
+A more specific process that the machine uses.
+
+11. Process-labels:
+Specific techniques or methods used in the machine process.
+
+12. Power source:
+The source of power used by the machine.
+
+13. Precision:
+The degree of accuracy with which the machine.
+
+14. Computer controller type:
+The type of computer controller used by the machine.
+
+15. Thermal effects:
+The specific thermal effects that the printer uses in its machining process.
+
+16. Productivity level day:
+The amount of production the machine can achieve in a day.
+
+17. Motor type:
+The type of motor used by the machine.
+
+18. Motion:
+The type of motion the machine uses in its process.
+
+19. Size:
+The dimensions of the machine.
+
+20. Unit system:
+The unit system used by the machine.
+
+21. Maintenance:
+The level of maintenance required to keep the machine running.
+
+22. Raw material:
+The type of raw material used by the machine.
+
+23. Raw materials tags:
+Specific tags that identify the type of raw material used by the machine.
+
+24. Transportation level:
+The ease of transporting the machine.
+
+25. Robustness level:
+The level of durability of the machine.
+
+26. Made of:
+The material used to construct the machine.
+
+27. Skills for operation:
+The specific skills required to operate the machine.
