@@ -1,0 +1,2208 @@
+<!DOCTYPE html>
+<html>
+<head>
+    
+    <meta http-equiv="content-type" content="text/html; charset=UTF-8" />
+    
+        <script>
+            L_NO_TOUCH = false;
+            L_DISABLE_3D = false;
+        </script>
+    
+    <style>html, body {width: 100%;height: 100%;margin: 0;padding: 0;}</style>
+    <style>#map {position:absolute;top:0;bottom:0;right:0;left:0;}</style>
+    <script src="https://cdn.jsdelivr.net/npm/leaflet@1.9.3/dist/leaflet.js"></script>
+    <script src="https://code.jquery.com/jquery-1.12.4.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.2/dist/js/bootstrap.bundle.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/Leaflet.awesome-markers/2.0.2/leaflet.awesome-markers.js"></script>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/leaflet@1.9.3/dist/leaflet.css"/>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.2/dist/css/bootstrap.min.css"/>
+    <link rel="stylesheet" href="https://netdna.bootstrapcdn.com/bootstrap/3.0.0/css/bootstrap.min.css"/>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free@6.2.0/css/all.min.css"/>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/Leaflet.awesome-markers/2.0.2/leaflet.awesome-markers.css"/>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/python-visualization/folium/folium/templates/leaflet.awesome.rotate.min.css"/>
+    
+            <meta name="viewport" content="width=device-width,
+                initial-scale=1.0, maximum-scale=1.0, user-scalable=no" />
+            <style>
+                #map_b2a85ad7a46bf85a9c2fa57ead9b3d8a {
+                    position: relative;
+                    width: 100.0%;
+                    height: 100.0%;
+                    left: 0.0%;
+                    top: 0.0%;
+                }
+                .leaflet-container { font-size: 1rem; }
+            </style>
+        
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/leaflet.markercluster/1.1.0/leaflet.markercluster.js"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/leaflet.markercluster/1.1.0/MarkerCluster.css"/>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/leaflet.markercluster/1.1.0/MarkerCluster.Default.css"/>
+    
+                <style>
+                    #float_image_38419d3f662319f87e787638a6c83a25 {
+                        position: absolute;
+                        bottom: 1%;
+                        left: 1%;
+                          width: 10;
+                          height: 10;
+                        }
+                </style>
+            
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/leaflet-locatecontrol/0.66.2/L.Control.Locate.min.js"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/leaflet-locatecontrol/0.66.2/L.Control.Locate.min.css"/>
+</head>
+<body>
+    
+    
+            <div class="folium-map" id="map_b2a85ad7a46bf85a9c2fa57ead9b3d8a" ></div>
+        
+    
+            <img id="float_image_38419d3f662319f87e787638a6c83a25" alt="float_image"
+                 src="https://i0.wp.com/globalinnovationgathering.org/wp-content/uploads/2021/05/cropped-gig-logo-retina.png?w=150&ssl=1"
+                 style="z-index: 999999">
+            </img>
+            
+</body>
+<script>
+    
+    
+            var map_b2a85ad7a46bf85a9c2fa57ead9b3d8a = L.map(
+                "map_b2a85ad7a46bf85a9c2fa57ead9b3d8a",
+                {
+                    center: [0, 0],
+                    crs: L.CRS.EPSG3857,
+                    zoom: 1,
+                    zoomControl: false,
+                    preferCanvas: false,
+                }
+            );
+
+            
+
+        
+    
+            var tile_layer_2c29eaf249b6dffe518f59c707025cdf = L.tileLayer(
+                "https://cartodb-basemaps-{s}.global.ssl.fastly.net/light_all/{z}/{x}/{y}.png",
+                {"attribution": "\u0026copy; \u003ca target=\"_blank\" href=\"http://www.openstreetmap.org/copyright\"\u003eOpenStreetMap\u003c/a\u003e contributors \u0026copy; \u003ca target=\"_blank\" href=\"http://cartodb.com/attributions\"\u003eCartoDB\u003c/a\u003e, CartoDB \u003ca target=\"_blank\" href =\"http://cartodb.com/attributions\"\u003eattributions\u003c/a\u003e", "detectRetina": false, "maxNativeZoom": 18, "maxZoom": 18, "minZoom": 0, "noWrap": false, "opacity": 1, "subdomains": "abc", "tms": false}
+            ).addTo(map_b2a85ad7a46bf85a9c2fa57ead9b3d8a);
+        
+    
+            var marker_cluster_d6c4c7abebb46e0b182a54697687169e = L.markerClusterGroup(
+                {}
+            );
+            marker_cluster_d6c4c7abebb46e0b182a54697687169e.options.iconCreateFunction =
+                function(cluster) {
+    return L.divIcon({html:'<p class="centered" style="color: white; background-color: #EA6690; line-height: 25px; text-align: center; border-radius: 50%;"> <strong>' + cluster.getChildCount() + '</strong></p>',
+                      className: 'marker-cluster marker-cluster-small',
+                      iconSize: new L.Point(25, 25)});
+    };
+            map_b2a85ad7a46bf85a9c2fa57ead9b3d8a.addLayer(marker_cluster_d6c4c7abebb46e0b182a54697687169e);
+        
+    
+            var circle_marker_1529db5a2224b613863c5767deb5f688 = L.circleMarker(
+                [-20.0, 47.0],
+                {"bubblingMouseEvents": true, "color": "#EA6690", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "#EA6690", "fillOpacity": 0.2, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 0.7, "radius": 10, "stroke": true, "weight": 1}
+            ).addTo(marker_cluster_d6c4c7abebb46e0b182a54697687169e);
+        
+    
+        var popup_beee648227c431b963c8b4e247151bf0 = L.popup({"maxWidth": "100%"});
+
+        
+            
+                var html_17e84333eeb88170c7f0d870e63560f7 = $(`<div id="html_17e84333eeb88170c7f0d870e63560f7" style="width: 100.0%; height: 100.0%;">     <div style="align-items: left;">         <img src="https://i0.wp.com/globalinnovationgathering.org/wp-content/uploads/avatars/51/6140951840a80-bpfull.jpg?resize=150%2C150&ssl=1" alt="Ratozamanana" style="width:100%;border-radius:50%;max-width:150px;">         <h4 style="text-align:center">Ratozamanana</h4>         <p><strong>Location: </strong>Madagascar</p>         <p><strong>Initiative: </strong>Hackoragna.coop</p>         <p><a href="https://globalinnovationgathering.org/members-map/members/andriankoto/" target="_blank">View Profile</a></p>     </div>     </div>`)[0];
+                popup_beee648227c431b963c8b4e247151bf0.setContent(html_17e84333eeb88170c7f0d870e63560f7);
+            
+        
+
+        circle_marker_1529db5a2224b613863c5767deb5f688.bindPopup(popup_beee648227c431b963c8b4e247151bf0)
+        ;
+
+        
+    
+    
+            var circle_marker_28e30a84b7062e79359f5dfa0d8eae11 = L.circleMarker(
+                [7.0, 30.0],
+                {"bubblingMouseEvents": true, "color": "#EA6690", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "#EA6690", "fillOpacity": 0.2, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 0.7, "radius": 10, "stroke": true, "weight": 1}
+            ).addTo(marker_cluster_d6c4c7abebb46e0b182a54697687169e);
+        
+    
+        var popup_8bc1e9bf638b6c548f9d4aa350c43978 = L.popup({"maxWidth": "100%"});
+
+        
+            
+                var html_86f9a3dbf06f597e9b3dc3a576a7cc40 = $(`<div id="html_86f9a3dbf06f597e9b3dc3a576a7cc40" style="width: 100.0%; height: 100.0%;">     <div style="align-items: left;">         <img src="//www.gravatar.com/avatar/70716703a89801ff7cde4cc88ac92270?s=150&r=g&d=identicon" alt="Dut Andrew Kulang" style="width:100%;border-radius:50%;max-width:150px;">         <h4 style="text-align:center">Dut Andrew Kulang</h4>         <p><strong>Location: </strong>South Sudan</p>         <p><strong>Initiative: </strong>YouthEmpowerment Foundation</p>         <p><a href="https://globalinnovationgathering.org/members-map/members/dutandrewkulang/" target="_blank">View Profile</a></p>     </div>     </div>`)[0];
+                popup_8bc1e9bf638b6c548f9d4aa350c43978.setContent(html_86f9a3dbf06f597e9b3dc3a576a7cc40);
+            
+        
+
+        circle_marker_28e30a84b7062e79359f5dfa0d8eae11.bindPopup(popup_8bc1e9bf638b6c548f9d4aa350c43978)
+        ;
+
+        
+    
+    
+            var circle_marker_63ab0c0a1d6a98b414d45fc7d3502828 = L.circleMarker(
+                [-6.0, 35.0],
+                {"bubblingMouseEvents": true, "color": "#EA6690", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "#EA6690", "fillOpacity": 0.2, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 0.7, "radius": 10, "stroke": true, "weight": 1}
+            ).addTo(marker_cluster_d6c4c7abebb46e0b182a54697687169e);
+        
+    
+        var popup_08cce62813574736e2c84680863421b0 = L.popup({"maxWidth": "100%"});
+
+        
+            
+                var html_613508f0f73075b6b964f3b9446c16f9 = $(`<div id="html_613508f0f73075b6b964f3b9446c16f9" style="width: 100.0%; height: 100.0%;">     <div style="align-items: left;">         <img src="//www.gravatar.com/avatar/f754c3e2bc38c90c88a657eb2b31d478?s=150&r=g&d=identicon" alt="Ngushwai" style="width:100%;border-radius:50%;max-width:150px;">         <h4 style="text-align:center">Ngushwai</h4>         <p><strong>Location: </strong>Tanzania</p>         <p><strong>Initiative: </strong>DIT DESIGN STUDIO</p>         <p><a href="https://globalinnovationgathering.org/members-map/members/ditds/" target="_blank">View Profile</a></p>     </div>     </div>`)[0];
+                popup_08cce62813574736e2c84680863421b0.setContent(html_613508f0f73075b6b964f3b9446c16f9);
+            
+        
+
+        circle_marker_63ab0c0a1d6a98b414d45fc7d3502828.bindPopup(popup_08cce62813574736e2c84680863421b0)
+        ;
+
+        
+    
+    
+            var circle_marker_e7e10452f5c00fd5708eb0e8c2a932aa = L.circleMarker(
+                [10.0, 8.0],
+                {"bubblingMouseEvents": true, "color": "#EA6690", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "#EA6690", "fillOpacity": 0.2, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 0.7, "radius": 10, "stroke": true, "weight": 1}
+            ).addTo(marker_cluster_d6c4c7abebb46e0b182a54697687169e);
+        
+    
+        var popup_08d1c0462e6889f02d7cf3e5218d3784 = L.popup({"maxWidth": "100%"});
+
+        
+            
+                var html_4531746166810c3b4c47b7e75b00e7c3 = $(`<div id="html_4531746166810c3b4c47b7e75b00e7c3" style="width: 100.0%; height: 100.0%;">     <div style="align-items: left;">         <img src="https://i0.wp.com/globalinnovationgathering.org/wp-content/uploads/avatars/126/1650763489-bpfull.jpg?resize=150%2C150&ssl=1" alt="Busayo Morakinyo" style="width:100%;border-radius:50%;max-width:150px;">         <h4 style="text-align:center">Busayo Morakinyo</h4>         <p><strong>Location: </strong>Nigeria</p>         <p><strong>Initiative: </strong>FollowTheMoney</p>         <p><a href="https://globalinnovationgathering.org/members-map/members/damibusayo/" target="_blank">View Profile</a></p>     </div>     </div>`)[0];
+                popup_08d1c0462e6889f02d7cf3e5218d3784.setContent(html_4531746166810c3b4c47b7e75b00e7c3);
+            
+        
+
+        circle_marker_e7e10452f5c00fd5708eb0e8c2a932aa.bindPopup(popup_08d1c0462e6889f02d7cf3e5218d3784)
+        ;
+
+        
+    
+    
+            var circle_marker_13e61165adf9341ead8faf7e75808b51 = L.circleMarker(
+                [-10.0, -55.0],
+                {"bubblingMouseEvents": true, "color": "#EA6690", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "#EA6690", "fillOpacity": 0.2, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 0.7, "radius": 10, "stroke": true, "weight": 1}
+            ).addTo(marker_cluster_d6c4c7abebb46e0b182a54697687169e);
+        
+    
+        var popup_4863633a52f8aca5306af80f2ed964b4 = L.popup({"maxWidth": "100%"});
+
+        
+            
+                var html_91ff32e1aca9d7e58eea2414b1ef8747 = $(`<div id="html_91ff32e1aca9d7e58eea2414b1ef8747" style="width: 100.0%; height: 100.0%;">     <div style="align-items: left;">         <img src="https://i0.wp.com/globalinnovationgathering.org/wp-content/uploads/avatars/96/1645060734-bpfull.jpg?resize=150%2C150&ssl=1" alt="Gilberto Vieira" style="width:100%;border-radius:50%;max-width:150px;">         <h4 style="text-align:center">Gilberto Vieira</h4>         <p><strong>Location: </strong>Brazil</p>         <p><strong>Initiative: </strong>data_labe</p>         <p><a href="https://globalinnovationgathering.org/members-map/members/gilbertovieira/" target="_blank">View Profile</a></p>     </div>     </div>`)[0];
+                popup_4863633a52f8aca5306af80f2ed964b4.setContent(html_91ff32e1aca9d7e58eea2414b1ef8747);
+            
+        
+
+        circle_marker_13e61165adf9341ead8faf7e75808b51.bindPopup(popup_4863633a52f8aca5306af80f2ed964b4)
+        ;
+
+        
+    
+    
+            var circle_marker_ae2eefb443cb80cffd4d0199f8aa9f56 = L.circleMarker(
+                [52.0, 20.0],
+                {"bubblingMouseEvents": true, "color": "#EA6690", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "#EA6690", "fillOpacity": 0.2, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 0.7, "radius": 10, "stroke": true, "weight": 1}
+            ).addTo(marker_cluster_d6c4c7abebb46e0b182a54697687169e);
+        
+    
+        var popup_1f0291fd495093e6eeb882b6f864b075 = L.popup({"maxWidth": "100%"});
+
+        
+            
+                var html_8267968c6e5d314b9e98407b9988ba2d = $(`<div id="html_8267968c6e5d314b9e98407b9988ba2d" style="width: 100.0%; height: 100.0%;">     <div style="align-items: left;">         <img src="//www.gravatar.com/avatar/54ce46cf3687ce23311d707c86efd2b2?s=150&r=g&d=identicon" alt="Star Ngei" style="width:100%;border-radius:50%;max-width:150px;">         <h4 style="text-align:center">Star Ngei</h4>         <p><strong>Location: </strong>Poland</p>         <p><strong>Initiative: </strong>Maker, Open Source, Open Science and cyb</p>         <p><a href="https://globalinnovationgathering.org/members-map/members/sngei/" target="_blank">View Profile</a></p>     </div>     </div>`)[0];
+                popup_1f0291fd495093e6eeb882b6f864b075.setContent(html_8267968c6e5d314b9e98407b9988ba2d);
+            
+        
+
+        circle_marker_ae2eefb443cb80cffd4d0199f8aa9f56.bindPopup(popup_1f0291fd495093e6eeb882b6f864b075)
+        ;
+
+        
+    
+    
+            var circle_marker_b3e3045a37e749cd4a5b934288485df3 = L.circleMarker(
+                [13.83333333, -88.91666666],
+                {"bubblingMouseEvents": true, "color": "#EA6690", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "#EA6690", "fillOpacity": 0.2, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 0.7, "radius": 10, "stroke": true, "weight": 1}
+            ).addTo(marker_cluster_d6c4c7abebb46e0b182a54697687169e);
+        
+    
+        var popup_d89f5a58b21fa48670bc97582dd2fb43 = L.popup({"maxWidth": "100%"});
+
+        
+            
+                var html_9a5d255f74a7e267d9f99990b4b089b7 = $(`<div id="html_9a5d255f74a7e267d9f99990b4b089b7" style="width: 100.0%; height: 100.0%;">     <div style="align-items: left;">         <img src="//www.gravatar.com/avatar/0458a7d3c853074a8110d892fd5cf4fa?s=150&r=g&d=identicon" alt="Emilio Velis" style="width:100%;border-radius:50%;max-width:150px;">         <h4 style="text-align:center">Emilio Velis</h4>         <p><strong>Location: </strong>El Salvador</p>         <p><strong>Initiative: </strong>Appropedia</p>         <p><a href="https://globalinnovationgathering.org/members-map/members/emiliovelis/" target="_blank">View Profile</a></p>     </div>     </div>`)[0];
+                popup_d89f5a58b21fa48670bc97582dd2fb43.setContent(html_9a5d255f74a7e267d9f99990b4b089b7);
+            
+        
+
+        circle_marker_b3e3045a37e749cd4a5b934288485df3.bindPopup(popup_d89f5a58b21fa48670bc97582dd2fb43)
+        ;
+
+        
+    
+    
+            var circle_marker_3a69907c00964c1dc561d819542974e3 = L.circleMarker(
+                [8.0, -2.0],
+                {"bubblingMouseEvents": true, "color": "#EA6690", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "#EA6690", "fillOpacity": 0.2, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 0.7, "radius": 10, "stroke": true, "weight": 1}
+            ).addTo(marker_cluster_d6c4c7abebb46e0b182a54697687169e);
+        
+    
+        var popup_2f2af7d11f0369d8266b057de5cde178 = L.popup({"maxWidth": "100%"});
+
+        
+            
+                var html_e5e92c89ceee727c5b78bc698c02de07 = $(`<div id="html_e5e92c89ceee727c5b78bc698c02de07" style="width: 100.0%; height: 100.0%;">     <div style="align-items: left;">         <img src="https://i0.wp.com/globalinnovationgathering.org/wp-content/uploads/avatars/74/617f308ec5909-bpfull.jpg?resize=150%2C150&ssl=1" alt="Jorge Appiah" style="width:100%;border-radius:50%;max-width:150px;">         <h4 style="text-align:center">Jorge Appiah</h4>         <p><strong>Location: </strong>Ghana</p>         <p><strong>Initiative: </strong>Kumasi Hive</p>         <p><a href="https://globalinnovationgathering.org/members-map/members/jorgeappiah/" target="_blank">View Profile</a></p>     </div>     </div>`)[0];
+                popup_2f2af7d11f0369d8266b057de5cde178.setContent(html_e5e92c89ceee727c5b78bc698c02de07);
+            
+        
+
+        circle_marker_3a69907c00964c1dc561d819542974e3.bindPopup(popup_2f2af7d11f0369d8266b057de5cde178)
+        ;
+
+        
+    
+    
+            var circle_marker_db0752114ff29b030fb7a4daba9bb379 = L.circleMarker(
+                [51.0, 9.0],
+                {"bubblingMouseEvents": true, "color": "#EA6690", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "#EA6690", "fillOpacity": 0.2, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 0.7, "radius": 10, "stroke": true, "weight": 1}
+            ).addTo(marker_cluster_d6c4c7abebb46e0b182a54697687169e);
+        
+    
+        var popup_87f42c31d2d905d41743cb88bb7ccdce = L.popup({"maxWidth": "100%"});
+
+        
+            
+                var html_9108c5153d52f5a0cb2ed46cdaa8e834 = $(`<div id="html_9108c5153d52f5a0cb2ed46cdaa8e834" style="width: 100.0%; height: 100.0%;">     <div style="align-items: left;">         <img src="https://i0.wp.com/globalinnovationgathering.org/wp-content/uploads/avatars/56/61596fee95b67-bpfull.jpg?resize=150%2C150&ssl=1" alt="Melanie Stilz" style="width:100%;border-radius:50%;max-width:150px;">         <h4 style="text-align:center">Melanie Stilz</h4>         <p><strong>Location: </strong>Germany</p>         <p><strong>Initiative: </strong>Critical Digital Education</p>         <p><a href="https://globalinnovationgathering.org/members-map/members/melstil/" target="_blank">View Profile</a></p>     </div>     </div>`)[0];
+                popup_87f42c31d2d905d41743cb88bb7ccdce.setContent(html_9108c5153d52f5a0cb2ed46cdaa8e834);
+            
+        
+
+        circle_marker_db0752114ff29b030fb7a4daba9bb379.bindPopup(popup_87f42c31d2d905d41743cb88bb7ccdce)
+        ;
+
+        
+    
+    
+            var circle_marker_5d69df671c9b82fbd765dd2921fa7867 = L.circleMarker(
+                [13.0, 122.0],
+                {"bubblingMouseEvents": true, "color": "#EA6690", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "#EA6690", "fillOpacity": 0.2, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 0.7, "radius": 10, "stroke": true, "weight": 1}
+            ).addTo(marker_cluster_d6c4c7abebb46e0b182a54697687169e);
+        
+    
+        var popup_06335ac251daa46623827704a5f05635 = L.popup({"maxWidth": "100%"});
+
+        
+            
+                var html_a5e5a441143ef7242658a996c606b9d6 = $(`<div id="html_a5e5a441143ef7242658a996c606b9d6" style="width: 100.0%; height: 100.0%;">     <div style="align-items: left;">         <img src="https://i0.wp.com/globalinnovationgathering.org/wp-content/uploads/avatars/171/1659526939-bpfull.jpg?resize=150%2C150&ssl=1" alt="Ely Apao" style="width:100%;border-radius:50%;max-width:150px;">         <h4 style="text-align:center">Ely Apao</h4>         <p><strong>Location: </strong>Philippines</p>         <p><strong>Initiative: </strong>I used to handle JumpSparc, a Maker Orga</p>         <p><a href="https://globalinnovationgathering.org/members-map/members/aely/" target="_blank">View Profile</a></p>     </div>     </div>`)[0];
+                popup_06335ac251daa46623827704a5f05635.setContent(html_a5e5a441143ef7242658a996c606b9d6);
+            
+        
+
+        circle_marker_5d69df671c9b82fbd765dd2921fa7867.bindPopup(popup_06335ac251daa46623827704a5f05635)
+        ;
+
+        
+    
+    
+            var circle_marker_cbfc94e2618487fdc03eccfd2e05f6e7 = L.circleMarker(
+                [1.0, 38.0],
+                {"bubblingMouseEvents": true, "color": "#EA6690", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "#EA6690", "fillOpacity": 0.2, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 0.7, "radius": 10, "stroke": true, "weight": 1}
+            ).addTo(marker_cluster_d6c4c7abebb46e0b182a54697687169e);
+        
+    
+        var popup_38df650a501e0bf1c327800274a7486c = L.popup({"maxWidth": "100%"});
+
+        
+            
+                var html_728456d501c029cc9dfbc6936719c74a = $(`<div id="html_728456d501c029cc9dfbc6936719c74a" style="width: 100.0%; height: 100.0%;">     <div style="align-items: left;">         <img src="//www.gravatar.com/avatar/d4029a4d4227bb907c9c31ce5880a251?s=150&r=g&d=identicon" alt="Johanssen Obanda" style="width:100%;border-radius:50%;max-width:150px;">         <h4 style="text-align:center">Johanssen Obanda</h4>         <p><strong>Location: </strong>Kenya</p>         <p><strong>Initiative: </strong>Jabulani Youths for Transformation</p>         <p><a href="https://globalinnovationgathering.org/members-map/members/johansseno/" target="_blank">View Profile</a></p>     </div>     </div>`)[0];
+                popup_38df650a501e0bf1c327800274a7486c.setContent(html_728456d501c029cc9dfbc6936719c74a);
+            
+        
+
+        circle_marker_cbfc94e2618487fdc03eccfd2e05f6e7.bindPopup(popup_38df650a501e0bf1c327800274a7486c)
+        ;
+
+        
+    
+    
+            var circle_marker_bdf973d657b1f6ea3530e8fdf19994b2 = L.circleMarker(
+                [51.0, 9.0],
+                {"bubblingMouseEvents": true, "color": "#EA6690", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "#EA6690", "fillOpacity": 0.2, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 0.7, "radius": 10, "stroke": true, "weight": 1}
+            ).addTo(marker_cluster_d6c4c7abebb46e0b182a54697687169e);
+        
+    
+        var popup_d6a3d8c32305317206f81657ee7e7437 = L.popup({"maxWidth": "100%"});
+
+        
+            
+                var html_2610029b29b25c2bf86a852ecacec982 = $(`<div id="html_2610029b29b25c2bf86a852ecacec982" style="width: 100.0%; height: 100.0%;">     <div style="align-items: left;">         <img src="//www.gravatar.com/avatar/aa73125a4aa4367fc9bd16a3f7aa3ddd?s=150&r=g&d=identicon" alt="Nils Brock" style="width:100%;border-radius:50%;max-width:150px;">         <h4 style="text-align:center">Nils Brock</h4>         <p><strong>Location: </strong>Germany</p>         <p><strong>Initiative: </strong>Colmena</p>         <p><a href="https://globalinnovationgathering.org/members-map/members/nils/" target="_blank">View Profile</a></p>     </div>     </div>`)[0];
+                popup_d6a3d8c32305317206f81657ee7e7437.setContent(html_2610029b29b25c2bf86a852ecacec982);
+            
+        
+
+        circle_marker_bdf973d657b1f6ea3530e8fdf19994b2.bindPopup(popup_d6a3d8c32305317206f81657ee7e7437)
+        ;
+
+        
+    
+    
+            var circle_marker_1836c62fc88165ddbef16a859c4abf4d = L.circleMarker(
+                [51.0, 9.0],
+                {"bubblingMouseEvents": true, "color": "#EA6690", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "#EA6690", "fillOpacity": 0.2, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 0.7, "radius": 10, "stroke": true, "weight": 1}
+            ).addTo(marker_cluster_d6c4c7abebb46e0b182a54697687169e);
+        
+    
+        var popup_e233766100f4e560db9dc0cbd13ed1b9 = L.popup({"maxWidth": "100%"});
+
+        
+            
+                var html_89c178c7cca4f7c70d8649746c16e157 = $(`<div id="html_89c178c7cca4f7c70d8649746c16e157" style="width: 100.0%; height: 100.0%;">     <div style="align-items: left;">         <img src="https://i0.wp.com/globalinnovationgathering.org/wp-content/uploads/avatars/163/1661832496-bpfull.jpg?resize=150%2C150&ssl=1" alt="Julia Kleeberger" style="width:100%;border-radius:50%;max-width:150px;">         <h4 style="text-align:center">Julia Kleeberger</h4>         <p><strong>Location: </strong>Germany</p>         <p><strong>Initiative: </strong>Junge Tüftler gGmbH</p>         <p><a href="https://globalinnovationgathering.org/members-map/members/juliaklee/" target="_blank">View Profile</a></p>     </div>     </div>`)[0];
+                popup_e233766100f4e560db9dc0cbd13ed1b9.setContent(html_89c178c7cca4f7c70d8649746c16e157);
+            
+        
+
+        circle_marker_1836c62fc88165ddbef16a859c4abf4d.bindPopup(popup_e233766100f4e560db9dc0cbd13ed1b9)
+        ;
+
+        
+    
+    
+            var circle_marker_1a22ed936d24b3a383731ffdb328acd2 = L.circleMarker(
+                [52.0, 20.0],
+                {"bubblingMouseEvents": true, "color": "#EA6690", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "#EA6690", "fillOpacity": 0.2, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 0.7, "radius": 10, "stroke": true, "weight": 1}
+            ).addTo(marker_cluster_d6c4c7abebb46e0b182a54697687169e);
+        
+    
+        var popup_4d80bbb5a1f5aaf84f5336be1d298472 = L.popup({"maxWidth": "100%"});
+
+        
+            
+                var html_ae80837229ec896ac1020c9e8769ea67 = $(`<div id="html_ae80837229ec896ac1020c9e8769ea67" style="width: 100.0%; height: 100.0%;">     <div style="align-items: left;">         <img src="https://i0.wp.com/globalinnovationgathering.org/wp-content/uploads/avatars/38/60bf7504c0743-bpfull.jpg?resize=150%2C150&ssl=1" alt="Pawel Ngei" style="width:100%;border-radius:50%;max-width:150px;">         <h4 style="text-align:center">Pawel Ngei</h4>         <p><strong>Location: </strong>Poland</p>         <p><strong>Initiative: </strong></p>         <p><a href="https://globalinnovationgathering.org/members-map/members/pawelngei/" target="_blank">View Profile</a></p>     </div>     </div>`)[0];
+                popup_4d80bbb5a1f5aaf84f5336be1d298472.setContent(html_ae80837229ec896ac1020c9e8769ea67);
+            
+        
+
+        circle_marker_1a22ed936d24b3a383731ffdb328acd2.bindPopup(popup_4d80bbb5a1f5aaf84f5336be1d298472)
+        ;
+
+        
+    
+    
+            var circle_marker_811fcb2db61fbb688ade4926c155de56 = L.circleMarker(
+                [7.0, 30.0],
+                {"bubblingMouseEvents": true, "color": "#EA6690", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "#EA6690", "fillOpacity": 0.2, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 0.7, "radius": 10, "stroke": true, "weight": 1}
+            ).addTo(marker_cluster_d6c4c7abebb46e0b182a54697687169e);
+        
+    
+        var popup_68998b922cde3f7c217b8fe22eeb0dbb = L.popup({"maxWidth": "100%"});
+
+        
+            
+                var html_f9a3588b771ddc147f48c41fd7e9cb08 = $(`<div id="html_f9a3588b771ddc147f48c41fd7e9cb08" style="width: 100.0%; height: 100.0%;">     <div style="align-items: left;">         <img src="https://i0.wp.com/globalinnovationgathering.org/wp-content/uploads/avatars/254/1677141683-bpfull.jpg?resize=150%2C150&ssl=1" alt="John Bior Ajang" style="width:100%;border-radius:50%;max-width:150px;">         <h4 style="text-align:center">John Bior Ajang</h4>         <p><strong>Location: </strong>South Sudan</p>         <p><strong>Initiative: </strong>ASKsek</p>         <p><a href="https://globalinnovationgathering.org/members-map/members/bior748/" target="_blank">View Profile</a></p>     </div>     </div>`)[0];
+                popup_68998b922cde3f7c217b8fe22eeb0dbb.setContent(html_f9a3588b771ddc147f48c41fd7e9cb08);
+            
+        
+
+        circle_marker_811fcb2db61fbb688ade4926c155de56.bindPopup(popup_68998b922cde3f7c217b8fe22eeb0dbb)
+        ;
+
+        
+    
+    
+            var circle_marker_fa7a5ec22251f50fc0e881f2f89d7adb = L.circleMarker(
+                [-29.0, 24.0],
+                {"bubblingMouseEvents": true, "color": "#EA6690", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "#EA6690", "fillOpacity": 0.2, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 0.7, "radius": 10, "stroke": true, "weight": 1}
+            ).addTo(marker_cluster_d6c4c7abebb46e0b182a54697687169e);
+        
+    
+        var popup_89d78cfbe4f50676a8b52d04bad02e93 = L.popup({"maxWidth": "100%"});
+
+        
+            
+                var html_d732ec18f7bb6b111801434679ee44e0 = $(`<div id="html_d732ec18f7bb6b111801434679ee44e0" style="width: 100.0%; height: 100.0%;">     <div style="align-items: left;">         <img src="https://i0.wp.com/globalinnovationgathering.org/wp-content/uploads/avatars/99/1645617376-bpfull.png?resize=150%2C150&ssl=1" alt="Kirstin Wiedow" style="width:100%;border-radius:50%;max-width:150px;">         <h4 style="text-align:center">Kirstin Wiedow</h4>         <p><strong>Location: </strong>South Africa</p>         <p><strong>Initiative: </strong>Global Innovation Gathering</p>         <p><a href="https://globalinnovationgathering.org/members-map/members/kirstin-gig/" target="_blank">View Profile</a></p>     </div>     </div>`)[0];
+                popup_89d78cfbe4f50676a8b52d04bad02e93.setContent(html_d732ec18f7bb6b111801434679ee44e0);
+            
+        
+
+        circle_marker_fa7a5ec22251f50fc0e881f2f89d7adb.bindPopup(popup_89d78cfbe4f50676a8b52d04bad02e93)
+        ;
+
+        
+    
+    
+            var circle_marker_ef172e433771572010411d5a32d21f09 = L.circleMarker(
+                [47.0, 8.0],
+                {"bubblingMouseEvents": true, "color": "#EA6690", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "#EA6690", "fillOpacity": 0.2, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 0.7, "radius": 10, "stroke": true, "weight": 1}
+            ).addTo(marker_cluster_d6c4c7abebb46e0b182a54697687169e);
+        
+    
+        var popup_71e7d375ea01489827db4a788d1e403b = L.popup({"maxWidth": "100%"});
+
+        
+            
+                var html_cca61782de9e8db981c9065959ea9a9f = $(`<div id="html_cca61782de9e8db981c9065959ea9a9f" style="width: 100.0%; height: 100.0%;">     <div style="align-items: left;">         <img src="https://i0.wp.com/globalinnovationgathering.org/wp-content/uploads/avatars/87/61bb048f98e23-bpfull.png?resize=150%2C150&ssl=1" alt="Chris Doering" style="width:100%;border-radius:50%;max-width:150px;">         <h4 style="text-align:center">Chris Doering</h4>         <p><strong>Location: </strong>Switzerland</p>         <p><strong>Initiative: </strong>Building the Ph.D program for Eco-Social</p>         <p><a href="https://globalinnovationgathering.org/members-map/members/chris/" target="_blank">View Profile</a></p>     </div>     </div>`)[0];
+                popup_71e7d375ea01489827db4a788d1e403b.setContent(html_cca61782de9e8db981c9065959ea9a9f);
+            
+        
+
+        circle_marker_ef172e433771572010411d5a32d21f09.bindPopup(popup_71e7d375ea01489827db4a788d1e403b)
+        ;
+
+        
+    
+    
+            var circle_marker_862f273b329a53b30d238c916df59b4f = L.circleMarker(
+                [-29.0, 24.0],
+                {"bubblingMouseEvents": true, "color": "#EA6690", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "#EA6690", "fillOpacity": 0.2, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 0.7, "radius": 10, "stroke": true, "weight": 1}
+            ).addTo(marker_cluster_d6c4c7abebb46e0b182a54697687169e);
+        
+    
+        var popup_325fcae38da93bc64162a7764227a500 = L.popup({"maxWidth": "100%"});
+
+        
+            
+                var html_2cf7ca1671e71a6f1e7363b17c00fef3 = $(`<div id="html_2cf7ca1671e71a6f1e7363b17c00fef3" style="width: 100.0%; height: 100.0%;">     <div style="align-items: left;">         <img src="//www.gravatar.com/avatar/14b6be36e60ae2ba7a145962006c5ea6?s=150&r=g&d=identicon" alt="Nicole Lowe" style="width:100%;border-radius:50%;max-width:150px;">         <h4 style="text-align:center">Nicole Lowe</h4>         <p><strong>Location: </strong>South Africa</p>         <p><strong>Initiative: </strong>The Makerspace</p>         <p><a href="https://globalinnovationgathering.org/members-map/members/nicolelo87/" target="_blank">View Profile</a></p>     </div>     </div>`)[0];
+                popup_325fcae38da93bc64162a7764227a500.setContent(html_2cf7ca1671e71a6f1e7363b17c00fef3);
+            
+        
+
+        circle_marker_862f273b329a53b30d238c916df59b4f.bindPopup(popup_325fcae38da93bc64162a7764227a500)
+        ;
+
+        
+    
+    
+            var circle_marker_f910bf8dd7efc2305b3d6b8804ebf804 = L.circleMarker(
+                [8.0, -2.0],
+                {"bubblingMouseEvents": true, "color": "#EA6690", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "#EA6690", "fillOpacity": 0.2, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 0.7, "radius": 10, "stroke": true, "weight": 1}
+            ).addTo(marker_cluster_d6c4c7abebb46e0b182a54697687169e);
+        
+    
+        var popup_b869ab0559ae77adbb02ad7b5a21fa11 = L.popup({"maxWidth": "100%"});
+
+        
+            
+                var html_3f1c0acc7518bd3e18b93304fd40d851 = $(`<div id="html_3f1c0acc7518bd3e18b93304fd40d851" style="width: 100.0%; height: 100.0%;">     <div style="align-items: left;">         <img src="https://i0.wp.com/globalinnovationgathering.org/wp-content/uploads/avatars/160/1677148570-bpfull.jpg?resize=150%2C150&ssl=1" alt="Gertrude Mawuena Goh" style="width:100%;border-radius:50%;max-width:150px;">         <h4 style="text-align:center">Gertrude Mawuena Goh</h4>         <p><strong>Location: </strong>Ghana</p>         <p><strong>Initiative: </strong>I am working on connecting makerspaces i</p>         <p><a href="https://globalinnovationgathering.org/members-map/members/gertrude/" target="_blank">View Profile</a></p>     </div>     </div>`)[0];
+                popup_b869ab0559ae77adbb02ad7b5a21fa11.setContent(html_3f1c0acc7518bd3e18b93304fd40d851);
+            
+        
+
+        circle_marker_f910bf8dd7efc2305b3d6b8804ebf804.bindPopup(popup_b869ab0559ae77adbb02ad7b5a21fa11)
+        ;
+
+        
+    
+    
+            var circle_marker_8a36887d2feb9f84f6aa6089a0ba2158 = L.circleMarker(
+                [39.0, 35.0],
+                {"bubblingMouseEvents": true, "color": "#EA6690", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "#EA6690", "fillOpacity": 0.2, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 0.7, "radius": 10, "stroke": true, "weight": 1}
+            ).addTo(marker_cluster_d6c4c7abebb46e0b182a54697687169e);
+        
+    
+        var popup_c2e99c6b73a8bd406d0f2405f89347d9 = L.popup({"maxWidth": "100%"});
+
+        
+            
+                var html_f7a2cdd4a6e401d013165fc670bf77be = $(`<div id="html_f7a2cdd4a6e401d013165fc670bf77be" style="width: 100.0%; height: 100.0%;">     <div style="align-items: left;">         <img src="//www.gravatar.com/avatar/14b3da1298ceb390f2f6942c9a50c693?s=150&r=g&d=identicon" alt="Susan Long" style="width:100%;border-radius:50%;max-width:150px;">         <h4 style="text-align:center">Susan Long</h4>         <p><strong>Location: </strong>Turkey</p>         <p><strong>Initiative: </strong>Field Ready</p>         <p><a href="https://globalinnovationgathering.org/members-map/members/susan2/" target="_blank">View Profile</a></p>     </div>     </div>`)[0];
+                popup_c2e99c6b73a8bd406d0f2405f89347d9.setContent(html_f7a2cdd4a6e401d013165fc670bf77be);
+            
+        
+
+        circle_marker_8a36887d2feb9f84f6aa6089a0ba2158.bindPopup(popup_c2e99c6b73a8bd406d0f2405f89347d9)
+        ;
+
+        
+    
+    
+            var circle_marker_20075e3b66e1e889b4291b922719826f = L.circleMarker(
+                [8.0, -2.0],
+                {"bubblingMouseEvents": true, "color": "#EA6690", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "#EA6690", "fillOpacity": 0.2, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 0.7, "radius": 10, "stroke": true, "weight": 1}
+            ).addTo(marker_cluster_d6c4c7abebb46e0b182a54697687169e);
+        
+    
+        var popup_e2de622d5d18e7e386622ef10ff62a57 = L.popup({"maxWidth": "100%"});
+
+        
+            
+                var html_9556d9904dfefbcb3a99ca255b843da3 = $(`<div id="html_9556d9904dfefbcb3a99ca255b843da3" style="width: 100.0%; height: 100.0%;">     <div style="align-items: left;">         <img src="https://i0.wp.com/globalinnovationgathering.org/wp-content/uploads/avatars/73/617be47f15b2c-bpfull.jpg?resize=150%2C150&ssl=1" alt="Priscilla Serwaah Gyasi" style="width:100%;border-radius:50%;max-width:150px;">         <h4 style="text-align:center">Priscilla Serwaah Gyasi</h4>         <p><strong>Location: </strong>Ghana</p>         <p><strong>Initiative: </strong>Careables</p>         <p><a href="https://globalinnovationgathering.org/members-map/members/priscillaserwaahgyasi/" target="_blank">View Profile</a></p>     </div>     </div>`)[0];
+                popup_e2de622d5d18e7e386622ef10ff62a57.setContent(html_9556d9904dfefbcb3a99ca255b843da3);
+            
+        
+
+        circle_marker_20075e3b66e1e889b4291b922719826f.bindPopup(popup_e2de622d5d18e7e386622ef10ff62a57)
+        ;
+
+        
+    
+    
+            var circle_marker_0167eda9d455df6f1446420b08a5ccd2 = L.circleMarker(
+                [1.0, 32.0],
+                {"bubblingMouseEvents": true, "color": "#EA6690", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "#EA6690", "fillOpacity": 0.2, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 0.7, "radius": 10, "stroke": true, "weight": 1}
+            ).addTo(marker_cluster_d6c4c7abebb46e0b182a54697687169e);
+        
+    
+        var popup_a921d4a84698d4cedfd25f812766a309 = L.popup({"maxWidth": "100%"});
+
+        
+            
+                var html_31c23e265b0db871fbee1f35426d7822 = $(`<div id="html_31c23e265b0db871fbee1f35426d7822" style="width: 100.0%; height: 100.0%;">     <div style="align-items: left;">         <img src="https://i0.wp.com/globalinnovationgathering.org/wp-content/uploads/avatars/172/1670252099-bpfull.jpg?resize=150%2C150&ssl=1" alt="Vuga William" style="width:100%;border-radius:50%;max-width:150px;">         <h4 style="text-align:center">Vuga William</h4>         <p><strong>Location: </strong>Uganda</p>         <p><strong>Initiative: </strong>#ROSHOP House building  prototype in pag</p>         <p><a href="https://globalinnovationgathering.org/members-map/members/vugawilliam/" target="_blank">View Profile</a></p>     </div>     </div>`)[0];
+                popup_a921d4a84698d4cedfd25f812766a309.setContent(html_31c23e265b0db871fbee1f35426d7822);
+            
+        
+
+        circle_marker_0167eda9d455df6f1446420b08a5ccd2.bindPopup(popup_a921d4a84698d4cedfd25f812766a309)
+        ;
+
+        
+    
+    
+            var circle_marker_e8d6c0604ab392b9a9ff080313386575 = L.circleMarker(
+                [8.0, -2.0],
+                {"bubblingMouseEvents": true, "color": "#EA6690", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "#EA6690", "fillOpacity": 0.2, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 0.7, "radius": 10, "stroke": true, "weight": 1}
+            ).addTo(marker_cluster_d6c4c7abebb46e0b182a54697687169e);
+        
+    
+        var popup_9269ffdca7cba27e8d2e6b08171d0147 = L.popup({"maxWidth": "100%"});
+
+        
+            
+                var html_453b6e0fc2dd9cc1001d364d42ec7311 = $(`<div id="html_453b6e0fc2dd9cc1001d364d42ec7311" style="width: 100.0%; height: 100.0%;">     <div style="align-items: left;">         <img src="https://i0.wp.com/globalinnovationgathering.org/wp-content/uploads/avatars/157/1657024192-bpfull.jpg?resize=150%2C150&ssl=1" alt="Frank Bentum (Landon)" style="width:100%;border-radius:50%;max-width:150px;">         <h4 style="text-align:center">Frank Bentum (Landon)</h4>         <p><strong>Location: </strong>Ghana</p>         <p><strong>Initiative: </strong>AfricaOSH</p>         <p><a href="https://globalinnovationgathering.org/members-map/members/franklandon/" target="_blank">View Profile</a></p>     </div>     </div>`)[0];
+                popup_9269ffdca7cba27e8d2e6b08171d0147.setContent(html_453b6e0fc2dd9cc1001d364d42ec7311);
+            
+        
+
+        circle_marker_e8d6c0604ab392b9a9ff080313386575.bindPopup(popup_9269ffdca7cba27e8d2e6b08171d0147)
+        ;
+
+        
+    
+    
+            var circle_marker_ea0909a1c3e946ab251485e8e379e0cf = L.circleMarker(
+                [8.0, 38.0],
+                {"bubblingMouseEvents": true, "color": "#EA6690", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "#EA6690", "fillOpacity": 0.2, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 0.7, "radius": 10, "stroke": true, "weight": 1}
+            ).addTo(marker_cluster_d6c4c7abebb46e0b182a54697687169e);
+        
+    
+        var popup_c1b8fe4ba5b3d9791be9f7f03ea15daa = L.popup({"maxWidth": "100%"});
+
+        
+            
+                var html_e70811f14c7c4afe01af77b4fbda3e73 = $(`<div id="html_e70811f14c7c4afe01af77b4fbda3e73" style="width: 100.0%; height: 100.0%;">     <div style="align-items: left;">         <img src="https://i0.wp.com/globalinnovationgathering.org/wp-content/uploads/avatars/68/61688eab71fc4-bpfull.jpg?resize=150%2C150&ssl=1" alt="Markos Lemma" style="width:100%;border-radius:50%;max-width:150px;">         <h4 style="text-align:center">Markos Lemma</h4>         <p><strong>Location: </strong>Ethiopia</p>         <p><strong>Initiative: </strong>iceaddis</p>         <p><a href="https://globalinnovationgathering.org/members-map/members/eweket/" target="_blank">View Profile</a></p>     </div>     </div>`)[0];
+                popup_c1b8fe4ba5b3d9791be9f7f03ea15daa.setContent(html_e70811f14c7c4afe01af77b4fbda3e73);
+            
+        
+
+        circle_marker_ea0909a1c3e946ab251485e8e379e0cf.bindPopup(popup_c1b8fe4ba5b3d9791be9f7f03ea15daa)
+        ;
+
+        
+    
+    
+            var circle_marker_98839f1f23209ce1dea4aa959a7a0fc7 = L.circleMarker(
+                [28.0, 84.0],
+                {"bubblingMouseEvents": true, "color": "#EA6690", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "#EA6690", "fillOpacity": 0.2, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 0.7, "radius": 10, "stroke": true, "weight": 1}
+            ).addTo(marker_cluster_d6c4c7abebb46e0b182a54697687169e);
+        
+    
+        var popup_3abab33bcea5214fb4e005b7ee6d891e = L.popup({"maxWidth": "100%"});
+
+        
+            
+                var html_341f4cd974d10afdf65ed9efbcf4de8b = $(`<div id="html_341f4cd974d10afdf65ed9efbcf4de8b" style="width: 100.0%; height: 100.0%;">     <div style="align-items: left;">         <img src="https://i0.wp.com/globalinnovationgathering.org/wp-content/uploads/avatars/109/1651057453-bpfull.jpg?resize=150%2C150&ssl=1" alt="Pradita Pradhan" style="width:100%;border-radius:50%;max-width:150px;">         <h4 style="text-align:center">Pradita Pradhan</h4>         <p><strong>Location: </strong>Nepal</p>         <p><strong>Initiative: </strong>I'm working as a Program Manager at Fiel</p>         <p><a href="https://globalinnovationgathering.org/members-map/members/pradita/" target="_blank">View Profile</a></p>     </div>     </div>`)[0];
+                popup_3abab33bcea5214fb4e005b7ee6d891e.setContent(html_341f4cd974d10afdf65ed9efbcf4de8b);
+            
+        
+
+        circle_marker_98839f1f23209ce1dea4aa959a7a0fc7.bindPopup(popup_3abab33bcea5214fb4e005b7ee6d891e)
+        ;
+
+        
+    
+    
+            var circle_marker_77490a89225eda955baaaa58fd86a04d = L.circleMarker(
+                [51.0, 9.0],
+                {"bubblingMouseEvents": true, "color": "#EA6690", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "#EA6690", "fillOpacity": 0.2, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 0.7, "radius": 10, "stroke": true, "weight": 1}
+            ).addTo(marker_cluster_d6c4c7abebb46e0b182a54697687169e);
+        
+    
+        var popup_74632d29b04bc7a2232d542f1ab20d73 = L.popup({"maxWidth": "100%"});
+
+        
+            
+                var html_96393290d8fb4e5c8d67c0fc7aaa6992 = $(`<div id="html_96393290d8fb4e5c8d67c0fc7aaa6992" style="width: 100.0%; height: 100.0%;">     <div style="align-items: left;">         <img src="//www.gravatar.com/avatar/7ab72b3d71a04326fc752401fbbeb241?s=150&r=g&d=identicon" alt="stephen kovats" style="width:100%;border-radius:50%;max-width:150px;">         <h4 style="text-align:center">stephen kovats</h4>         <p><strong>Location: </strong>Germany</p>         <p><strong>Initiative: </strong>r0g_agency for open culture and critical</p>         <p><a href="https://globalinnovationgathering.org/members-map/members/kovats/" target="_blank">View Profile</a></p>     </div>     </div>`)[0];
+                popup_74632d29b04bc7a2232d542f1ab20d73.setContent(html_96393290d8fb4e5c8d67c0fc7aaa6992);
+            
+        
+
+        circle_marker_77490a89225eda955baaaa58fd86a04d.bindPopup(popup_74632d29b04bc7a2232d542f1ab20d73)
+        ;
+
+        
+    
+    
+            var circle_marker_5a9c236c1d0663b048a601b43e345741 = L.circleMarker(
+                [31.9, 35.2],
+                {"bubblingMouseEvents": true, "color": "#EA6690", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "#EA6690", "fillOpacity": 0.2, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 0.7, "radius": 10, "stroke": true, "weight": 1}
+            ).addTo(marker_cluster_d6c4c7abebb46e0b182a54697687169e);
+        
+    
+        var popup_1e23f244803e214f40e74a68b83d4959 = L.popup({"maxWidth": "100%"});
+
+        
+            
+                var html_38d4f594ef09c92adbc8254b9280ecbf = $(`<div id="html_38d4f594ef09c92adbc8254b9280ecbf" style="width: 100.0%; height: 100.0%;">     <div style="align-items: left;">         <img src="//www.gravatar.com/avatar/8b4d21f99d1e91ea0e2832da0efb4ad3?s=150&r=g&d=identicon" alt="Samer Shawar" style="width:100%;border-radius:50%;max-width:150px;">         <h4 style="text-align:center">Samer Shawar</h4>         <p><strong>Location: </strong>Palestine</p>         <p><strong>Initiative: </strong>Vecbox</p>         <p><a href="https://globalinnovationgathering.org/members-map/members/samersh/" target="_blank">View Profile</a></p>     </div>     </div>`)[0];
+                popup_1e23f244803e214f40e74a68b83d4959.setContent(html_38d4f594ef09c92adbc8254b9280ecbf);
+            
+        
+
+        circle_marker_5a9c236c1d0663b048a601b43e345741.bindPopup(popup_1e23f244803e214f40e74a68b83d4959)
+        ;
+
+        
+    
+    
+            var circle_marker_fe77fb9d8af40c6770e74218122c0b75 = L.circleMarker(
+                [6.0, 12.0],
+                {"bubblingMouseEvents": true, "color": "#EA6690", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "#EA6690", "fillOpacity": 0.2, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 0.7, "radius": 10, "stroke": true, "weight": 1}
+            ).addTo(marker_cluster_d6c4c7abebb46e0b182a54697687169e);
+        
+    
+        var popup_acd46e9e576fd2e55eadddf3ea534054 = L.popup({"maxWidth": "100%"});
+
+        
+            
+                var html_92f702188fc0ae686133328910da53c6 = $(`<div id="html_92f702188fc0ae686133328910da53c6" style="width: 100.0%; height: 100.0%;">     <div style="align-items: left;">         <img src="//www.gravatar.com/avatar/c949094e360fb978c54988da78d6e417?s=150&r=g&d=identicon" alt="Nadine Mowoh" style="width:100%;border-radius:50%;max-width:150px;">         <h4 style="text-align:center">Nadine Mowoh</h4>         <p><strong>Location: </strong>Cameroon</p>         <p><strong>Initiative: </strong>Beneficial Bio</p>         <p><a href="https://globalinnovationgathering.org/members-map/members/nadine/" target="_blank">View Profile</a></p>     </div>     </div>`)[0];
+                popup_acd46e9e576fd2e55eadddf3ea534054.setContent(html_92f702188fc0ae686133328910da53c6);
+            
+        
+
+        circle_marker_fe77fb9d8af40c6770e74218122c0b75.bindPopup(popup_acd46e9e576fd2e55eadddf3ea534054)
+        ;
+
+        
+    
+    
+            var circle_marker_b786c2f90d030f6f999ca837739f4fec = L.circleMarker(
+                [27.0, 30.0],
+                {"bubblingMouseEvents": true, "color": "#EA6690", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "#EA6690", "fillOpacity": 0.2, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 0.7, "radius": 10, "stroke": true, "weight": 1}
+            ).addTo(marker_cluster_d6c4c7abebb46e0b182a54697687169e);
+        
+    
+        var popup_e7431c361d8b7ff9fd743a214e3786a5 = L.popup({"maxWidth": "100%"});
+
+        
+            
+                var html_15394d3d38f48c328b7c2a2890a303b1 = $(`<div id="html_15394d3d38f48c328b7c2a2890a303b1" style="width: 100.0%; height: 100.0%;">     <div style="align-items: left;">         <img src="https://i0.wp.com/globalinnovationgathering.org/wp-content/uploads/avatars/165/1657825498-bpfull.jpg?resize=150%2C150&ssl=1" alt="Safty" style="width:100%;border-radius:50%;max-width:150px;">         <h4 style="text-align:center">Safty</h4>         <p><strong>Location: </strong>Egypt</p>         <p><strong>Initiative: </strong>San3a Tech</p>         <p><a href="https://globalinnovationgathering.org/members-map/members/saftyo/" target="_blank">View Profile</a></p>     </div>     </div>`)[0];
+                popup_e7431c361d8b7ff9fd743a214e3786a5.setContent(html_15394d3d38f48c328b7c2a2890a303b1);
+            
+        
+
+        circle_marker_b786c2f90d030f6f999ca837739f4fec.bindPopup(popup_e7431c361d8b7ff9fd743a214e3786a5)
+        ;
+
+        
+    
+    
+            var circle_marker_02f8d221360c6fe590fa45483a38305c = L.circleMarker(
+                [54.0, -2.0],
+                {"bubblingMouseEvents": true, "color": "#EA6690", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "#EA6690", "fillOpacity": 0.2, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 0.7, "radius": 10, "stroke": true, "weight": 1}
+            ).addTo(marker_cluster_d6c4c7abebb46e0b182a54697687169e);
+        
+    
+        var popup_e773000f7983b1435ea3f475c568aa01 = L.popup({"maxWidth": "100%"});
+
+        
+            
+                var html_d4e58a9761e1edc0a13ade86e7199607 = $(`<div id="html_d4e58a9761e1edc0a13ade86e7199607" style="width: 100.0%; height: 100.0%;">     <div style="align-items: left;">         <img src="//www.gravatar.com/avatar/a95a27ca72e528d55caf185deea49a8b?s=150&r=g&d=identicon" alt="Anna Sera Lowe" style="width:100%;border-radius:50%;max-width:150px;">         <h4 style="text-align:center">Anna Sera Lowe</h4>         <p><strong>Location: </strong>United Kingdom</p>         <p><strong>Initiative: </strong>Manufacturing Change</p>         <p><a href="https://globalinnovationgathering.org/members-map/members/annasera/" target="_blank">View Profile</a></p>     </div>     </div>`)[0];
+                popup_e773000f7983b1435ea3f475c568aa01.setContent(html_d4e58a9761e1edc0a13ade86e7199607);
+            
+        
+
+        circle_marker_02f8d221360c6fe590fa45483a38305c.bindPopup(popup_e773000f7983b1435ea3f475c568aa01)
+        ;
+
+        
+    
+    
+            var circle_marker_516dea9d51c8cd474710b12e1d3f0dea = L.circleMarker(
+                [8.0, 38.0],
+                {"bubblingMouseEvents": true, "color": "#EA6690", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "#EA6690", "fillOpacity": 0.2, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 0.7, "radius": 10, "stroke": true, "weight": 1}
+            ).addTo(marker_cluster_d6c4c7abebb46e0b182a54697687169e);
+        
+    
+        var popup_10548afa35f17e537d3db65ebe72e2e7 = L.popup({"maxWidth": "100%"});
+
+        
+            
+                var html_a44f0912eb9dee9e7397a742e28cf562 = $(`<div id="html_a44f0912eb9dee9e7397a742e28cf562" style="width: 100.0%; height: 100.0%;">     <div style="align-items: left;">         <img src="https://i0.wp.com/globalinnovationgathering.org/wp-content/uploads/avatars/115/1647440188-bpfull.jpg?resize=150%2C150&ssl=1" alt="Kaleab" style="width:100%;border-radius:50%;max-width:150px;">         <h4 style="text-align:center">Kaleab</h4>         <p><strong>Location: </strong>Ethiopia</p>         <p><strong>Initiative: </strong>HaHuJobs</p>         <p><a href="https://globalinnovationgathering.org/members-map/members/kaleab/" target="_blank">View Profile</a></p>     </div>     </div>`)[0];
+                popup_10548afa35f17e537d3db65ebe72e2e7.setContent(html_a44f0912eb9dee9e7397a742e28cf562);
+            
+        
+
+        circle_marker_516dea9d51c8cd474710b12e1d3f0dea.bindPopup(popup_10548afa35f17e537d3db65ebe72e2e7)
+        ;
+
+        
+    
+    
+            var circle_marker_f286ef436b98dc94e287782af477ec25 = L.circleMarker(
+                [6.0, 12.0],
+                {"bubblingMouseEvents": true, "color": "#EA6690", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "#EA6690", "fillOpacity": 0.2, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 0.7, "radius": 10, "stroke": true, "weight": 1}
+            ).addTo(marker_cluster_d6c4c7abebb46e0b182a54697687169e);
+        
+    
+        var popup_feedf5bfa019be61e4958dd673616692 = L.popup({"maxWidth": "100%"});
+
+        
+            
+                var html_62607ba3a126be05797a380b95631dbb = $(`<div id="html_62607ba3a126be05797a380b95631dbb" style="width: 100.0%; height: 100.0%;">     <div style="align-items: left;">         <img src="//www.gravatar.com/avatar/73528765d1f911f3c3da00f88cf9d87d?s=150&r=g&d=identicon" alt="Thomas Hervé Mboa Nkoudou" style="width:100%;border-radius:50%;max-width:150px;">         <h4 style="text-align:center">Thomas Hervé Mboa Nkoudou</h4>         <p><strong>Location: </strong>Cameroon</p>         <p><strong>Initiative: </strong>Mboalab</p>         <p><a href="https://globalinnovationgathering.org/members-map/members/thomasmboa/" target="_blank">View Profile</a></p>     </div>     </div>`)[0];
+                popup_feedf5bfa019be61e4958dd673616692.setContent(html_62607ba3a126be05797a380b95631dbb);
+            
+        
+
+        circle_marker_f286ef436b98dc94e287782af477ec25.bindPopup(popup_feedf5bfa019be61e4958dd673616692)
+        ;
+
+        
+    
+    
+            var circle_marker_4d8d188f624be2ec43b33d13bd14fd11 = L.circleMarker(
+                [10.0, 8.0],
+                {"bubblingMouseEvents": true, "color": "#EA6690", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "#EA6690", "fillOpacity": 0.2, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 0.7, "radius": 10, "stroke": true, "weight": 1}
+            ).addTo(marker_cluster_d6c4c7abebb46e0b182a54697687169e);
+        
+    
+        var popup_0241010955fb2dbd19381d789ca71cb3 = L.popup({"maxWidth": "100%"});
+
+        
+            
+                var html_54daa609ed749b5c7397b34693b7a29f = $(`<div id="html_54daa609ed749b5c7397b34693b7a29f" style="width: 100.0%; height: 100.0%;">     <div style="align-items: left;">         <img src="//www.gravatar.com/avatar/9afe788ad0c85f6a769709c92500577d?s=150&r=g&d=identicon" alt="Rhilaso Dokong" style="width:100%;border-radius:50%;max-width:150px;">         <h4 style="text-align:center">Rhilaso Dokong</h4>         <p><strong>Location: </strong>Nigeria</p>         <p><strong>Initiative: </strong>Street Smart Engineers   and   Tech-NC</p>         <p><a href="https://globalinnovationgathering.org/members-map/members/rhilaso/" target="_blank">View Profile</a></p>     </div>     </div>`)[0];
+                popup_0241010955fb2dbd19381d789ca71cb3.setContent(html_54daa609ed749b5c7397b34693b7a29f);
+            
+        
+
+        circle_marker_4d8d188f624be2ec43b33d13bd14fd11.bindPopup(popup_0241010955fb2dbd19381d789ca71cb3)
+        ;
+
+        
+    
+    
+            var circle_marker_6c9b3a2c534778fcec0e9c718d0737c3 = L.circleMarker(
+                [1.0, 38.0],
+                {"bubblingMouseEvents": true, "color": "#EA6690", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "#EA6690", "fillOpacity": 0.2, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 0.7, "radius": 10, "stroke": true, "weight": 1}
+            ).addTo(marker_cluster_d6c4c7abebb46e0b182a54697687169e);
+        
+    
+        var popup_a3e5a9805be098f16bb1c698d57b74ff = L.popup({"maxWidth": "100%"});
+
+        
+            
+                var html_7fe1b57301edc3204dada8b2fd92a842 = $(`<div id="html_7fe1b57301edc3204dada8b2fd92a842" style="width: 100.0%; height: 100.0%;">     <div style="align-items: left;">         <img src="//www.gravatar.com/avatar/173db0c26a1f2b68d875ff93be9b2bac?s=150&r=g&d=identicon" alt="Martin Oloo" style="width:100%;border-radius:50%;max-width:150px;">         <h4 style="text-align:center">Martin Oloo</h4>         <p><strong>Location: </strong>Kenya</p>         <p><strong>Initiative: </strong>Fablab Winam</p>         <p><a href="https://globalinnovationgathering.org/members-map/members/oloofablabwinam-org/" target="_blank">View Profile</a></p>     </div>     </div>`)[0];
+                popup_a3e5a9805be098f16bb1c698d57b74ff.setContent(html_7fe1b57301edc3204dada8b2fd92a842);
+            
+        
+
+        circle_marker_6c9b3a2c534778fcec0e9c718d0737c3.bindPopup(popup_a3e5a9805be098f16bb1c698d57b74ff)
+        ;
+
+        
+    
+    
+            var circle_marker_f6d2891af45982a088511db7fe64fbce = L.circleMarker(
+                [51.0, 9.0],
+                {"bubblingMouseEvents": true, "color": "#EA6690", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "#EA6690", "fillOpacity": 0.2, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 0.7, "radius": 10, "stroke": true, "weight": 1}
+            ).addTo(marker_cluster_d6c4c7abebb46e0b182a54697687169e);
+        
+    
+        var popup_526a6a2d25d8601bf34b06d5c5d33afe = L.popup({"maxWidth": "100%"});
+
+        
+            
+                var html_ac9ff604eb275d702e8a18517da1e1ad = $(`<div id="html_ac9ff604eb275d702e8a18517da1e1ad" style="width: 100.0%; height: 100.0%;">     <div style="align-items: left;">         <img src="https://i0.wp.com/globalinnovationgathering.org/wp-content/uploads/avatars/425/1674827233-bpfull.jpg?resize=150%2C150&ssl=1" alt="Martin Hamann" style="width:100%;border-radius:50%;max-width:150px;">         <h4 style="text-align:center">Martin Hamann</h4>         <p><strong>Location: </strong>Germany</p>         <p><strong>Initiative: </strong>FabLab Lübeck, autodidacta, VOW</p>         <p><a href="https://globalinnovationgathering.org/members-map/members/martinhamann/" target="_blank">View Profile</a></p>     </div>     </div>`)[0];
+                popup_526a6a2d25d8601bf34b06d5c5d33afe.setContent(html_ac9ff604eb275d702e8a18517da1e1ad);
+            
+        
+
+        circle_marker_f6d2891af45982a088511db7fe64fbce.bindPopup(popup_526a6a2d25d8601bf34b06d5c5d33afe)
+        ;
+
+        
+    
+    
+            var circle_marker_54462ab041883f62d6f4446057a51412 = L.circleMarker(
+                [56.0, 10.0],
+                {"bubblingMouseEvents": true, "color": "#EA6690", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "#EA6690", "fillOpacity": 0.2, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 0.7, "radius": 10, "stroke": true, "weight": 1}
+            ).addTo(marker_cluster_d6c4c7abebb46e0b182a54697687169e);
+        
+    
+        var popup_b9d26cb609e6917856aea2108cf78b41 = L.popup({"maxWidth": "100%"});
+
+        
+            
+                var html_5e30131446282b2018234478cc9e679d = $(`<div id="html_5e30131446282b2018234478cc9e679d" style="width: 100.0%; height: 100.0%;">     <div style="align-items: left;">         <img src="https://i0.wp.com/globalinnovationgathering.org/wp-content/uploads/avatars/100/1645618881-bpfull.jpg?resize=150%2C150&ssl=1" alt="Barbara Schack" style="width:100%;border-radius:50%;max-width:150px;">         <h4 style="text-align:center">Barbara Schack</h4>         <p><strong>Location: </strong>Denmark</p>         <p><strong>Initiative: </strong>Internet of Production Alliance</p>         <p><a href="https://globalinnovationgathering.org/members-map/members/barbaraschack/" target="_blank">View Profile</a></p>     </div>     </div>`)[0];
+                popup_b9d26cb609e6917856aea2108cf78b41.setContent(html_5e30131446282b2018234478cc9e679d);
+            
+        
+
+        circle_marker_54462ab041883f62d6f4446057a51412.bindPopup(popup_b9d26cb609e6917856aea2108cf78b41)
+        ;
+
+        
+    
+    
+            var circle_marker_936655b85f1ab96494d7eaa618188b1a = L.circleMarker(
+                [1.0, 38.0],
+                {"bubblingMouseEvents": true, "color": "#EA6690", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "#EA6690", "fillOpacity": 0.2, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 0.7, "radius": 10, "stroke": true, "weight": 1}
+            ).addTo(marker_cluster_d6c4c7abebb46e0b182a54697687169e);
+        
+    
+        var popup_ac8a77c533346c003d43f908b0b9d9ac = L.popup({"maxWidth": "100%"});
+
+        
+            
+                var html_a058f2a5de5781e33c3559d02509e810 = $(`<div id="html_a058f2a5de5781e33c3559d02509e810" style="width: 100.0%; height: 100.0%;">     <div style="align-items: left;">         <img src="https://i0.wp.com/globalinnovationgathering.org/wp-content/uploads/avatars/60/618b7c517a8f6-bpfull.jpg?resize=150%2C150&ssl=1" alt="Paul Muchene" style="width:100%;border-radius:50%;max-width:150px;">         <h4 style="text-align:center">Paul Muchene</h4>         <p><strong>Location: </strong>Kenya</p>         <p><strong>Initiative: </strong>ICANN</p>         <p><a href="https://globalinnovationgathering.org/members-map/members/paulitrix/" target="_blank">View Profile</a></p>     </div>     </div>`)[0];
+                popup_ac8a77c533346c003d43f908b0b9d9ac.setContent(html_a058f2a5de5781e33c3559d02509e810);
+            
+        
+
+        circle_marker_936655b85f1ab96494d7eaa618188b1a.bindPopup(popup_ac8a77c533346c003d43f908b0b9d9ac)
+        ;
+
+        
+    
+    
+            var circle_marker_16cbd653c053bb64addaddcf5c25f125 = L.circleMarker(
+                [20.0, 77.0],
+                {"bubblingMouseEvents": true, "color": "#EA6690", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "#EA6690", "fillOpacity": 0.2, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 0.7, "radius": 10, "stroke": true, "weight": 1}
+            ).addTo(marker_cluster_d6c4c7abebb46e0b182a54697687169e);
+        
+    
+        var popup_12b07b4553bc23f84cd75d4dc72027bb = L.popup({"maxWidth": "100%"});
+
+        
+            
+                var html_93261215ceb99a7d7a9f20287859ac9b = $(`<div id="html_93261215ceb99a7d7a9f20287859ac9b" style="width: 100.0%; height: 100.0%;">     <div style="align-items: left;">         <img src="//www.gravatar.com/avatar/4a179d46dbfc4aec94c9c49f40b805e8?s=150&r=g&d=identicon" alt="Nidhi Mittal" style="width:100%;border-radius:50%;max-width:150px;">         <h4 style="text-align:center">Nidhi Mittal</h4>         <p><strong>Location: </strong>India</p>         <p><strong>Initiative: </strong>UX| Visual Design| Sustainable materials</p>         <p><a href="https://globalinnovationgathering.org/members-map/members/nidhi/" target="_blank">View Profile</a></p>     </div>     </div>`)[0];
+                popup_12b07b4553bc23f84cd75d4dc72027bb.setContent(html_93261215ceb99a7d7a9f20287859ac9b);
+            
+        
+
+        circle_marker_16cbd653c053bb64addaddcf5c25f125.bindPopup(popup_12b07b4553bc23f84cd75d4dc72027bb)
+        ;
+
+        
+    
+    
+            var circle_marker_cdbf0ac87ea0368ffad449b91afd08ed = L.circleMarker(
+                [40.0, -4.0],
+                {"bubblingMouseEvents": true, "color": "#EA6690", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "#EA6690", "fillOpacity": 0.2, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 0.7, "radius": 10, "stroke": true, "weight": 1}
+            ).addTo(marker_cluster_d6c4c7abebb46e0b182a54697687169e);
+        
+    
+        var popup_7c4ee9b6b5a098594a60ac5f62e95d96 = L.popup({"maxWidth": "100%"});
+
+        
+            
+                var html_9baf7577912fa9e27aa93d66a09bf662 = $(`<div id="html_9baf7577912fa9e27aa93d66a09bf662" style="width: 100.0%; height: 100.0%;">     <div style="align-items: left;">         <img src="https://i0.wp.com/globalinnovationgathering.org/wp-content/uploads/avatars/108/1657804391-bpfull.jpg?resize=150%2C150&ssl=1" alt="Kersti Ruth Wissenbach" style="width:100%;border-radius:50%;max-width:150px;">         <h4 style="text-align:center">Kersti Ruth Wissenbach</h4>         <p><strong>Location: </strong>Spain</p>         <p><strong>Initiative: </strong>CoAct</p>         <p><a href="https://globalinnovationgathering.org/members-map/members/kersti/" target="_blank">View Profile</a></p>     </div>     </div>`)[0];
+                popup_7c4ee9b6b5a098594a60ac5f62e95d96.setContent(html_9baf7577912fa9e27aa93d66a09bf662);
+            
+        
+
+        circle_marker_cdbf0ac87ea0368ffad449b91afd08ed.bindPopup(popup_7c4ee9b6b5a098594a60ac5f62e95d96)
+        ;
+
+        
+    
+    
+            var circle_marker_4c36b4e42519b3b352af8dcecbc8faec = L.circleMarker(
+                [1.0, 32.0],
+                {"bubblingMouseEvents": true, "color": "#EA6690", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "#EA6690", "fillOpacity": 0.2, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 0.7, "radius": 10, "stroke": true, "weight": 1}
+            ).addTo(marker_cluster_d6c4c7abebb46e0b182a54697687169e);
+        
+    
+        var popup_b9b8f50e882f830bd44e066ebf0da45e = L.popup({"maxWidth": "100%"});
+
+        
+            
+                var html_50bbbcbe900eb0594da513f2d60202b7 = $(`<div id="html_50bbbcbe900eb0594da513f2d60202b7" style="width: 100.0%; height: 100.0%;">     <div style="align-items: left;">         <img src="https://i0.wp.com/globalinnovationgathering.org/wp-content/uploads/avatars/122/1648656939-bpfull.jpg?resize=150%2C150&ssl=1" alt="Chardso" style="width:100%;border-radius:50%;max-width:150px;">         <h4 style="text-align:center">Chardso</h4>         <p><strong>Location: </strong>Uganda</p>         <p><strong>Initiative: </strong>GitHub documentation for The Youth Empow</p>         <p><a href="https://globalinnovationgathering.org/members-map/members/wafelaandrew2gmail-com/" target="_blank">View Profile</a></p>     </div>     </div>`)[0];
+                popup_b9b8f50e882f830bd44e066ebf0da45e.setContent(html_50bbbcbe900eb0594da513f2d60202b7);
+            
+        
+
+        circle_marker_4c36b4e42519b3b352af8dcecbc8faec.bindPopup(popup_b9b8f50e882f830bd44e066ebf0da45e)
+        ;
+
+        
+    
+    
+            var circle_marker_3b099a396d3337996a1a3a2e0ccafa80 = L.circleMarker(
+                [8.0, -5.0],
+                {"bubblingMouseEvents": true, "color": "#EA6690", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "#EA6690", "fillOpacity": 0.2, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 0.7, "radius": 10, "stroke": true, "weight": 1}
+            ).addTo(marker_cluster_d6c4c7abebb46e0b182a54697687169e);
+        
+    
+        var popup_95f48a286b05d1bc85b538d4a611c407 = L.popup({"maxWidth": "100%"});
+
+        
+            
+                var html_ef6fa46d6b495854de5ca5ab8832bdd5 = $(`<div id="html_ef6fa46d6b495854de5ca5ab8832bdd5" style="width: 100.0%; height: 100.0%;">     <div style="align-items: left;">         <img src="https://i0.wp.com/globalinnovationgathering.org/wp-content/uploads/avatars/158/1656141092-bpfull.jpg?resize=150%2C150&ssl=1" alt="Honou Koffi Dodji" style="width:100%;border-radius:50%;max-width:150px;">         <h4 style="text-align:center">Honou Koffi Dodji</h4>         <p><strong>Location: </strong>Ivory Coast</p>         <p><strong>Initiative: </strong>HV-FABLAB ( High Venture FabLab)</p>         <p><a href="https://globalinnovationgathering.org/members-map/members/dodji/" target="_blank">View Profile</a></p>     </div>     </div>`)[0];
+                popup_95f48a286b05d1bc85b538d4a611c407.setContent(html_ef6fa46d6b495854de5ca5ab8832bdd5);
+            
+        
+
+        circle_marker_3b099a396d3337996a1a3a2e0ccafa80.bindPopup(popup_95f48a286b05d1bc85b538d4a611c407)
+        ;
+
+        
+    
+    
+            var circle_marker_fa9fb5f88a4fb1c81fcc9260d77e1f90 = L.circleMarker(
+                [47.0, 8.0],
+                {"bubblingMouseEvents": true, "color": "#EA6690", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "#EA6690", "fillOpacity": 0.2, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 0.7, "radius": 10, "stroke": true, "weight": 1}
+            ).addTo(marker_cluster_d6c4c7abebb46e0b182a54697687169e);
+        
+    
+        var popup_21bc1340e66fa9588eea8b2ea0ddd1d1 = L.popup({"maxWidth": "100%"});
+
+        
+            
+                var html_3bcd660600cabc8084e145cec4def7bf = $(`<div id="html_3bcd660600cabc8084e145cec4def7bf" style="width: 100.0%; height: 100.0%;">     <div style="align-items: left;">         <img src="https://i0.wp.com/globalinnovationgathering.org/wp-content/uploads/avatars/94/1643629137-bpfull.png?resize=150%2C150&ssl=1" alt="Theresa Fend" style="width:100%;border-radius:50%;max-width:150px;">         <h4 style="text-align:center">Theresa Fend</h4>         <p><strong>Location: </strong>Switzerland</p>         <p><strong>Initiative: </strong>Regenerative Cultures</p>         <p><a href="https://globalinnovationgathering.org/members-map/members/theresafend/" target="_blank">View Profile</a></p>     </div>     </div>`)[0];
+                popup_21bc1340e66fa9588eea8b2ea0ddd1d1.setContent(html_3bcd660600cabc8084e145cec4def7bf);
+            
+        
+
+        circle_marker_fa9fb5f88a4fb1c81fcc9260d77e1f90.bindPopup(popup_21bc1340e66fa9588eea8b2ea0ddd1d1)
+        ;
+
+        
+    
+    
+            var circle_marker_4d94b3fd20978f951d262dec00cdae7d = L.circleMarker(
+                [38.0, -97.0],
+                {"bubblingMouseEvents": true, "color": "#EA6690", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "#EA6690", "fillOpacity": 0.2, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 0.7, "radius": 10, "stroke": true, "weight": 1}
+            ).addTo(marker_cluster_d6c4c7abebb46e0b182a54697687169e);
+        
+    
+        var popup_9669b5652cd78b0f5b808527fca0e5c4 = L.popup({"maxWidth": "100%"});
+
+        
+            
+                var html_ee7d3d5b11ccd2afed477d14670f903e = $(`<div id="html_ee7d3d5b11ccd2afed477d14670f903e" style="width: 100.0%; height: 100.0%;">     <div style="align-items: left;">         <img src="https://i0.wp.com/globalinnovationgathering.org/wp-content/uploads/avatars/69/1665040618-bpfull.png?resize=150%2C150&ssl=1" alt="Avik Dhupar" style="width:100%;border-radius:50%;max-width:150px;">         <h4 style="text-align:center">Avik Dhupar</h4>         <p><strong>Location: </strong>USA</p>         <p><strong>Initiative: </strong>I engineer. Currently a Masters student </p>         <p><a href="https://globalinnovationgathering.org/members-map/members/avik-tkgmail-com/" target="_blank">View Profile</a></p>     </div>     </div>`)[0];
+                popup_9669b5652cd78b0f5b808527fca0e5c4.setContent(html_ee7d3d5b11ccd2afed477d14670f903e);
+            
+        
+
+        circle_marker_4d94b3fd20978f951d262dec00cdae7d.bindPopup(popup_9669b5652cd78b0f5b808527fca0e5c4)
+        ;
+
+        
+    
+    
+            var circle_marker_1f9e1cab917ed0916ec5454c3147a10f = L.circleMarker(
+                [60.0, -95.0],
+                {"bubblingMouseEvents": true, "color": "#EA6690", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "#EA6690", "fillOpacity": 0.2, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 0.7, "radius": 10, "stroke": true, "weight": 1}
+            ).addTo(marker_cluster_d6c4c7abebb46e0b182a54697687169e);
+        
+    
+        var popup_e7b9083645737699f966e4f46558874c = L.popup({"maxWidth": "100%"});
+
+        
+            
+                var html_503ed75a0657f5a8a548ba31febb0d88 = $(`<div id="html_503ed75a0657f5a8a548ba31febb0d88" style="width: 100.0%; height: 100.0%;">     <div style="align-items: left;">         <img src="//www.gravatar.com/avatar/0be02ea94e757895525eacdcf85bb681?s=150&r=g&d=identicon" alt="Joshua Pearce" style="width:100%;border-radius:50%;max-width:150px;">         <h4 style="text-align:center">Joshua Pearce</h4>         <p><strong>Location: </strong>Canada</p>         <p><strong>Initiative: </strong>Free Appropriate Sustainability Technolo</p>         <p><a href="https://globalinnovationgathering.org/members-map/members/joshua-pearceuwo-ca/" target="_blank">View Profile</a></p>     </div>     </div>`)[0];
+                popup_e7b9083645737699f966e4f46558874c.setContent(html_503ed75a0657f5a8a548ba31febb0d88);
+            
+        
+
+        circle_marker_1f9e1cab917ed0916ec5454c3147a10f.bindPopup(popup_e7b9083645737699f966e4f46558874c)
+        ;
+
+        
+    
+    
+            var circle_marker_d9aa2894bf5bb7f39c264bba349cc40f = L.circleMarker(
+                [8.0, -2.0],
+                {"bubblingMouseEvents": true, "color": "#EA6690", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "#EA6690", "fillOpacity": 0.2, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 0.7, "radius": 10, "stroke": true, "weight": 1}
+            ).addTo(marker_cluster_d6c4c7abebb46e0b182a54697687169e);
+        
+    
+        var popup_3f3688bcaad0995ef9807ade9c6b8455 = L.popup({"maxWidth": "100%"});
+
+        
+            
+                var html_76b34ae6a12b3b4f9227f5fe6bbc2952 = $(`<div id="html_76b34ae6a12b3b4f9227f5fe6bbc2952" style="width: 100.0%; height: 100.0%;">     <div style="align-items: left;">         <img src="https://i0.wp.com/globalinnovationgathering.org/wp-content/uploads/avatars/253/1670745337-bpfull.jpg?resize=150%2C150&ssl=1" alt="Dauda Mustapha" style="width:100%;border-radius:50%;max-width:150px;">         <h4 style="text-align:center">Dauda Mustapha</h4>         <p><strong>Location: </strong>Ghana</p>         <p><strong>Initiative: </strong>Nonihub Makerspace</p>         <p><a href="https://globalinnovationgathering.org/members-map/members/tapha/" target="_blank">View Profile</a></p>     </div>     </div>`)[0];
+                popup_3f3688bcaad0995ef9807ade9c6b8455.setContent(html_76b34ae6a12b3b4f9227f5fe6bbc2952);
+            
+        
+
+        circle_marker_d9aa2894bf5bb7f39c264bba349cc40f.bindPopup(popup_3f3688bcaad0995ef9807ade9c6b8455)
+        ;
+
+        
+    
+    
+            var circle_marker_d76a4d578cd21840ce65c20937921dd1 = L.circleMarker(
+                [33.0, 44.0],
+                {"bubblingMouseEvents": true, "color": "#EA6690", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "#EA6690", "fillOpacity": 0.2, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 0.7, "radius": 10, "stroke": true, "weight": 1}
+            ).addTo(marker_cluster_d6c4c7abebb46e0b182a54697687169e);
+        
+    
+        var popup_085a9e49f9febfcc78806d06b13aba1f = L.popup({"maxWidth": "100%"});
+
+        
+            
+                var html_22a9dbef4768d74f840d664c42b00598 = $(`<div id="html_22a9dbef4768d74f840d664c42b00598" style="width: 100.0%; height: 100.0%;">     <div style="align-items: left;">         <img src="https://i0.wp.com/globalinnovationgathering.org/wp-content/uploads/avatars/52/6140f8aabccaf-bpfull.jpg?resize=150%2C150&ssl=1" alt="Nawres Arif" style="width:100%;border-radius:50%;max-width:150px;">         <h4 style="text-align:center">Nawres Arif</h4>         <p><strong>Location: </strong>Iraq</p>         <p><strong>Initiative: </strong>Science Camp</p>         <p><a href="https://globalinnovationgathering.org/members-map/members/nawresarif/" target="_blank">View Profile</a></p>     </div>     </div>`)[0];
+                popup_085a9e49f9febfcc78806d06b13aba1f.setContent(html_22a9dbef4768d74f840d664c42b00598);
+            
+        
+
+        circle_marker_d76a4d578cd21840ce65c20937921dd1.bindPopup(popup_085a9e49f9febfcc78806d06b13aba1f)
+        ;
+
+        
+    
+    
+            var circle_marker_9f55a565f5fe41fdaa805deec96b1299 = L.circleMarker(
+                [7.0, 30.0],
+                {"bubblingMouseEvents": true, "color": "#EA6690", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "#EA6690", "fillOpacity": 0.2, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 0.7, "radius": 10, "stroke": true, "weight": 1}
+            ).addTo(marker_cluster_d6c4c7abebb46e0b182a54697687169e);
+        
+    
+        var popup_312a6a69321feb3c4dee9399e46ee452 = L.popup({"maxWidth": "100%"});
+
+        
+            
+                var html_3d71913ee0d269ac1e78fd446f1abe1a = $(`<div id="html_3d71913ee0d269ac1e78fd446f1abe1a" style="width: 100.0%; height: 100.0%;">     <div style="align-items: left;">         <img src="//www.gravatar.com/avatar/eef868461769790ce846e838209f6d16?s=150&r=g&d=identicon" alt="Jaiksana Soro" style="width:100%;border-radius:50%;max-width:150px;">         <h4 style="text-align:center">Jaiksana Soro</h4>         <p><strong>Location: </strong>South Sudan</p>         <p><strong>Initiative: </strong>Platform Africa</p>         <p><a href="https://globalinnovationgathering.org/members-map/members/iamjaiksana/" target="_blank">View Profile</a></p>     </div>     </div>`)[0];
+                popup_312a6a69321feb3c4dee9399e46ee452.setContent(html_3d71913ee0d269ac1e78fd446f1abe1a);
+            
+        
+
+        circle_marker_9f55a565f5fe41fdaa805deec96b1299.bindPopup(popup_312a6a69321feb3c4dee9399e46ee452)
+        ;
+
+        
+    
+    
+            var circle_marker_d225a6d5d11cf983d82f249722863073 = L.circleMarker(
+                [51.0, 9.0],
+                {"bubblingMouseEvents": true, "color": "#EA6690", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "#EA6690", "fillOpacity": 0.2, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 0.7, "radius": 10, "stroke": true, "weight": 1}
+            ).addTo(marker_cluster_d6c4c7abebb46e0b182a54697687169e);
+        
+    
+        var popup_e8eee85d98c2483f317cda47c1fb7f6f = L.popup({"maxWidth": "100%"});
+
+        
+            
+                var html_4ffd334706da30d06de4965bd52e1c7a = $(`<div id="html_4ffd334706da30d06de4965bd52e1c7a" style="width: 100.0%; height: 100.0%;">     <div style="align-items: left;">         <img src="https://i0.wp.com/globalinnovationgathering.org/wp-content/uploads/avatars/13/61404ad83e5af-bpfull.png?resize=150%2C150&ssl=1" alt="Sandra" style="width:100%;border-radius:50%;max-width:150px;">         <h4 style="text-align:center">Sandra</h4>         <p><strong>Location: </strong>Germany</p>         <p><strong>Initiative: </strong>Critical Making</p>         <p><a href="https://globalinnovationgathering.org/members-map/members/sandra/" target="_blank">View Profile</a></p>     </div>     </div>`)[0];
+                popup_e8eee85d98c2483f317cda47c1fb7f6f.setContent(html_4ffd334706da30d06de4965bd52e1c7a);
+            
+        
+
+        circle_marker_d225a6d5d11cf983d82f249722863073.bindPopup(popup_e8eee85d98c2483f317cda47c1fb7f6f)
+        ;
+
+        
+    
+    
+            var circle_marker_8b1b71cfa551634b5dae28446d62dec7 = L.circleMarker(
+                [27.0, 30.0],
+                {"bubblingMouseEvents": true, "color": "#EA6690", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "#EA6690", "fillOpacity": 0.2, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 0.7, "radius": 10, "stroke": true, "weight": 1}
+            ).addTo(marker_cluster_d6c4c7abebb46e0b182a54697687169e);
+        
+    
+        var popup_45d4c601925fe0181086dd75773bc74b = L.popup({"maxWidth": "100%"});
+
+        
+            
+                var html_6a03a3b805b9635861477a01ee7e4fa0 = $(`<div id="html_6a03a3b805b9635861477a01ee7e4fa0" style="width: 100.0%; height: 100.0%;">     <div style="align-items: left;">         <img src="https://i0.wp.com/globalinnovationgathering.org/wp-content/uploads/avatars/78/619658bf52233-bpfull.jpg?resize=150%2C150&ssl=1" alt="Fadia Elgharib" style="width:100%;border-radius:50%;max-width:150px;">         <h4 style="text-align:center">Fadia Elgharib</h4>         <p><strong>Location: </strong>Egypt</p>         <p><strong>Initiative: </strong>Global innovation Gathering / DOX BOX</p>         <p><a href="https://globalinnovationgathering.org/members-map/members/fadiel-elgharib/" target="_blank">View Profile</a></p>     </div>     </div>`)[0];
+                popup_45d4c601925fe0181086dd75773bc74b.setContent(html_6a03a3b805b9635861477a01ee7e4fa0);
+            
+        
+
+        circle_marker_8b1b71cfa551634b5dae28446d62dec7.bindPopup(popup_45d4c601925fe0181086dd75773bc74b)
+        ;
+
+        
+    
+    
+            var circle_marker_bcc16d46f6a1c620c9c1063a72b17dbd = L.circleMarker(
+                [46.0, 2.0],
+                {"bubblingMouseEvents": true, "color": "#EA6690", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "#EA6690", "fillOpacity": 0.2, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 0.7, "radius": 10, "stroke": true, "weight": 1}
+            ).addTo(marker_cluster_d6c4c7abebb46e0b182a54697687169e);
+        
+    
+        var popup_c6f56a0b4db2ec418b2c37d878022391 = L.popup({"maxWidth": "100%"});
+
+        
+            
+                var html_391f1c497aa8e5e67b79fa3003f49b72 = $(`<div id="html_391f1c497aa8e5e67b79fa3003f49b72" style="width: 100.0%; height: 100.0%;">     <div style="align-items: left;">         <img src="//www.gravatar.com/avatar/c0c79e843d61242692ca3eef3d3df0ea?s=150&r=g&d=identicon" alt="Bilal Ghalib" style="width:100%;border-radius:50%;max-width:150px;">         <h4 style="text-align:center">Bilal Ghalib</h4>         <p><strong>Location: </strong>France</p>         <p><strong>Initiative: </strong>Bloom.pm</p>         <p><a href="https://globalinnovationgathering.org/members-map/members/bilal/" target="_blank">View Profile</a></p>     </div>     </div>`)[0];
+                popup_c6f56a0b4db2ec418b2c37d878022391.setContent(html_391f1c497aa8e5e67b79fa3003f49b72);
+            
+        
+
+        circle_marker_bcc16d46f6a1c620c9c1063a72b17dbd.bindPopup(popup_c6f56a0b4db2ec418b2c37d878022391)
+        ;
+
+        
+    
+    
+            var circle_marker_4a0eff09e0c757aeccfbff52927bae2e = L.circleMarker(
+                [51.0, 9.0],
+                {"bubblingMouseEvents": true, "color": "#EA6690", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "#EA6690", "fillOpacity": 0.2, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 0.7, "radius": 10, "stroke": true, "weight": 1}
+            ).addTo(marker_cluster_d6c4c7abebb46e0b182a54697687169e);
+        
+    
+        var popup_90c4f399e1c163ef31920c44c8a5b058 = L.popup({"maxWidth": "100%"});
+
+        
+            
+                var html_39cc2c3eb2479e987fdcc76a925c79b4 = $(`<div id="html_39cc2c3eb2479e987fdcc76a925c79b4" style="width: 100.0%; height: 100.0%;">     <div style="align-items: left;">         <img src="https://i0.wp.com/globalinnovationgathering.org/wp-content/uploads/avatars/48/61405a7955815-bpfull.jpg?resize=150%2C150&ssl=1" alt="Alexander Kutschera" style="width:100%;border-radius:50%;max-width:150px;">         <h4 style="text-align:center">Alexander Kutschera</h4>         <p><strong>Location: </strong>Germany</p>         <p><strong>Initiative: </strong>FabLab Oberland e.V.</p>         <p><a href="https://globalinnovationgathering.org/members-map/members/vektor/" target="_blank">View Profile</a></p>     </div>     </div>`)[0];
+                popup_90c4f399e1c163ef31920c44c8a5b058.setContent(html_39cc2c3eb2479e987fdcc76a925c79b4);
+            
+        
+
+        circle_marker_4a0eff09e0c757aeccfbff52927bae2e.bindPopup(popup_90c4f399e1c163ef31920c44c8a5b058)
+        ;
+
+        
+    
+    
+            var circle_marker_ed3c72db0c8f68dfb57cc05c65930818 = L.circleMarker(
+                [-10.0, -55.0],
+                {"bubblingMouseEvents": true, "color": "#EA6690", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "#EA6690", "fillOpacity": 0.2, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 0.7, "radius": 10, "stroke": true, "weight": 1}
+            ).addTo(marker_cluster_d6c4c7abebb46e0b182a54697687169e);
+        
+    
+        var popup_66a87d7d6962aa5dbec181d8ca73e8a7 = L.popup({"maxWidth": "100%"});
+
+        
+            
+                var html_29b56c3f6b5cc92ccb7a6a4ee30c1f89 = $(`<div id="html_29b56c3f6b5cc92ccb7a6a4ee30c1f89" style="width: 100.0%; height: 100.0%;">     <div style="align-items: left;">         <img src="https://i0.wp.com/globalinnovationgathering.org/wp-content/uploads/avatars/45/614b13421b29b-bpfull.jpg?resize=150%2C150&ssl=1" alt="Georgia Nicolau" style="width:100%;border-radius:50%;max-width:150px;">         <h4 style="text-align:center">Georgia Nicolau</h4>         <p><strong>Location: </strong>Brazil</p>         <p><strong>Initiative: </strong>Instituto Procomum</p>         <p><a href="https://globalinnovationgathering.org/members-map/members/georgia-nicolaui/" target="_blank">View Profile</a></p>     </div>     </div>`)[0];
+                popup_66a87d7d6962aa5dbec181d8ca73e8a7.setContent(html_29b56c3f6b5cc92ccb7a6a4ee30c1f89);
+            
+        
+
+        circle_marker_ed3c72db0c8f68dfb57cc05c65930818.bindPopup(popup_66a87d7d6962aa5dbec181d8ca73e8a7)
+        ;
+
+        
+    
+    
+            var circle_marker_d9d42863b9bf89fd56c96c7aa963d096 = L.circleMarker(
+                [-20.0, 30.0],
+                {"bubblingMouseEvents": true, "color": "#EA6690", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "#EA6690", "fillOpacity": 0.2, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 0.7, "radius": 10, "stroke": true, "weight": 1}
+            ).addTo(marker_cluster_d6c4c7abebb46e0b182a54697687169e);
+        
+    
+        var popup_23badcefbdd5f86cdf5a927cab59dee0 = L.popup({"maxWidth": "100%"});
+
+        
+            
+                var html_0d19c3668287984c7da39466b87520ac = $(`<div id="html_0d19c3668287984c7da39466b87520ac" style="width: 100.0%; height: 100.0%;">     <div style="align-items: left;">         <img src="https://i0.wp.com/globalinnovationgathering.org/wp-content/uploads/avatars/525/1675943532-bpfull.jpg?resize=150%2C150&ssl=1" alt="Ian" style="width:100%;border-radius:50%;max-width:150px;">         <h4 style="text-align:center">Ian</h4>         <p><strong>Location: </strong>Zimbabwe</p>         <p><strong>Initiative: </strong>Purple Future Trust</p>         <p><a href="https://globalinnovationgathering.org/members-map/members/ianmutamiri/" target="_blank">View Profile</a></p>     </div>     </div>`)[0];
+                popup_23badcefbdd5f86cdf5a927cab59dee0.setContent(html_0d19c3668287984c7da39466b87520ac);
+            
+        
+
+        circle_marker_d9d42863b9bf89fd56c96c7aa963d096.bindPopup(popup_23badcefbdd5f86cdf5a927cab59dee0)
+        ;
+
+        
+    
+    
+            var circle_marker_419dfc472a887aba3fde90ae9d19f2cc = L.circleMarker(
+                [7.0, 30.0],
+                {"bubblingMouseEvents": true, "color": "#EA6690", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "#EA6690", "fillOpacity": 0.2, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 0.7, "radius": 10, "stroke": true, "weight": 1}
+            ).addTo(marker_cluster_d6c4c7abebb46e0b182a54697687169e);
+        
+    
+        var popup_d7cc22c9f8ca85da34545cc93d1575fb = L.popup({"maxWidth": "100%"});
+
+        
+            
+                var html_fabd11332e87d15fafeca6d65615cd8b = $(`<div id="html_fabd11332e87d15fafeca6d65615cd8b" style="width: 100.0%; height: 100.0%;">     <div style="align-items: left;">         <img src="//www.gravatar.com/avatar/6bfb12ceb4990add21d3328a9c375aad?s=150&r=g&d=identicon" alt="Equipped Africa International" style="width:100%;border-radius:50%;max-width:150px;">         <h4 style="text-align:center">Equipped Africa International</h4>         <p><strong>Location: </strong>South Sudan</p>         <p><strong>Initiative: </strong>Equipped Africa International</p>         <p><a href="https://globalinnovationgathering.org/members-map/members/equippedafricainternational/" target="_blank">View Profile</a></p>     </div>     </div>`)[0];
+                popup_d7cc22c9f8ca85da34545cc93d1575fb.setContent(html_fabd11332e87d15fafeca6d65615cd8b);
+            
+        
+
+        circle_marker_419dfc472a887aba3fde90ae9d19f2cc.bindPopup(popup_d7cc22c9f8ca85da34545cc93d1575fb)
+        ;
+
+        
+    
+    
+            var circle_marker_0fa2234afe7992b5dc45b88e75dbc0e4 = L.circleMarker(
+                [-20.0, 30.0],
+                {"bubblingMouseEvents": true, "color": "#EA6690", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "#EA6690", "fillOpacity": 0.2, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 0.7, "radius": 10, "stroke": true, "weight": 1}
+            ).addTo(marker_cluster_d6c4c7abebb46e0b182a54697687169e);
+        
+    
+        var popup_a6eb237c749da6555fc7e1d26d59cda1 = L.popup({"maxWidth": "100%"});
+
+        
+            
+                var html_c308729443d897a3f891afe88761bad1 = $(`<div id="html_c308729443d897a3f891afe88761bad1" style="width: 100.0%; height: 100.0%;">     <div style="align-items: left;">         <img src="//www.gravatar.com/avatar/4e64cbdc65f21b7b193ac939a7270497?s=150&r=g&d=identicon" alt="Ronald" style="width:100%;border-radius:50%;max-width:150px;">         <h4 style="text-align:center">Ronald</h4>         <p><strong>Location: </strong>Zimbabwe</p>         <p><strong>Initiative: </strong>iZonehub</p>         <p><a href="https://globalinnovationgathering.org/members-map/members/ronald/" target="_blank">View Profile</a></p>     </div>     </div>`)[0];
+                popup_a6eb237c749da6555fc7e1d26d59cda1.setContent(html_c308729443d897a3f891afe88761bad1);
+            
+        
+
+        circle_marker_0fa2234afe7992b5dc45b88e75dbc0e4.bindPopup(popup_a6eb237c749da6555fc7e1d26d59cda1)
+        ;
+
+        
+    
+    
+            var circle_marker_4f3eee3d6015d701cb6c923a9723c382 = L.circleMarker(
+                [51.0, 9.0],
+                {"bubblingMouseEvents": true, "color": "#EA6690", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "#EA6690", "fillOpacity": 0.2, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 0.7, "radius": 10, "stroke": true, "weight": 1}
+            ).addTo(marker_cluster_d6c4c7abebb46e0b182a54697687169e);
+        
+    
+        var popup_37da5d44539af6039de26f17f39a0d37 = L.popup({"maxWidth": "100%"});
+
+        
+            
+                var html_25c560e8a5ba42fe583720728553499b = $(`<div id="html_25c560e8a5ba42fe583720728553499b" style="width: 100.0%; height: 100.0%;">     <div style="align-items: left;">         <img src="https://i0.wp.com/globalinnovationgathering.org/wp-content/uploads/avatars/89/61c1f51e30d23-bpfull.jpg?resize=150%2C150&ssl=1" alt="Tiemo Ehmke" style="width:100%;border-radius:50%;max-width:150px;">         <h4 style="text-align:center">Tiemo Ehmke</h4>         <p><strong>Location: </strong>Germany</p>         <p><strong>Initiative: </strong>icebauhaus</p>         <p><a href="https://globalinnovationgathering.org/members-map/members/tiemoehmke/" target="_blank">View Profile</a></p>     </div>     </div>`)[0];
+                popup_37da5d44539af6039de26f17f39a0d37.setContent(html_25c560e8a5ba42fe583720728553499b);
+            
+        
+
+        circle_marker_4f3eee3d6015d701cb6c923a9723c382.bindPopup(popup_37da5d44539af6039de26f17f39a0d37)
+        ;
+
+        
+    
+    
+            var circle_marker_589aa603c9dab00da3451af6445cf0b6 = L.circleMarker(
+                [1.0, 38.0],
+                {"bubblingMouseEvents": true, "color": "#EA6690", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "#EA6690", "fillOpacity": 0.2, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 0.7, "radius": 10, "stroke": true, "weight": 1}
+            ).addTo(marker_cluster_d6c4c7abebb46e0b182a54697687169e);
+        
+    
+        var popup_ced4d4967b089e47534c303065dc4ea5 = L.popup({"maxWidth": "100%"});
+
+        
+            
+                var html_fff12d0ac721bb92306e6a1d69877f62 = $(`<div id="html_fff12d0ac721bb92306e6a1d69877f62" style="width: 100.0%; height: 100.0%;">     <div style="align-items: left;">         <img src="https://i0.wp.com/globalinnovationgathering.org/wp-content/uploads/avatars/37/60e6f37d61cfc-bpfull.jpg?resize=150%2C150&ssl=1" alt="Sheilah Birgen" style="width:100%;border-radius:50%;max-width:150px;">         <h4 style="text-align:center">Sheilah Birgen</h4>         <p><strong>Location: </strong>Kenya</p>         <p><strong>Initiative: </strong></p>         <p><a href="https://globalinnovationgathering.org/members-map/members/sheilahb/" target="_blank">View Profile</a></p>     </div>     </div>`)[0];
+                popup_ced4d4967b089e47534c303065dc4ea5.setContent(html_fff12d0ac721bb92306e6a1d69877f62);
+            
+        
+
+        circle_marker_589aa603c9dab00da3451af6445cf0b6.bindPopup(popup_ced4d4967b089e47534c303065dc4ea5)
+        ;
+
+        
+    
+    
+            var circle_marker_72d82ca8191cf555a50c63d03a9328f7 = L.circleMarker(
+                [15.0, 19.0],
+                {"bubblingMouseEvents": true, "color": "#EA6690", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "#EA6690", "fillOpacity": 0.2, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 0.7, "radius": 10, "stroke": true, "weight": 1}
+            ).addTo(marker_cluster_d6c4c7abebb46e0b182a54697687169e);
+        
+    
+        var popup_23678c6f61aec1f6fb3ef26f9c0b7e06 = L.popup({"maxWidth": "100%"});
+
+        
+            
+                var html_7d169ec9a72a2e81ee279fc077979c5b = $(`<div id="html_7d169ec9a72a2e81ee279fc077979c5b" style="width: 100.0%; height: 100.0%;">     <div style="align-items: left;">         <img src="https://i0.wp.com/globalinnovationgathering.org/wp-content/uploads/avatars/656/1678199628-bpfull.png?resize=150%2C150&ssl=1" alt="Hamid Khayar Oumar Defallah" style="width:100%;border-radius:50%;max-width:150px;">         <h4 style="text-align:center">Hamid Khayar Oumar Defallah</h4>         <p><strong>Location: </strong>Chad</p>         <p><strong>Initiative: </strong>Chad Innovation</p>         <p><a href="https://globalinnovationgathering.org/members-map/members/hamidov/" target="_blank">View Profile</a></p>     </div>     </div>`)[0];
+                popup_23678c6f61aec1f6fb3ef26f9c0b7e06.setContent(html_7d169ec9a72a2e81ee279fc077979c5b);
+            
+        
+
+        circle_marker_72d82ca8191cf555a50c63d03a9328f7.bindPopup(popup_23678c6f61aec1f6fb3ef26f9c0b7e06)
+        ;
+
+        
+    
+    
+            var circle_marker_4fde63428e0c0a70df68adab6bd5d9cc = L.circleMarker(
+                [51.0, 9.0],
+                {"bubblingMouseEvents": true, "color": "#EA6690", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "#EA6690", "fillOpacity": 0.2, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 0.7, "radius": 10, "stroke": true, "weight": 1}
+            ).addTo(marker_cluster_d6c4c7abebb46e0b182a54697687169e);
+        
+    
+        var popup_3105bd9a297dc3f63e5141db46356a74 = L.popup({"maxWidth": "100%"});
+
+        
+            
+                var html_435340c0cd6e63313ff98a91f98a3722 = $(`<div id="html_435340c0cd6e63313ff98a91f98a3722" style="width: 100.0%; height: 100.0%;">     <div style="align-items: left;">         <img src="https://i0.wp.com/globalinnovationgathering.org/wp-content/uploads/avatars/755/1680951580-bpfull.jpg?resize=150%2C150&ssl=1" alt="Isabelle Dechamps" style="width:100%;border-radius:50%;max-width:150px;">         <h4 style="text-align:center">Isabelle Dechamps</h4>         <p><strong>Location: </strong>Germany</p>         <p><strong>Initiative: </strong>be able e.V.</p>         <p><a href="https://globalinnovationgathering.org/members-map/members/isabelle/" target="_blank">View Profile</a></p>     </div>     </div>`)[0];
+                popup_3105bd9a297dc3f63e5141db46356a74.setContent(html_435340c0cd6e63313ff98a91f98a3722);
+            
+        
+
+        circle_marker_4fde63428e0c0a70df68adab6bd5d9cc.bindPopup(popup_3105bd9a297dc3f63e5141db46356a74)
+        ;
+
+        
+    
+    
+            var circle_marker_07533b28c6f40c3ef01fb97e85fe8ac3 = L.circleMarker(
+                [7.0, 81.0],
+                {"bubblingMouseEvents": true, "color": "#EA6690", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "#EA6690", "fillOpacity": 0.2, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 0.7, "radius": 10, "stroke": true, "weight": 1}
+            ).addTo(marker_cluster_d6c4c7abebb46e0b182a54697687169e);
+        
+    
+        var popup_990b53484bb52a8a40108dc30c12678f = L.popup({"maxWidth": "100%"});
+
+        
+            
+                var html_888f94bd7700173f2d37c0ff8b92b18c = $(`<div id="html_888f94bd7700173f2d37c0ff8b92b18c" style="width: 100.0%; height: 100.0%;">     <div style="align-items: left;">         <img src="//www.gravatar.com/avatar/5247c8aa87ab1daf139333760e9828bc?s=150&r=g&d=identicon" alt="Anna Moses" style="width:100%;border-radius:50%;max-width:150px;">         <h4 style="text-align:center">Anna Moses</h4>         <p><strong>Location: </strong>Sri Lanka</p>         <p><strong>Initiative: </strong>DreamSpace Academy</p>         <p><a href="https://globalinnovationgathering.org/members-map/members/annadsa/" target="_blank">View Profile</a></p>     </div>     </div>`)[0];
+                popup_990b53484bb52a8a40108dc30c12678f.setContent(html_888f94bd7700173f2d37c0ff8b92b18c);
+            
+        
+
+        circle_marker_07533b28c6f40c3ef01fb97e85fe8ac3.bindPopup(popup_990b53484bb52a8a40108dc30c12678f)
+        ;
+
+        
+    
+    
+            var circle_marker_d5175d0fbfab6e8f1be00580def2d8ae = L.circleMarker(
+                [-10.0, -55.0],
+                {"bubblingMouseEvents": true, "color": "#EA6690", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "#EA6690", "fillOpacity": 0.2, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 0.7, "radius": 10, "stroke": true, "weight": 1}
+            ).addTo(marker_cluster_d6c4c7abebb46e0b182a54697687169e);
+        
+    
+        var popup_37655b9d6d5896cea043f736dd939228 = L.popup({"maxWidth": "100%"});
+
+        
+            
+                var html_e4773bccd3685f42e519dd1eff5fc3e0 = $(`<div id="html_e4773bccd3685f42e519dd1eff5fc3e0" style="width: 100.0%; height: 100.0%;">     <div style="align-items: left;">         <img src="https://i0.wp.com/globalinnovationgathering.org/wp-content/uploads/avatars/1/609ebdf3f2312-bpfull.jpg?resize=150%2C150&ssl=1" alt="Ricardo Ruiz" style="width:100%;border-radius:50%;max-width:150px;">         <h4 style="text-align:center">Ricardo Ruiz</h4>         <p><strong>Location: </strong>Brazil</p>         <p><strong>Initiative: </strong>Global Innovation Gathering</p>         <p><a href="https://globalinnovationgathering.org/members-map/members/aletta/" target="_blank">View Profile</a></p>     </div>     </div>`)[0];
+                popup_37655b9d6d5896cea043f736dd939228.setContent(html_e4773bccd3685f42e519dd1eff5fc3e0);
+            
+        
+
+        circle_marker_d5175d0fbfab6e8f1be00580def2d8ae.bindPopup(popup_37655b9d6d5896cea043f736dd939228)
+        ;
+
+        
+    
+    
+            var circle_marker_df5dbef282eddb51cb0d7d22e9277b68 = L.circleMarker(
+                [10.0, -84.0],
+                {"bubblingMouseEvents": true, "color": "#EA6690", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "#EA6690", "fillOpacity": 0.2, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 0.7, "radius": 10, "stroke": true, "weight": 1}
+            ).addTo(marker_cluster_d6c4c7abebb46e0b182a54697687169e);
+        
+    
+        var popup_61a690d7097368d6746a1508004c6f8b = L.popup({"maxWidth": "100%"});
+
+        
+            
+                var html_fba66a461d8f2586e66ee2756c77af14 = $(`<div id="html_fba66a461d8f2586e66ee2756c77af14" style="width: 100.0%; height: 100.0%;">     <div style="align-items: left;">         <img src="//www.gravatar.com/avatar/f19b1aa748b708a677491b2d93f97ef0?s=150&r=g&d=identicon" alt="Ta Corrales" style="width:100%;border-radius:50%;max-width:150px;">         <h4 style="text-align:center">Ta Corrales</h4>         <p><strong>Location: </strong>Costa Rica</p>         <p><strong>Initiative: </strong>OAXIN</p>         <p><a href="https://globalinnovationgathering.org/members-map/members/tacurais/" target="_blank">View Profile</a></p>     </div>     </div>`)[0];
+                popup_61a690d7097368d6746a1508004c6f8b.setContent(html_fba66a461d8f2586e66ee2756c77af14);
+            
+        
+
+        circle_marker_df5dbef282eddb51cb0d7d22e9277b68.bindPopup(popup_61a690d7097368d6746a1508004c6f8b)
+        ;
+
+        
+    
+    
+            var circle_marker_537b3b82619f767a261ff5f0b7672f47 = L.circleMarker(
+                [20.0, 77.0],
+                {"bubblingMouseEvents": true, "color": "#EA6690", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "#EA6690", "fillOpacity": 0.2, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 0.7, "radius": 10, "stroke": true, "weight": 1}
+            ).addTo(marker_cluster_d6c4c7abebb46e0b182a54697687169e);
+        
+    
+        var popup_54644aac5d85060b091fe9ff7f488469 = L.popup({"maxWidth": "100%"});
+
+        
+            
+                var html_76ab9631e46d74aa06d8033d0ac30ca2 = $(`<div id="html_76ab9631e46d74aa06d8033d0ac30ca2" style="width: 100.0%; height: 100.0%;">     <div style="align-items: left;">         <img src="https://i0.wp.com/globalinnovationgathering.org/wp-content/uploads/avatars/88/61bdc117084b4-bpfull.jpg?resize=150%2C150&ssl=1" alt="Audrey Dsouza" style="width:100%;border-radius:50%;max-width:150px;">         <h4 style="text-align:center">Audrey Dsouza</h4>         <p><strong>Location: </strong>India</p>         <p><strong>Initiative: </strong>eMERG, a platform to support women in bu</p>         <p><a href="https://globalinnovationgathering.org/members-map/members/audrey/" target="_blank">View Profile</a></p>     </div>     </div>`)[0];
+                popup_54644aac5d85060b091fe9ff7f488469.setContent(html_76ab9631e46d74aa06d8033d0ac30ca2);
+            
+        
+
+        circle_marker_537b3b82619f767a261ff5f0b7672f47.bindPopup(popup_54644aac5d85060b091fe9ff7f488469)
+        ;
+
+        
+    
+    
+            var circle_marker_263839cd48280515e5fb50b69eb35b5f = L.circleMarker(
+                [13.0, 122.0],
+                {"bubblingMouseEvents": true, "color": "#EA6690", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "#EA6690", "fillOpacity": 0.2, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 0.7, "radius": 10, "stroke": true, "weight": 1}
+            ).addTo(marker_cluster_d6c4c7abebb46e0b182a54697687169e);
+        
+    
+        var popup_3435f8804f62c069ae2900446f22269e = L.popup({"maxWidth": "100%"});
+
+        
+            
+                var html_55fcc7d45f1550fe4260c8e03c7fb027 = $(`<div id="html_55fcc7d45f1550fe4260c8e03c7fb027" style="width: 100.0%; height: 100.0%;">     <div style="align-items: left;">         <img src="https://i0.wp.com/globalinnovationgathering.org/wp-content/uploads/avatars/46/1643790060-bpfull.jpg?resize=150%2C150&ssl=1" alt="Jay Fajardo" style="width:100%;border-radius:50%;max-width:150px;">         <h4 style="text-align:center">Jay Fajardo</h4>         <p><strong>Location: </strong>Philippines</p>         <p><strong>Initiative: </strong>Launchgarage</p>         <p><a href="https://globalinnovationgathering.org/members-map/members/jayfajardo/" target="_blank">View Profile</a></p>     </div>     </div>`)[0];
+                popup_3435f8804f62c069ae2900446f22269e.setContent(html_55fcc7d45f1550fe4260c8e03c7fb027);
+            
+        
+
+        circle_marker_263839cd48280515e5fb50b69eb35b5f.bindPopup(popup_3435f8804f62c069ae2900446f22269e)
+        ;
+
+        
+    
+    
+            var circle_marker_caf21ad1b1780c1919600edc51669018 = L.circleMarker(
+                [1.0, 32.0],
+                {"bubblingMouseEvents": true, "color": "#EA6690", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "#EA6690", "fillOpacity": 0.2, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 0.7, "radius": 10, "stroke": true, "weight": 1}
+            ).addTo(marker_cluster_d6c4c7abebb46e0b182a54697687169e);
+        
+    
+        var popup_c40bc5cb0cb510cce5f3b9b2bdb5cc18 = L.popup({"maxWidth": "100%"});
+
+        
+            
+                var html_57b88207056cee1417df19071b625d5c = $(`<div id="html_57b88207056cee1417df19071b625d5c" style="width: 100.0%; height: 100.0%;">     <div style="align-items: left;">         <img src="//www.gravatar.com/avatar/3878999f0a10384059d99cc95657ebed?s=150&r=g&d=identicon" alt="Mambo Emmanuel Taban" style="width:100%;border-radius:50%;max-width:150px;">         <h4 style="text-align:center">Mambo Emmanuel Taban</h4>         <p><strong>Location: </strong>Uganda</p>         <p><strong>Initiative: </strong>Creative Innovation Centre</p>         <p><a href="https://globalinnovationgathering.org/members-map/members/mamboemmanuel/" target="_blank">View Profile</a></p>     </div>     </div>`)[0];
+                popup_c40bc5cb0cb510cce5f3b9b2bdb5cc18.setContent(html_57b88207056cee1417df19071b625d5c);
+            
+        
+
+        circle_marker_caf21ad1b1780c1919600edc51669018.bindPopup(popup_c40bc5cb0cb510cce5f3b9b2bdb5cc18)
+        ;
+
+        
+    
+    
+            var circle_marker_90c3f36b79ac64a8647a18f5a65c2f01 = L.circleMarker(
+                [6.0, 12.0],
+                {"bubblingMouseEvents": true, "color": "#EA6690", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "#EA6690", "fillOpacity": 0.2, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 0.7, "radius": 10, "stroke": true, "weight": 1}
+            ).addTo(marker_cluster_d6c4c7abebb46e0b182a54697687169e);
+        
+    
+        var popup_2c9430645d208058c15dd9080a78a1d6 = L.popup({"maxWidth": "100%"});
+
+        
+            
+                var html_f4f4fbed72730ca807a24c5d28fcf346 = $(`<div id="html_f4f4fbed72730ca807a24c5d28fcf346" style="width: 100.0%; height: 100.0%;">     <div style="align-items: left;">         <img src="https://i0.wp.com/globalinnovationgathering.org/wp-content/uploads/avatars/676/1678763417-bpfull.jpg?resize=150%2C150&ssl=1" alt="Sophie Ngassa" style="width:100%;border-radius:50%;max-width:150px;">         <h4 style="text-align:center">Sophie Ngassa</h4>         <p><strong>Location: </strong>Cameroon</p>         <p><strong>Initiative: </strong>ANASTA Hub</p>         <p><a href="https://globalinnovationgathering.org/members-map/members/sophie/" target="_blank">View Profile</a></p>     </div>     </div>`)[0];
+                popup_2c9430645d208058c15dd9080a78a1d6.setContent(html_f4f4fbed72730ca807a24c5d28fcf346);
+            
+        
+
+        circle_marker_90c3f36b79ac64a8647a18f5a65c2f01.bindPopup(popup_2c9430645d208058c15dd9080a78a1d6)
+        ;
+
+        
+    
+    
+            var circle_marker_5d2cff484433403e3aa4f6aad3c76cbe = L.circleMarker(
+                [39.5, -8.0],
+                {"bubblingMouseEvents": true, "color": "#EA6690", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "#EA6690", "fillOpacity": 0.2, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 0.7, "radius": 10, "stroke": true, "weight": 1}
+            ).addTo(marker_cluster_d6c4c7abebb46e0b182a54697687169e);
+        
+    
+        var popup_f68db8f02a8fd9afcc5777eb90582e07 = L.popup({"maxWidth": "100%"});
+
+        
+            
+                var html_d894b33ccb27ae1b93bfb91a1b29b95e = $(`<div id="html_d894b33ccb27ae1b93bfb91a1b29b95e" style="width: 100.0%; height: 100.0%;">     <div style="align-items: left;">         <img src="https://i0.wp.com/globalinnovationgathering.org/wp-content/uploads/avatars/156/1656003906-bpfull.jpg?resize=150%2C150&ssl=1" alt="Michael Jensen" style="width:100%;border-radius:50%;max-width:150px;">         <h4 style="text-align:center">Michael Jensen</h4>         <p><strong>Location: </strong>Portugal</p>         <p><strong>Initiative: </strong></p>         <p><a href="https://globalinnovationgathering.org/members-map/members/mikej/" target="_blank">View Profile</a></p>     </div>     </div>`)[0];
+                popup_f68db8f02a8fd9afcc5777eb90582e07.setContent(html_d894b33ccb27ae1b93bfb91a1b29b95e);
+            
+        
+
+        circle_marker_5d2cff484433403e3aa4f6aad3c76cbe.bindPopup(popup_f68db8f02a8fd9afcc5777eb90582e07)
+        ;
+
+        
+    
+    
+            var circle_marker_88bd75ee223c11df558ede46b8b41ac9 = L.circleMarker(
+                [51.0, 9.0],
+                {"bubblingMouseEvents": true, "color": "#EA6690", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "#EA6690", "fillOpacity": 0.2, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 0.7, "radius": 10, "stroke": true, "weight": 1}
+            ).addTo(marker_cluster_d6c4c7abebb46e0b182a54697687169e);
+        
+    
+        var popup_2bc6c1d1f8c26ea9e3a7dc6fb5c964d5 = L.popup({"maxWidth": "100%"});
+
+        
+            
+                var html_41159351e8818a8941fe9f7fa50dfa19 = $(`<div id="html_41159351e8818a8941fe9f7fa50dfa19" style="width: 100.0%; height: 100.0%;">     <div style="align-items: left;">         <img src="https://i0.wp.com/globalinnovationgathering.org/wp-content/uploads/avatars/35/61489eda0fb9e-bpfull.jpg?resize=150%2C150&ssl=1" alt="Geraldine de Bastion" style="width:100%;border-radius:50%;max-width:150px;">         <h4 style="text-align:center">Geraldine de Bastion</h4>         <p><strong>Location: </strong>Germany</p>         <p><strong>Initiative: </strong></p>         <p><a href="https://globalinnovationgathering.org/members-map/members/geralbine/" target="_blank">View Profile</a></p>     </div>     </div>`)[0];
+                popup_2bc6c1d1f8c26ea9e3a7dc6fb5c964d5.setContent(html_41159351e8818a8941fe9f7fa50dfa19);
+            
+        
+
+        circle_marker_88bd75ee223c11df558ede46b8b41ac9.bindPopup(popup_2bc6c1d1f8c26ea9e3a7dc6fb5c964d5)
+        ;
+
+        
+    
+    
+            var circle_marker_cb46e463c6dd3cbc5fa6737aa29efe75 = L.circleMarker(
+                [1.0, 38.0],
+                {"bubblingMouseEvents": true, "color": "#EA6690", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "#EA6690", "fillOpacity": 0.2, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 0.7, "radius": 10, "stroke": true, "weight": 1}
+            ).addTo(marker_cluster_d6c4c7abebb46e0b182a54697687169e);
+        
+    
+        var popup_3105520e750a729e8df6416fc0f2bae1 = L.popup({"maxWidth": "100%"});
+
+        
+            
+                var html_054143fa88770cb2273e1c2d27d49786 = $(`<div id="html_054143fa88770cb2273e1c2d27d49786" style="width: 100.0%; height: 100.0%;">     <div style="align-items: left;">         <img src="//www.gravatar.com/avatar/75ea13e79a9d8d6c8a02e4a283da89f4?s=150&r=g&d=identicon" alt="Aly Salim" style="width:100%;border-radius:50%;max-width:150px;">         <h4 style="text-align:center">Aly Salim</h4>         <p><strong>Location: </strong>Kenya</p>         <p><strong>Initiative: </strong>SwahiliBox</p>         <p><a href="https://globalinnovationgathering.org/members-map/members/alysalim/" target="_blank">View Profile</a></p>     </div>     </div>`)[0];
+                popup_3105520e750a729e8df6416fc0f2bae1.setContent(html_054143fa88770cb2273e1c2d27d49786);
+            
+        
+
+        circle_marker_cb46e463c6dd3cbc5fa6737aa29efe75.bindPopup(popup_3105520e750a729e8df6416fc0f2bae1)
+        ;
+
+        
+    
+    
+            var circle_marker_ff998c77efa832684a825cf693a8a5e6 = L.circleMarker(
+                [13.0, 122.0],
+                {"bubblingMouseEvents": true, "color": "#EA6690", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "#EA6690", "fillOpacity": 0.2, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 0.7, "radius": 10, "stroke": true, "weight": 1}
+            ).addTo(marker_cluster_d6c4c7abebb46e0b182a54697687169e);
+        
+    
+        var popup_1dea4dbbd4d9a713e69c12600032f38e = L.popup({"maxWidth": "100%"});
+
+        
+            
+                var html_b9fd125cd9e12fceb687507511e70179 = $(`<div id="html_b9fd125cd9e12fceb687507511e70179" style="width: 100.0%; height: 100.0%;">     <div style="align-items: left;">         <img src="//www.gravatar.com/avatar/2139d7e4caa744fa699a4fd078a04422?s=150&r=g&d=identicon" alt="Vin Dancel" style="width:100%;border-radius:50%;max-width:150px;">         <h4 style="text-align:center">Vin Dancel</h4>         <p><strong>Location: </strong>Philippines</p>         <p><strong>Initiative: </strong>intellectual property rights</p>         <p><a href="https://globalinnovationgathering.org/members-map/members/vindancel/" target="_blank">View Profile</a></p>     </div>     </div>`)[0];
+                popup_1dea4dbbd4d9a713e69c12600032f38e.setContent(html_b9fd125cd9e12fceb687507511e70179);
+            
+        
+
+        circle_marker_ff998c77efa832684a825cf693a8a5e6.bindPopup(popup_1dea4dbbd4d9a713e69c12600032f38e)
+        ;
+
+        
+    
+    
+            var circle_marker_a342dba36e73d90efb9759a6f596c04d = L.circleMarker(
+                [1.0, 32.0],
+                {"bubblingMouseEvents": true, "color": "#EA6690", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "#EA6690", "fillOpacity": 0.2, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 0.7, "radius": 10, "stroke": true, "weight": 1}
+            ).addTo(marker_cluster_d6c4c7abebb46e0b182a54697687169e);
+        
+    
+        var popup_029ddc2ce04e9c6a74df0b4e7cdc5663 = L.popup({"maxWidth": "100%"});
+
+        
+            
+                var html_3f42eed792903e8bed50ea2cbda91e82 = $(`<div id="html_3f42eed792903e8bed50ea2cbda91e82" style="width: 100.0%; height: 100.0%;">     <div style="align-items: left;">         <img src="//www.gravatar.com/avatar/9f1cb25f86e29cc14831309b9243f997?s=150&r=g&d=identicon" alt="Mathew Lubari" style="width:100%;border-radius:50%;max-width:150px;">         <h4 style="text-align:center">Mathew Lubari</h4>         <p><strong>Location: </strong>Uganda</p>         <p><strong>Initiative: </strong>Community Creativity for Development(CC4</p>         <p><a href="https://globalinnovationgathering.org/members-map/members/mathewlubari/" target="_blank">View Profile</a></p>     </div>     </div>`)[0];
+                popup_029ddc2ce04e9c6a74df0b4e7cdc5663.setContent(html_3f42eed792903e8bed50ea2cbda91e82);
+            
+        
+
+        circle_marker_a342dba36e73d90efb9759a6f596c04d.bindPopup(popup_029ddc2ce04e9c6a74df0b4e7cdc5663)
+        ;
+
+        
+    
+    
+            var circle_marker_3f00e38a76506114d5c4fdfd1a70e3af = L.circleMarker(
+                [-20.0, 30.0],
+                {"bubblingMouseEvents": true, "color": "#EA6690", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "#EA6690", "fillOpacity": 0.2, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 0.7, "radius": 10, "stroke": true, "weight": 1}
+            ).addTo(marker_cluster_d6c4c7abebb46e0b182a54697687169e);
+        
+    
+        var popup_2a8bddaf70634d7173c73d5e7727f47f = L.popup({"maxWidth": "100%"});
+
+        
+            
+                var html_0c57c2eac85901e57a2b58f40b58544c = $(`<div id="html_0c57c2eac85901e57a2b58f40b58544c" style="width: 100.0%; height: 100.0%;">     <div style="align-items: left;">         <img src="//www.gravatar.com/avatar/83937cf8385871e01ebe4cd6ff32c634?s=150&r=g&d=identicon" alt="Ronald Tsatsi" style="width:100%;border-radius:50%;max-width:150px;">         <h4 style="text-align:center">Ronald Tsatsi</h4>         <p><strong>Location: </strong>Zimbabwe</p>         <p><strong>Initiative: </strong>iZonehub</p>         <p><a href="https://globalinnovationgathering.org/members-map/members/ronaldtsatsi/" target="_blank">View Profile</a></p>     </div>     </div>`)[0];
+                popup_2a8bddaf70634d7173c73d5e7727f47f.setContent(html_0c57c2eac85901e57a2b58f40b58544c);
+            
+        
+
+        circle_marker_3f00e38a76506114d5c4fdfd1a70e3af.bindPopup(popup_2a8bddaf70634d7173c73d5e7727f47f)
+        ;
+
+        
+    
+    
+            var circle_marker_020b1940b57a27dc27c31b66dac83262 = L.circleMarker(
+                [7.0, 30.0],
+                {"bubblingMouseEvents": true, "color": "#EA6690", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "#EA6690", "fillOpacity": 0.2, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 0.7, "radius": 10, "stroke": true, "weight": 1}
+            ).addTo(marker_cluster_d6c4c7abebb46e0b182a54697687169e);
+        
+    
+        var popup_a194278c40b0b98a06c842460a356c19 = L.popup({"maxWidth": "100%"});
+
+        
+            
+                var html_7d07ecf5073975b4b784f939707e8dce = $(`<div id="html_7d07ecf5073975b4b784f939707e8dce" style="width: 100.0%; height: 100.0%;">     <div style="align-items: left;">         <img src="https://i0.wp.com/globalinnovationgathering.org/wp-content/uploads/avatars/164/1657189223-bpfull.jpg?resize=150%2C150&ssl=1" alt="Yine Yenki Nyika" style="width:100%;border-radius:50%;max-width:150px;">         <h4 style="text-align:center">Yine Yenki Nyika</h4>         <p><strong>Location: </strong>South Sudan</p>         <p><strong>Initiative: </strong>GoGirls ICT Initiative</p>         <p><a href="https://globalinnovationgathering.org/members-map/members/yyenki/" target="_blank">View Profile</a></p>     </div>     </div>`)[0];
+                popup_a194278c40b0b98a06c842460a356c19.setContent(html_7d07ecf5073975b4b784f939707e8dce);
+            
+        
+
+        circle_marker_020b1940b57a27dc27c31b66dac83262.bindPopup(popup_a194278c40b0b98a06c842460a356c19)
+        ;
+
+        
+    
+    
+            var circle_marker_d9bc1496cd8252d433a38dda16c0ab78 = L.circleMarker(
+                [-22.0, 17.0],
+                {"bubblingMouseEvents": true, "color": "#EA6690", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "#EA6690", "fillOpacity": 0.2, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 0.7, "radius": 10, "stroke": true, "weight": 1}
+            ).addTo(marker_cluster_d6c4c7abebb46e0b182a54697687169e);
+        
+    
+        var popup_3ed01a208b405c52f5e9891489629092 = L.popup({"maxWidth": "100%"});
+
+        
+            
+                var html_7b66d4604013c0d195e82bd369f9086c = $(`<div id="html_7b66d4604013c0d195e82bd369f9086c" style="width: 100.0%; height: 100.0%;">     <div style="align-items: left;">         <img src="https://i0.wp.com/globalinnovationgathering.org/wp-content/uploads/avatars/168/1658322543-bpfull.png?resize=150%2C150&ssl=1" alt="Bjorn Wiedow" style="width:100%;border-radius:50%;max-width:150px;">         <h4 style="text-align:center">Bjorn Wiedow</h4>         <p><strong>Location: </strong>Namibia</p>         <p><strong>Initiative: </strong>Digital Transformation Center Namibia</p>         <p><a href="https://globalinnovationgathering.org/members-map/members/bjornwiedow/" target="_blank">View Profile</a></p>     </div>     </div>`)[0];
+                popup_3ed01a208b405c52f5e9891489629092.setContent(html_7b66d4604013c0d195e82bd369f9086c);
+            
+        
+
+        circle_marker_d9bc1496cd8252d433a38dda16c0ab78.bindPopup(popup_3ed01a208b405c52f5e9891489629092)
+        ;
+
+        
+    
+    
+            var circle_marker_a6ecd6a5d7c373bdbcfaa5b9b923a838 = L.circleMarker(
+                [-27.0, 133.0],
+                {"bubblingMouseEvents": true, "color": "#EA6690", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "#EA6690", "fillOpacity": 0.2, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 0.7, "radius": 10, "stroke": true, "weight": 1}
+            ).addTo(marker_cluster_d6c4c7abebb46e0b182a54697687169e);
+        
+    
+        var popup_4bde356ac47796b166875ef3dede61c4 = L.popup({"maxWidth": "100%"});
+
+        
+            
+                var html_b05ab94cb109a4277977e426286e9e86 = $(`<div id="html_b05ab94cb109a4277977e426286e9e86" style="width: 100.0%; height: 100.0%;">     <div style="align-items: left;">         <img src="https://i0.wp.com/globalinnovationgathering.org/wp-content/uploads/avatars/59/615d42f269e37-bpfull.jpg?resize=150%2C150&ssl=1" alt="Asmaa Guedira" style="width:100%;border-radius:50%;max-width:150px;">         <h4 style="text-align:center">Asmaa Guedira</h4>         <p><strong>Location: </strong>Australia</p>         <p><strong>Initiative: </strong>Women's Environmental Leadership Austral</p>         <p><a href="https://globalinnovationgathering.org/members-map/members/asmaa/" target="_blank">View Profile</a></p>     </div>     </div>`)[0];
+                popup_4bde356ac47796b166875ef3dede61c4.setContent(html_b05ab94cb109a4277977e426286e9e86);
+            
+        
+
+        circle_marker_a6ecd6a5d7c373bdbcfaa5b9b923a838.bindPopup(popup_4bde356ac47796b166875ef3dede61c4)
+        ;
+
+        
+    
+    
+            var circle_marker_bab4696fdf2b0de4b400dd439ccf8678 = L.circleMarker(
+                [51.0, 9.0],
+                {"bubblingMouseEvents": true, "color": "#EA6690", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "#EA6690", "fillOpacity": 0.2, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 0.7, "radius": 10, "stroke": true, "weight": 1}
+            ).addTo(marker_cluster_d6c4c7abebb46e0b182a54697687169e);
+        
+    
+        var popup_596a655820785b50f1439f0038f53fad = L.popup({"maxWidth": "100%"});
+
+        
+            
+                var html_6cedd4d137396e7c9c6a9c94b3bf0b29 = $(`<div id="html_6cedd4d137396e7c9c6a9c94b3bf0b29" style="width: 100.0%; height: 100.0%;">     <div style="align-items: left;">         <img src="https://i0.wp.com/globalinnovationgathering.org/wp-content/uploads/avatars/84/1646225386-bpfull.jpg?resize=150%2C150&ssl=1" alt="Daniela" style="width:100%;border-radius:50%;max-width:150px;">         <h4 style="text-align:center">Daniela</h4>         <p><strong>Location: </strong>Germany</p>         <p><strong>Initiative: </strong>Innovation and Design</p>         <p><a href="https://globalinnovationgathering.org/members-map/members/daniela/" target="_blank">View Profile</a></p>     </div>     </div>`)[0];
+                popup_596a655820785b50f1439f0038f53fad.setContent(html_6cedd4d137396e7c9c6a9c94b3bf0b29);
+            
+        
+
+        circle_marker_bab4696fdf2b0de4b400dd439ccf8678.bindPopup(popup_596a655820785b50f1439f0038f53fad)
+        ;
+
+        
+    
+    
+            var circle_marker_920b081fb5c86d070e7e84fadee132d5 = L.circleMarker(
+                [49.75, 15.5],
+                {"bubblingMouseEvents": true, "color": "#EA6690", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "#EA6690", "fillOpacity": 0.2, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 0.7, "radius": 10, "stroke": true, "weight": 1}
+            ).addTo(marker_cluster_d6c4c7abebb46e0b182a54697687169e);
+        
+    
+        var popup_3eb160e2d6b5c21fea82fcdcf05e8014 = L.popup({"maxWidth": "100%"});
+
+        
+            
+                var html_d6c92f5c8ca21b39fc29af41455e2b37 = $(`<div id="html_d6c92f5c8ca21b39fc29af41455e2b37" style="width: 100.0%; height: 100.0%;">     <div style="align-items: left;">         <img src="https://i0.wp.com/globalinnovationgathering.org/wp-content/uploads/avatars/191/1667814450-bpfull.jpg?resize=150%2C150&ssl=1" alt="Eric Nitschke" style="width:100%;border-radius:50%;max-width:150px;">         <h4 style="text-align:center">Eric Nitschke</h4>         <p><strong>Location: </strong>Czechia</p>         <p><strong>Initiative: </strong>Wakoma</p>         <p><a href="https://globalinnovationgathering.org/members-map/members/ericnitschke/" target="_blank">View Profile</a></p>     </div>     </div>`)[0];
+                popup_3eb160e2d6b5c21fea82fcdcf05e8014.setContent(html_d6c92f5c8ca21b39fc29af41455e2b37);
+            
+        
+
+        circle_marker_920b081fb5c86d070e7e84fadee132d5.bindPopup(popup_3eb160e2d6b5c21fea82fcdcf05e8014)
+        ;
+
+        
+    
+    
+            var circle_marker_5fd053520f202203ed5a0a20759dd0b8 = L.circleMarker(
+                [1.0, 38.0],
+                {"bubblingMouseEvents": true, "color": "#EA6690", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "#EA6690", "fillOpacity": 0.2, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 0.7, "radius": 10, "stroke": true, "weight": 1}
+            ).addTo(marker_cluster_d6c4c7abebb46e0b182a54697687169e);
+        
+    
+        var popup_956f4a73aaa606574fc02739603e131e = L.popup({"maxWidth": "100%"});
+
+        
+            
+                var html_27772fc134448ce5ef248a84c6d6f161 = $(`<div id="html_27772fc134448ce5ef248a84c6d6f161" style="width: 100.0%; height: 100.0%;">     <div style="align-items: left;">         <img src="//www.gravatar.com/avatar/abc6b49203a0e10c3948e6fe57868ecd?s=150&r=g&d=identicon" alt="Mugethi Gitau" style="width:100%;border-radius:50%;max-width:150px;">         <h4 style="text-align:center">Mugethi Gitau</h4>         <p><strong>Location: </strong>Kenya</p>         <p><strong>Initiative: </strong>Mugzie's Naturals</p>         <p><a href="https://globalinnovationgathering.org/members-map/members/mugethib/" target="_blank">View Profile</a></p>     </div>     </div>`)[0];
+                popup_956f4a73aaa606574fc02739603e131e.setContent(html_27772fc134448ce5ef248a84c6d6f161);
+            
+        
+
+        circle_marker_5fd053520f202203ed5a0a20759dd0b8.bindPopup(popup_956f4a73aaa606574fc02739603e131e)
+        ;
+
+        
+    
+    
+            var circle_marker_d64d444ee86b5f2675a45641368b7c28 = L.circleMarker(
+                [1.0, 38.0],
+                {"bubblingMouseEvents": true, "color": "#EA6690", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "#EA6690", "fillOpacity": 0.2, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 0.7, "radius": 10, "stroke": true, "weight": 1}
+            ).addTo(marker_cluster_d6c4c7abebb46e0b182a54697687169e);
+        
+    
+        var popup_a5cc2576d176ad7201c7acc36775f5b3 = L.popup({"maxWidth": "100%"});
+
+        
+            
+                var html_90e539960855cec90aa027ff941bcef9 = $(`<div id="html_90e539960855cec90aa027ff941bcef9" style="width: 100.0%; height: 100.0%;">     <div style="align-items: left;">         <img src="//www.gravatar.com/avatar/95431bbcb3c801e2813e65f89ba13050?s=150&r=g&d=identicon" alt="Bonyo Linda" style="width:100%;border-radius:50%;max-width:150px;">         <h4 style="text-align:center">Bonyo Linda</h4>         <p><strong>Location: </strong>Kenya</p>         <p><strong>Initiative: </strong>Lawyers Hib</p>         <p><a href="https://globalinnovationgathering.org/members-map/members/lindabonyo/" target="_blank">View Profile</a></p>     </div>     </div>`)[0];
+                popup_a5cc2576d176ad7201c7acc36775f5b3.setContent(html_90e539960855cec90aa027ff941bcef9);
+            
+        
+
+        circle_marker_d64d444ee86b5f2675a45641368b7c28.bindPopup(popup_a5cc2576d176ad7201c7acc36775f5b3)
+        ;
+
+        
+    
+    
+            var circle_marker_f1781338f1c843957580ce23556c16c4 = L.circleMarker(
+                [51.0, 9.0],
+                {"bubblingMouseEvents": true, "color": "#EA6690", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "#EA6690", "fillOpacity": 0.2, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 0.7, "radius": 10, "stroke": true, "weight": 1}
+            ).addTo(marker_cluster_d6c4c7abebb46e0b182a54697687169e);
+        
+    
+        var popup_460496e5b7d3544e53bbd8471be1ec5d = L.popup({"maxWidth": "100%"});
+
+        
+            
+                var html_2994b309aebcc65fe7bafda2eb712e6c = $(`<div id="html_2994b309aebcc65fe7bafda2eb712e6c" style="width: 100.0%; height: 100.0%;">     <div style="align-items: left;">         <img src="https://i0.wp.com/globalinnovationgathering.org/wp-content/uploads/avatars/23/6151d3f861df3-bpfull.jpg?resize=150%2C150&ssl=1" alt="Eloisa Montt" style="width:100%;border-radius:50%;max-width:150px;">         <h4 style="text-align:center">Eloisa Montt</h4>         <p><strong>Location: </strong>Germany</p>         <p><strong>Initiative: </strong></p>         <p><a href="https://globalinnovationgathering.org/members-map/members/elomontt/" target="_blank">View Profile</a></p>     </div>     </div>`)[0];
+                popup_460496e5b7d3544e53bbd8471be1ec5d.setContent(html_2994b309aebcc65fe7bafda2eb712e6c);
+            
+        
+
+        circle_marker_f1781338f1c843957580ce23556c16c4.bindPopup(popup_460496e5b7d3544e53bbd8471be1ec5d)
+        ;
+
+        
+    
+    
+            var circle_marker_31f9b666aa119becfbf4cf1d98f5d738 = L.circleMarker(
+                [8.0, 38.0],
+                {"bubblingMouseEvents": true, "color": "#EA6690", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "#EA6690", "fillOpacity": 0.2, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 0.7, "radius": 10, "stroke": true, "weight": 1}
+            ).addTo(marker_cluster_d6c4c7abebb46e0b182a54697687169e);
+        
+    
+        var popup_a148098e17debcf030f591951793960a = L.popup({"maxWidth": "100%"});
+
+        
+            
+                var html_0d8c9f58a2cd74285cd0b6851cb8a656 = $(`<div id="html_0d8c9f58a2cd74285cd0b6851cb8a656" style="width: 100.0%; height: 100.0%;">     <div style="align-items: left;">         <img src="https://i0.wp.com/globalinnovationgathering.org/wp-content/uploads/avatars/144/1677149606-bpfull.jpg?resize=150%2C150&ssl=1" alt="Bezawork Tilahun Mindaye" style="width:100%;border-radius:50%;max-width:150px;">         <h4 style="text-align:center">Bezawork Tilahun Mindaye</h4>         <p><strong>Location: </strong>Ethiopia</p>         <p><strong>Initiative: </strong>Seifu-BiT Makerspace</p>         <p><a href="https://globalinnovationgathering.org/members-map/members/seifubitmakerspace/" target="_blank">View Profile</a></p>     </div>     </div>`)[0];
+                popup_a148098e17debcf030f591951793960a.setContent(html_0d8c9f58a2cd74285cd0b6851cb8a656);
+            
+        
+
+        circle_marker_31f9b666aa119becfbf4cf1d98f5d738.bindPopup(popup_a148098e17debcf030f591951793960a)
+        ;
+
+        
+    
+    
+            var circle_marker_68fb445c0c4f661b1529f1a1c8329c14 = L.circleMarker(
+                [-20.0, 30.0],
+                {"bubblingMouseEvents": true, "color": "#EA6690", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "#EA6690", "fillOpacity": 0.2, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 0.7, "radius": 10, "stroke": true, "weight": 1}
+            ).addTo(marker_cluster_d6c4c7abebb46e0b182a54697687169e);
+        
+    
+        var popup_bc420c36336a59e5e82093f1cfe0409f = L.popup({"maxWidth": "100%"});
+
+        
+            
+                var html_9f9d7747d0b362d1e868ea66cfcac565 = $(`<div id="html_9f9d7747d0b362d1e868ea66cfcac565" style="width: 100.0%; height: 100.0%;">     <div style="align-items: left;">         <img src="https://i0.wp.com/globalinnovationgathering.org/wp-content/uploads/avatars/58/61647d9da5807-bpfull.jpg?resize=150%2C150&ssl=1" alt="Kudzai" style="width:100%;border-radius:50%;max-width:150px;">         <h4 style="text-align:center">Kudzai</h4>         <p><strong>Location: </strong>Zimbabwe</p>         <p><strong>Initiative: </strong>iZone Hub</p>         <p><a href="https://globalinnovationgathering.org/members-map/members/kudzai/" target="_blank">View Profile</a></p>     </div>     </div>`)[0];
+                popup_bc420c36336a59e5e82093f1cfe0409f.setContent(html_9f9d7747d0b362d1e868ea66cfcac565);
+            
+        
+
+        circle_marker_68fb445c0c4f661b1529f1a1c8329c14.bindPopup(popup_bc420c36336a59e5e82093f1cfe0409f)
+        ;
+
+        
+    
+    
+            var circle_marker_55e72db532c1c131a4a1216082065f44 = L.circleMarker(
+                [1.36666666, 103.8],
+                {"bubblingMouseEvents": true, "color": "#EA6690", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "#EA6690", "fillOpacity": 0.2, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 0.7, "radius": 10, "stroke": true, "weight": 1}
+            ).addTo(marker_cluster_d6c4c7abebb46e0b182a54697687169e);
+        
+    
+        var popup_a10152c9f0145204ada69fda56f9aa6c = L.popup({"maxWidth": "100%"});
+
+        
+            
+                var html_4e2d69444a32c5af361c29459dce1b64 = $(`<div id="html_4e2d69444a32c5af361c29459dce1b64" style="width: 100.0%; height: 100.0%;">     <div style="align-items: left;">         <img src="//www.gravatar.com/avatar/80ebf2396245269f6c23019ceec9791f?s=150&r=g&d=identicon" alt="Saad Chinoy" style="width:100%;border-radius:50%;max-width:150px;">         <h4 style="text-align:center">Saad Chinoy</h4>         <p><strong>Location: </strong>Singapore</p>         <p><strong>Initiative: </strong>EdibleMakerspace, SalvageGarden Makerspa</p>         <p><a href="https://globalinnovationgathering.org/members-map/members/saad-caffeinegmail-com/" target="_blank">View Profile</a></p>     </div>     </div>`)[0];
+                popup_a10152c9f0145204ada69fda56f9aa6c.setContent(html_4e2d69444a32c5af361c29459dce1b64);
+            
+        
+
+        circle_marker_55e72db532c1c131a4a1216082065f44.bindPopup(popup_a10152c9f0145204ada69fda56f9aa6c)
+        ;
+
+        
+    
+    
+            var circle_marker_75085b6f1e2a9b6d29ed8a62547d146d = L.circleMarker(
+                [-6.0, 35.0],
+                {"bubblingMouseEvents": true, "color": "#EA6690", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "#EA6690", "fillOpacity": 0.2, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 0.7, "radius": 10, "stroke": true, "weight": 1}
+            ).addTo(marker_cluster_d6c4c7abebb46e0b182a54697687169e);
+        
+    
+        var popup_6a9bfbd1d5567b4a720af1834453926d = L.popup({"maxWidth": "100%"});
+
+        
+            
+                var html_405c5c7588e149194a9a8f34238a9dc5 = $(`<div id="html_405c5c7588e149194a9a8f34238a9dc5" style="width: 100.0%; height: 100.0%;">     <div style="align-items: left;">         <img src="//www.gravatar.com/avatar/9c0fd6747882c2e8c41b57f67fbaa27e?s=150&r=g&d=identicon" alt="John Rexford Nzira" style="width:100%;border-radius:50%;max-width:150px;">         <h4 style="text-align:center">John Rexford Nzira</h4>         <p><strong>Location: </strong>Tanzania</p>         <p><strong>Initiative: </strong>Twende</p>         <p><a href="https://globalinnovationgathering.org/members-map/members/nzira/" target="_blank">View Profile</a></p>     </div>     </div>`)[0];
+                popup_6a9bfbd1d5567b4a720af1834453926d.setContent(html_405c5c7588e149194a9a8f34238a9dc5);
+            
+        
+
+        circle_marker_75085b6f1e2a9b6d29ed8a62547d146d.bindPopup(popup_6a9bfbd1d5567b4a720af1834453926d)
+        ;
+
+        
+    
+    
+            var circle_marker_225f791dd5019db6a814cddade5b92c1 = L.circleMarker(
+                [20.0, 77.0],
+                {"bubblingMouseEvents": true, "color": "#EA6690", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "#EA6690", "fillOpacity": 0.2, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 0.7, "radius": 10, "stroke": true, "weight": 1}
+            ).addTo(marker_cluster_d6c4c7abebb46e0b182a54697687169e);
+        
+    
+        var popup_6695e8080108f59bfb2951403f09feaf = L.popup({"maxWidth": "100%"});
+
+        
+            
+                var html_176ec967af932ea288b3fca7602937c9 = $(`<div id="html_176ec967af932ea288b3fca7602937c9" style="width: 100.0%; height: 100.0%;">     <div style="align-items: left;">         <img src="//www.gravatar.com/avatar/59ca6ec5a238c0b3f8ca691eeb623b55?s=150&r=g&d=identicon" alt="Jaspreet Singh" style="width:100%;border-radius:50%;max-width:150px;">         <h4 style="text-align:center">Jaspreet Singh</h4>         <p><strong>Location: </strong>India</p>         <p><strong>Initiative: </strong>Community Networks, Internet of Things</p>         <p><a href="https://globalinnovationgathering.org/members-map/members/jassi2713/" target="_blank">View Profile</a></p>     </div>     </div>`)[0];
+                popup_6695e8080108f59bfb2951403f09feaf.setContent(html_176ec967af932ea288b3fca7602937c9);
+            
+        
+
+        circle_marker_225f791dd5019db6a814cddade5b92c1.bindPopup(popup_6695e8080108f59bfb2951403f09feaf)
+        ;
+
+        
+    
+    
+            var circle_marker_9781786522c12b950596687fa3b39be3 = L.circleMarker(
+                [1.0, 32.0],
+                {"bubblingMouseEvents": true, "color": "#EA6690", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "#EA6690", "fillOpacity": 0.2, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 0.7, "radius": 10, "stroke": true, "weight": 1}
+            ).addTo(marker_cluster_d6c4c7abebb46e0b182a54697687169e);
+        
+    
+        var popup_a8ab7449986f90e1a33e4f8aa5869e9c = L.popup({"maxWidth": "100%"});
+
+        
+            
+                var html_fecd0a5c87cc7a7e87b6c89947af6ea1 = $(`<div id="html_fecd0a5c87cc7a7e87b6c89947af6ea1" style="width: 100.0%; height: 100.0%;">     <div style="align-items: left;">         <img src="https://i0.wp.com/globalinnovationgathering.org/wp-content/uploads/avatars/97/1645162192-bpfull.jpg?resize=150%2C150&ssl=1" alt="Sharlotte Kigezo" style="width:100%;border-radius:50%;max-width:150px;">         <h4 style="text-align:center">Sharlotte Kigezo</h4>         <p><strong>Location: </strong>Uganda</p>         <p><strong>Initiative: </strong>Platform Africa</p>         <p><a href="https://globalinnovationgathering.org/members-map/members/kigezo/" target="_blank">View Profile</a></p>     </div>     </div>`)[0];
+                popup_a8ab7449986f90e1a33e4f8aa5869e9c.setContent(html_fecd0a5c87cc7a7e87b6c89947af6ea1);
+            
+        
+
+        circle_marker_9781786522c12b950596687fa3b39be3.bindPopup(popup_a8ab7449986f90e1a33e4f8aa5869e9c)
+        ;
+
+        
+    
+    
+            var circle_marker_0e29b1921cdf3a567503f629a23f46d7 = L.circleMarker(
+                [51.0, 9.0],
+                {"bubblingMouseEvents": true, "color": "#EA6690", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "#EA6690", "fillOpacity": 0.2, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 0.7, "radius": 10, "stroke": true, "weight": 1}
+            ).addTo(marker_cluster_d6c4c7abebb46e0b182a54697687169e);
+        
+    
+        var popup_cbf599c304dcb8e1cdc603c9ca29ade1 = L.popup({"maxWidth": "100%"});
+
+        
+            
+                var html_8e61c1a5f2e70bd0c87a101569cdcf2b = $(`<div id="html_8e61c1a5f2e70bd0c87a101569cdcf2b" style="width: 100.0%; height: 100.0%;">     <div style="align-items: left;">         <img src="//www.gravatar.com/avatar/968643ac0e6707f40914dc3a6049d1ec?s=150&r=g&d=identicon" alt="Victoria Wenzelmann" style="width:100%;border-radius:50%;max-width:150px;">         <h4 style="text-align:center">Victoria Wenzelmann</h4>         <p><strong>Location: </strong>Germany</p>         <p><strong>Initiative: </strong>Global Innovation Gathering</p>         <p><a href="https://globalinnovationgathering.org/members-map/members/vicy/" target="_blank">View Profile</a></p>     </div>     </div>`)[0];
+                popup_cbf599c304dcb8e1cdc603c9ca29ade1.setContent(html_8e61c1a5f2e70bd0c87a101569cdcf2b);
+            
+        
+
+        circle_marker_0e29b1921cdf3a567503f629a23f46d7.bindPopup(popup_cbf599c304dcb8e1cdc603c9ca29ade1)
+        ;
+
+        
+    
+    
+            var circle_marker_0ab85aa9f7d6a9ef3102c5330d8d2c2d = L.circleMarker(
+                [24.0, 54.0],
+                {"bubblingMouseEvents": true, "color": "#EA6690", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "#EA6690", "fillOpacity": 0.2, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 0.7, "radius": 10, "stroke": true, "weight": 1}
+            ).addTo(marker_cluster_d6c4c7abebb46e0b182a54697687169e);
+        
+    
+        var popup_a69fdf6bebb4201f463990bcf1d47bea = L.popup({"maxWidth": "100%"});
+
+        
+            
+                var html_36c4748656db6bcfa58ff528f87265bf = $(`<div id="html_36c4748656db6bcfa58ff528f87265bf" style="width: 100.0%; height: 100.0%;">     <div style="align-items: left;">         <img src="//www.gravatar.com/avatar/0b7d2cb23ca5bc6ca95402cd0c4242e4?s=150&r=g&d=identicon" alt="Ahmed Maawy" style="width:100%;border-radius:50%;max-width:150px;">         <h4 style="text-align:center">Ahmed Maawy</h4>         <p><strong>Location: </strong>United Arab Emirates</p>         <p><strong>Initiative: </strong>SwahiliBox</p>         <p><a href="https://globalinnovationgathering.org/members-map/members/ahmedmaawy/" target="_blank">View Profile</a></p>     </div>     </div>`)[0];
+                popup_a69fdf6bebb4201f463990bcf1d47bea.setContent(html_36c4748656db6bcfa58ff528f87265bf);
+            
+        
+
+        circle_marker_0ab85aa9f7d6a9ef3102c5330d8d2c2d.bindPopup(popup_a69fdf6bebb4201f463990bcf1d47bea)
+        ;
+
+        
+    
+    
+            var circle_marker_ee618bbfb75754a836c501a8ab2a69a6 = L.circleMarker(
+                [51.0, 9.0],
+                {"bubblingMouseEvents": true, "color": "#EA6690", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "#EA6690", "fillOpacity": 0.2, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 0.7, "radius": 10, "stroke": true, "weight": 1}
+            ).addTo(marker_cluster_d6c4c7abebb46e0b182a54697687169e);
+        
+    
+        var popup_20f0e0205c71f7a0f01141d1e98cba63 = L.popup({"maxWidth": "100%"});
+
+        
+            
+                var html_9d791e5c62d89bb303b0665810d23c4d = $(`<div id="html_9d791e5c62d89bb303b0665810d23c4d" style="width: 100.0%; height: 100.0%;">     <div style="align-items: left;">         <img src="//www.gravatar.com/avatar/db5d6aaf10b89561e7cf823c67a67d42?s=150&r=g&d=identicon" alt="Adriana Cristina Cabrera" style="width:100%;border-radius:50%;max-width:150px;">         <h4 style="text-align:center">Adriana Cristina Cabrera</h4>         <p><strong>Location: </strong>Germany</p>         <p><strong>Initiative: </strong>FabCare network</p>         <p><a href="https://globalinnovationgathering.org/members-map/members/adrianacabrera/" target="_blank">View Profile</a></p>     </div>     </div>`)[0];
+                popup_20f0e0205c71f7a0f01141d1e98cba63.setContent(html_9d791e5c62d89bb303b0665810d23c4d);
+            
+        
+
+        circle_marker_ee618bbfb75754a836c501a8ab2a69a6.bindPopup(popup_20f0e0205c71f7a0f01141d1e98cba63)
+        ;
+
+        
+    
+    
+            var circle_marker_6e70466f34b22e09d70cbcdb4d06ef96 = L.circleMarker(
+                [7.0, 30.0],
+                {"bubblingMouseEvents": true, "color": "#EA6690", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "#EA6690", "fillOpacity": 0.2, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 0.7, "radius": 10, "stroke": true, "weight": 1}
+            ).addTo(marker_cluster_d6c4c7abebb46e0b182a54697687169e);
+        
+    
+        var popup_72e25492d98a2643816165d4a7ed7dc5 = L.popup({"maxWidth": "100%"});
+
+        
+            
+                var html_7ccc924857d7b2f942b654b50303a081 = $(`<div id="html_7ccc924857d7b2f942b654b50303a081" style="width: 100.0%; height: 100.0%;">     <div style="align-items: left;">         <img src="//www.gravatar.com/avatar/2034f6eab1628e2b9c223c787f782f94?s=150&r=g&d=identicon" alt="Romeo Ronald Lomora" style="width:100%;border-radius:50%;max-width:150px;">         <h4 style="text-align:center">Romeo Ronald Lomora</h4>         <p><strong>Location: </strong>South Sudan</p>         <p><strong>Initiative: </strong>Platform Africa</p>         <p><a href="https://globalinnovationgathering.org/members-map/members/ronaldlomo/" target="_blank">View Profile</a></p>     </div>     </div>`)[0];
+                popup_72e25492d98a2643816165d4a7ed7dc5.setContent(html_7ccc924857d7b2f942b654b50303a081);
+            
+        
+
+        circle_marker_6e70466f34b22e09d70cbcdb4d06ef96.bindPopup(popup_72e25492d98a2643816165d4a7ed7dc5)
+        ;
+
+        
+    
+    
+            var circle_marker_5cbb203f878a74e10a71ffeeed0f099f = L.circleMarker(
+                [51.0, 9.0],
+                {"bubblingMouseEvents": true, "color": "#EA6690", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "#EA6690", "fillOpacity": 0.2, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 0.7, "radius": 10, "stroke": true, "weight": 1}
+            ).addTo(marker_cluster_d6c4c7abebb46e0b182a54697687169e);
+        
+    
+        var popup_b8f2f4efaf8a047111e8349a69695ed9 = L.popup({"maxWidth": "100%"});
+
+        
+            
+                var html_d780962d9f776b720deea676a752c1c8 = $(`<div id="html_d780962d9f776b720deea676a752c1c8" style="width: 100.0%; height: 100.0%;">     <div style="align-items: left;">         <img src="https://i0.wp.com/globalinnovationgathering.org/wp-content/uploads/avatars/36/60bf747013ce3-bpfull.jpg?resize=150%2C150&ssl=1" alt="Regina Sipos" style="width:100%;border-radius:50%;max-width:150px;">         <h4 style="text-align:center">Regina Sipos</h4>         <p><strong>Location: </strong>Germany</p>         <p><strong>Initiative: </strong></p>         <p><a href="https://globalinnovationgathering.org/members-map/members/regina/" target="_blank">View Profile</a></p>     </div>     </div>`)[0];
+                popup_b8f2f4efaf8a047111e8349a69695ed9.setContent(html_d780962d9f776b720deea676a752c1c8);
+            
+        
+
+        circle_marker_5cbb203f878a74e10a71ffeeed0f099f.bindPopup(popup_b8f2f4efaf8a047111e8349a69695ed9)
+        ;
+
+        
+    
+    
+            var circle_marker_18679d2dad72a279861659cbac73722f = L.circleMarker(
+                [51.0, 9.0],
+                {"bubblingMouseEvents": true, "color": "#EA6690", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "#EA6690", "fillOpacity": 0.2, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 0.7, "radius": 10, "stroke": true, "weight": 1}
+            ).addTo(marker_cluster_d6c4c7abebb46e0b182a54697687169e);
+        
+    
+        var popup_c28ed66ff2ef48006d1c52c05ca789ac = L.popup({"maxWidth": "100%"});
+
+        
+            
+                var html_b83f47d03c7b0a4bdeb4a54f2d96fbaa = $(`<div id="html_b83f47d03c7b0a4bdeb4a54f2d96fbaa" style="width: 100.0%; height: 100.0%;">     <div style="align-items: left;">         <img src="https://i0.wp.com/globalinnovationgathering.org/wp-content/uploads/avatars/130/1652287975-bpfull.jpg?resize=150%2C150&ssl=1" alt="Daniel Wessolek" style="width:100%;border-radius:50%;max-width:150px;">         <h4 style="text-align:center">Daniel Wessolek</h4>         <p><strong>Location: </strong>Germany</p>         <p><strong>Initiative: </strong>Open Hardware</p>         <p><a href="https://globalinnovationgathering.org/members-map/members/nielek/" target="_blank">View Profile</a></p>     </div>     </div>`)[0];
+                popup_c28ed66ff2ef48006d1c52c05ca789ac.setContent(html_b83f47d03c7b0a4bdeb4a54f2d96fbaa);
+            
+        
+
+        circle_marker_18679d2dad72a279861659cbac73722f.bindPopup(popup_c28ed66ff2ef48006d1c52c05ca789ac)
+        ;
+
+        
+    
+    
+            var circle_marker_eba59aef5e2ac30cf478bec3739df22b = L.circleMarker(
+                [33.0, 44.0],
+                {"bubblingMouseEvents": true, "color": "#EA6690", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "#EA6690", "fillOpacity": 0.2, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 0.7, "radius": 10, "stroke": true, "weight": 1}
+            ).addTo(marker_cluster_d6c4c7abebb46e0b182a54697687169e);
+        
+    
+        var popup_b3b224e037da4753d6e99ebbe46014e8 = L.popup({"maxWidth": "100%"});
+
+        
+            
+                var html_7f384c9fb14a2baf30ceeb0c54fa178f = $(`<div id="html_7f384c9fb14a2baf30ceeb0c54fa178f" style="width: 100.0%; height: 100.0%;">     <div style="align-items: left;">         <img src="https://i0.wp.com/globalinnovationgathering.org/wp-content/uploads/avatars/90/61c207c2bc07e-bpfull.jpg?resize=150%2C150&ssl=1" alt="Salih Mahmod" style="width:100%;border-radius:50%;max-width:150px;">         <h4 style="text-align:center">Salih Mahmod</h4>         <p><strong>Location: </strong>Iraq</p>         <p><strong>Initiative: </strong>Mosul Space</p>         <p><a href="https://globalinnovationgathering.org/members-map/members/salih-mahmod/" target="_blank">View Profile</a></p>     </div>     </div>`)[0];
+                popup_b3b224e037da4753d6e99ebbe46014e8.setContent(html_7f384c9fb14a2baf30ceeb0c54fa178f);
+            
+        
+
+        circle_marker_eba59aef5e2ac30cf478bec3739df22b.bindPopup(popup_b3b224e037da4753d6e99ebbe46014e8)
+        ;
+
+        
+    
+    
+            var circle_marker_630207d46911d1ca4af2af79f1d26da7 = L.circleMarker(
+                [28.0, 84.0],
+                {"bubblingMouseEvents": true, "color": "#EA6690", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "#EA6690", "fillOpacity": 0.2, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 0.7, "radius": 10, "stroke": true, "weight": 1}
+            ).addTo(marker_cluster_d6c4c7abebb46e0b182a54697687169e);
+        
+    
+        var popup_a4d18580a260a9b236ca66c19f84250d = L.popup({"maxWidth": "100%"});
+
+        
+            
+                var html_c1e97be20155eff952344eb67d1de3be = $(`<div id="html_c1e97be20155eff952344eb67d1de3be" style="width: 100.0%; height: 100.0%;">     <div style="align-items: left;">         <img src="https://i0.wp.com/globalinnovationgathering.org/wp-content/uploads/avatars/128/1651054977-bpfull.png?resize=150%2C150&ssl=1" alt="Pallab Shrestha" style="width:100%;border-radius:50%;max-width:150px;">         <h4 style="text-align:center">Pallab Shrestha</h4>         <p><strong>Location: </strong>Nepal</p>         <p><strong>Initiative: </strong>Impact Hub Kathmandu</p>         <p><a href="https://globalinnovationgathering.org/members-map/members/pallab/" target="_blank">View Profile</a></p>     </div>     </div>`)[0];
+                popup_a4d18580a260a9b236ca66c19f84250d.setContent(html_c1e97be20155eff952344eb67d1de3be);
+            
+        
+
+        circle_marker_630207d46911d1ca4af2af79f1d26da7.bindPopup(popup_a4d18580a260a9b236ca66c19f84250d)
+        ;
+
+        
+    
+    
+            var circle_marker_9d25f87b1fa94a531999fc067bbb37b9 = L.circleMarker(
+                [8.0, -2.0],
+                {"bubblingMouseEvents": true, "color": "#EA6690", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "#EA6690", "fillOpacity": 0.2, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 0.7, "radius": 10, "stroke": true, "weight": 1}
+            ).addTo(marker_cluster_d6c4c7abebb46e0b182a54697687169e);
+        
+    
+        var popup_f9e27fa859ccf410bd22b22eece49dbc = L.popup({"maxWidth": "100%"});
+
+        
+            
+                var html_df23de6f42fe676f0fda3b1253761da7 = $(`<div id="html_df23de6f42fe676f0fda3b1253761da7" style="width: 100.0%; height: 100.0%;">     <div style="align-items: left;">         <img src="https://i0.wp.com/globalinnovationgathering.org/wp-content/uploads/avatars/114/1647397255-bpfull.jpg?resize=150%2C150&ssl=1" alt="Harry Akligoh" style="width:100%;border-radius:50%;max-width:150px;">         <h4 style="text-align:center">Harry Akligoh</h4>         <p><strong>Location: </strong>Ghana</p>         <p><strong>Initiative: </strong>Duplex Bioscience</p>         <p><a href="https://globalinnovationgathering.org/members-map/members/harryakligoh/" target="_blank">View Profile</a></p>     </div>     </div>`)[0];
+                popup_f9e27fa859ccf410bd22b22eece49dbc.setContent(html_df23de6f42fe676f0fda3b1253761da7);
+            
+        
+
+        circle_marker_9d25f87b1fa94a531999fc067bbb37b9.bindPopup(popup_f9e27fa859ccf410bd22b22eece49dbc)
+        ;
+
+        
+    
+    
+            var circle_marker_82c3dbab0919c63d6108893fd6f3f507 = L.circleMarker(
+                [51.0, 9.0],
+                {"bubblingMouseEvents": true, "color": "#EA6690", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "#EA6690", "fillOpacity": 0.2, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 0.7, "radius": 10, "stroke": true, "weight": 1}
+            ).addTo(marker_cluster_d6c4c7abebb46e0b182a54697687169e);
+        
+    
+        var popup_906c05670efc2e61954169f5ced35f2a = L.popup({"maxWidth": "100%"});
+
+        
+            
+                var html_424633015d563302be724e059b461cff = $(`<div id="html_424633015d563302be724e059b461cff" style="width: 100.0%; height: 100.0%;">     <div style="align-items: left;">         <img src="//www.gravatar.com/avatar/652cb409794f52966e97e3b4327e2d08?s=150&r=g&d=identicon" alt="Felipe Schmidt Fonseca" style="width:100%;border-radius:50%;max-width:150px;">         <h4 style="text-align:center">Felipe Schmidt Fonseca</h4>         <p><strong>Location: </strong>Germany</p>         <p><strong>Initiative: </strong>PhD research on generous cities; communi</p>         <p><a href="https://globalinnovationgathering.org/members-map/members/efeefe/" target="_blank">View Profile</a></p>     </div>     </div>`)[0];
+                popup_906c05670efc2e61954169f5ced35f2a.setContent(html_424633015d563302be724e059b461cff);
+            
+        
+
+        circle_marker_82c3dbab0919c63d6108893fd6f3f507.bindPopup(popup_906c05670efc2e61954169f5ced35f2a)
+        ;
+
+        
+    
+    
+            var circle_marker_ad9d179c813901a3b6bb5ebc5ab184cc = L.circleMarker(
+                [18.25, -66.5],
+                {"bubblingMouseEvents": true, "color": "#EA6690", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "#EA6690", "fillOpacity": 0.2, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 0.7, "radius": 10, "stroke": true, "weight": 1}
+            ).addTo(marker_cluster_d6c4c7abebb46e0b182a54697687169e);
+        
+    
+        var popup_53c1358d9e9477cac4172cfabd7bad56 = L.popup({"maxWidth": "100%"});
+
+        
+            
+                var html_97ecf346d5614bcf945e92c600d93cac = $(`<div id="html_97ecf346d5614bcf945e92c600d93cac" style="width: 100.0%; height: 100.0%;">     <div style="align-items: left;">         <img src="https://i0.wp.com/globalinnovationgathering.org/wp-content/uploads/avatars/657/1678204480-bpfull.jpg?resize=150%2C150&ssl=1" alt="Pamela Silva Díaz" style="width:100%;border-radius:50%;max-width:150px;">         <h4 style="text-align:center">Pamela Silva Díaz</h4>         <p><strong>Location: </strong>Puerto Rico</p>         <p><strong>Initiative: </strong>Pamlab Design and Engineering</p>         <p><a href="https://globalinnovationgathering.org/members-map/members/pamcsilva/" target="_blank">View Profile</a></p>     </div>     </div>`)[0];
+                popup_53c1358d9e9477cac4172cfabd7bad56.setContent(html_97ecf346d5614bcf945e92c600d93cac);
+            
+        
+
+        circle_marker_ad9d179c813901a3b6bb5ebc5ab184cc.bindPopup(popup_53c1358d9e9477cac4172cfabd7bad56)
+        ;
+
+        
+    
+    
+            var circle_marker_669db39f3084b2b3b058ed19ea306fca = L.circleMarker(
+                [40.0, -4.0],
+                {"bubblingMouseEvents": true, "color": "#EA6690", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "#EA6690", "fillOpacity": 0.2, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 0.7, "radius": 10, "stroke": true, "weight": 1}
+            ).addTo(marker_cluster_d6c4c7abebb46e0b182a54697687169e);
+        
+    
+        var popup_20466b8a2f156952046d41c4985b73a4 = L.popup({"maxWidth": "100%"});
+
+        
+            
+                var html_03999758067797ad22c28551dcd9bf9a = $(`<div id="html_03999758067797ad22c28551dcd9bf9a" style="width: 100.0%; height: 100.0%;">     <div style="align-items: left;">         <img src="https://i0.wp.com/globalinnovationgathering.org/wp-content/uploads/avatars/678/1678788681-bpfull.png?resize=150%2C150&ssl=1" alt="Saulo Jacques" style="width:100%;border-radius:50%;max-width:150px;">         <h4 style="text-align:center">Saulo Jacques</h4>         <p><strong>Location: </strong>Spain</p>         <p><strong>Initiative: </strong>Hacking Ecology</p>         <p><a href="https://globalinnovationgathering.org/members-map/members/smsj/" target="_blank">View Profile</a></p>     </div>     </div>`)[0];
+                popup_20466b8a2f156952046d41c4985b73a4.setContent(html_03999758067797ad22c28551dcd9bf9a);
+            
+        
+
+        circle_marker_669db39f3084b2b3b058ed19ea306fca.bindPopup(popup_20466b8a2f156952046d41c4985b73a4)
+        ;
+
+        
+    
+    
+            var circle_marker_5c909c7a520373a092bc88955b55e101 = L.circleMarker(
+                [-10.0, -55.0],
+                {"bubblingMouseEvents": true, "color": "#EA6690", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "#EA6690", "fillOpacity": 0.2, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 0.7, "radius": 10, "stroke": true, "weight": 1}
+            ).addTo(marker_cluster_d6c4c7abebb46e0b182a54697687169e);
+        
+    
+        var popup_b1a5108251c5decebe547b0f42c0b1e7 = L.popup({"maxWidth": "100%"});
+
+        
+            
+                var html_5bf1a6d5234632a0ba98901f7344c6be = $(`<div id="html_5bf1a6d5234632a0ba98901f7344c6be" style="width: 100.0%; height: 100.0%;">     <div style="align-items: left;">         <img src="https://i0.wp.com/globalinnovationgathering.org/wp-content/uploads/avatars/42/1646488904-bpfull.jpg?resize=150%2C150&ssl=1" alt="Adriano Belisario" style="width:100%;border-radius:50%;max-width:150px;">         <h4 style="text-align:center">Adriano Belisario</h4>         <p><strong>Location: </strong>Brazil</p>         <p><strong>Initiative: </strong></p>         <p><a href="https://globalinnovationgathering.org/members-map/members/belisards/" target="_blank">View Profile</a></p>     </div>     </div>`)[0];
+                popup_b1a5108251c5decebe547b0f42c0b1e7.setContent(html_5bf1a6d5234632a0ba98901f7344c6be);
+            
+        
+
+        circle_marker_5c909c7a520373a092bc88955b55e101.bindPopup(popup_b1a5108251c5decebe547b0f42c0b1e7)
+        ;
+
+        
+    
+    
+            map_b2a85ad7a46bf85a9c2fa57ead9b3d8a.fitBounds(
+                [[-29.0, -97.0], [60.0, 133.0]],
+                {}
+            );
+        
+    
+            var locate_control_b40785889117b7702f8c876d1769d71a = L.control.locate(
+                {}
+            ).addTo(map_b2a85ad7a46bf85a9c2fa57ead9b3d8a);
+            
+        
+    
+            var layer_control_00175b7085cd96aba21c4a6086fee914 = {
+                base_layers : {
+                },
+                overlays :  {
+                    "GIG" : marker_cluster_d6c4c7abebb46e0b182a54697687169e,
+                },
+            };
+            L.control.layers(
+                layer_control_00175b7085cd96aba21c4a6086fee914.base_layers,
+                layer_control_00175b7085cd96aba21c4a6086fee914.overlays,
+                {"autoZIndex": true, "collapsed": true, "position": "topright"}
+            ).addTo(map_b2a85ad7a46bf85a9c2fa57ead9b3d8a);
+        
+</script>
+</html>
